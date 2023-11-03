@@ -16,6 +16,8 @@ import ContentsBox from './components/users/ContentsBox/ContentsBox';
 import Likes from './components/users/Likes/Likes';
 import UsersComments from './components/users/UsersComments/UsersComments';
 import UsersDecks from './components/users/UsersDecks/UsersDecks';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 const router = createBrowserRouter([
 	{
@@ -80,8 +82,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
-		<RouterProvider router={router}>
-			<App />
-		</RouterProvider>
+		<Provider store={store}>
+			<RouterProvider router={router}>
+				<App />
+			</RouterProvider>
+		</Provider>
 	</React.StrictMode>,
 );
