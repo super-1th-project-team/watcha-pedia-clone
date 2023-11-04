@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 import Movies from '../../components/theme/Movies/Movies';
 import Books from '../../components/theme/Books/Books';
 import TVSeasons from '../../components/theme/TVSeasons/TVSeasons';
+import Review from '../Review/Review';
 
 const Home = () => {
 	const location = useLocation();
@@ -12,7 +13,7 @@ const Home = () => {
 	else if (domain === 'books') return <Books />;
 	else if (domain === 'tv_seasons') return <TVSeasons />;
 
-	return <Movies />;
+	return <Review />;
 };
 
 export default Home;
