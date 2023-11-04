@@ -14,7 +14,7 @@ const ReviewMovies = () => {
 export default ReviewMovies;
 
 const ReviewWrapper = styled.div`
-	margin: 0 auto;
+	margin: 30px auto;
 	width: 640px;
 	border: 1px solid var(--color-light-gray);
 	border-radius: 5px;

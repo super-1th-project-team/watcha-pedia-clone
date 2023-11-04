@@ -18,6 +18,9 @@ import UsersComments from './components/users/UsersComments/UsersComments';
 import UsersDecks from './components/users/UsersDecks/UsersDecks';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import ReviewMovies from './components/review/ReviewMovies/ReviewMovies';
+import ReviewTVSeasons from './components/review/ReviewTVSeasons/ReviewTVSeasons';
+import ReviewBooks from './components/review/ReviewBooks/ReviewBooks';
 
 const router = createBrowserRouter([
 	{
@@ -62,6 +65,20 @@ const router = createBrowserRouter([
 			{
 				path: 'review',
 				element: <Review />,
+				children: [
+					{
+						path: 'movies',
+						element: <ReviewMovies />,
+					},
+					{
+						path: 'tv_seasons',
+						element: <ReviewTVSeasons />,
+					},
+					{
+						path: 'books',
+						element: <ReviewBooks />,
+					},
+				],
 			},
 			{
 				path: 'decks/:id',
