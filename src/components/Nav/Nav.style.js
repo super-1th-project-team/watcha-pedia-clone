@@ -68,7 +68,7 @@ export const NavMovieButton = styled(NavButton)`
   `}
 `;
 
-export const NavTVSeansonsButton = styled(NavButton)`
+export const NavTVSeasonsButton = styled(NavButton)`
 	${(props) =>
 		props.domain === 'tv_seasons' &&
 		`
