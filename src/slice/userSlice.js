@@ -6,6 +6,11 @@ const initialState = {
 	password: '',
 	isLoggedIn: false,
 	isRegistered: false,
+	isLoginError: false,
+	inputValue: {
+		email: '',
+		password: '',
+	},
 };
 
 const userSlice = createSlice({
@@ -34,6 +39,14 @@ const userSlice = createSlice({
 			state.isLoggedIn = isLoggedIn;
 			state.isRegistered = isRegistered;
 		},
+		CHECK_LOGIN_ERROR(state, action) {
+			const isLoginError = action.payload;
+			state.isLoginError = isLoginError;
+		},
+		UPDATE_INPUT_VALUE(state, action) {
+			const { name, value } = action.payload;
+			state.inputValue[name] = value;
+		},
 	},
 });
 
@@ -43,6 +56,8 @@ export const {
 	TOGGLE_LOGIN_USER,
 	TOGGLE_REGISTER_USER,
 	CANCEL_AUTH,
+	CHECK_LOGIN_ERROR,
+	UPDATE_INPUT_VALUE,
 } = userSlice.actions;
 
 export default userSlice.reducer;

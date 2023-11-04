@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.section`
 	position: absolute;
@@ -13,6 +13,12 @@ export const Container = styled.section`
 	border-radius: 7px;
 	transform: translate(-50%, -50%);
 	background-color: var(--color-bg-white);
+
+	${({ isLoginError }) =>
+		isLoginError &&
+		css`
+			background-color: var(--color-bg-gray);
+		`}
 `;
 
 export const Image = styled.img`

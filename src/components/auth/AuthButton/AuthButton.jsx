@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import { Button } from './AuthButton.style';
 
 const AuthButton = (props) => {
-	return <Button>{props.title}</Button>;
+	return <Button type="submit">{props.title}</Button>;
 };
 
 AuthButton.propTypes = {
-	title: PropTypes.string.isRequired, // title prop의 타입을 문자열로 지정하고 필수로 설정
+	title: PropTypes.string.isRequired,
 };
 
 export default AuthButton;
