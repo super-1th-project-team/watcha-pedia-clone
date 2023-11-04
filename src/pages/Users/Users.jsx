@@ -1,7 +1,13 @@
 import { Outlet } from 'react-router-dom';
+import UsersBox from '../../components/users/UsersBox/UsersBox';
 
 const Users = () => {
-	return <Outlet />;
+	return (
+		<div>
+			<UsersBox />
+			<Outlet />
+		</div>
+	);
 };
 
 export default Users;
