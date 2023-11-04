@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import {
 	NavButton,
 	NavMovieButton,
-	NavTVSeansonsButton,
+	NavTVSeasonsButton,
 	NavBooksButton,
 	RegisterButton,
 	NavContent,
@@ -81,9 +81,9 @@ const Nav = () => {
 								</NavMovieButton>
 							</NavLi>
 							<NavLi>
-								<NavTVSeansonsButton domain={domain} onClick={onTvClick}>
+								<NavTVSeasonsButton domain={domain} onClick={onTvClick}>
 									TV
-								</NavTVSeansonsButton>
+								</NavTVSeasonsButton>
 							</NavLi>
 							<NavLi>
 								<NavBooksButton domain={domain} onClick={onBookClick}>
