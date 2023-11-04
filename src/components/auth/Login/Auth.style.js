@@ -21,6 +21,15 @@ export const Wrapper = styled.div`
 	width: 100%;
 `;
 
+export const Paragraph = styled.p`
+	width: 90%;
+	text-align: left;
+	color: var(--color-dark-red);
+	margin-top: 10px;
+	margin-left: 10px;
+	font-size: 12px;
+`;
+
 export const Desc = styled.div`
 	padding-top: 10px;
 	line-height: 1.3;
@@ -42,6 +51,12 @@ export const InputStyle = styled.input`
 	border: none;
 	outline: none;
 	border-radius: 5px;
+
+	${(props) =>
+		props.isValid === true &&
+		`
+		border: 1px solid var(--color-dark-red);
+	`}
 `;
 
 export const TextWrapper = styled.div`

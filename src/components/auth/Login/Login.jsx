@@ -10,6 +10,7 @@ import {
 	TextWrapper,
 	Text,
 	Button,
+	Paragraph,
 } from './Auth.style';
 import AuthButton from '../AuthButton/AuthButton';
 import SnsIcon from '../SnsIcon/SnsIcon';
@@ -23,6 +24,10 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 const Login = () => {
+	const [emailIsValid, setEmailIsValid] = useState(false);
+	const [passwordIsValid, setPasswordIsValid] = useState(false);
+	const [textIsTouched, setTextIsTouched] = useState(false);
+
 	const dispatch = useDispatch();
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
@@ -54,7 +59,31 @@ const Login = () => {
 	const inputValueHandler = (e) => {
 		const { name, value } = e.target;
 		dispatch(UPDATE_INPUT_VALUE({ name, value }));
+
+		setTextIsTouched(true);
+
+		if (name === 'email') {
+			if (e.target.value.trim() === '') {
+				setEmailIsValid(false);
+			}
+			if (e.target.value.length > 0 && !e.target.value.includes('@')) {
+				setEmailIsValid(false);
+			} else setEmailIsValid(true);
+		}
+
+		if (name === 'password') {
+			if (e.target.value.trim() === '') {
+				setPasswordIsValid(false);
+			}
+
+			if (e.target.value.length > 0 && e.target.value.length < 6) {
+				setPasswordIsValid(false);
+			} else setPasswordIsValid(true);
+		}
 	};
+
+	const nameEmailInputIsInValid = !emailIsValid && textIsTouched;
+	const namePasswordInputIsInValid = !passwordIsValid && textIsTouched;
 
 	return (
 		<>
@@ -66,13 +95,21 @@ const Login = () => {
 						placeholder="이메일"
 						name="email"
 						onChange={inputValueHandler}
+						isValid={nameEmailInputIsInValid}
 					/>
+					{nameEmailInputIsInValid && (
+						<Paragraph>정확하지 않은 이메일입니다.</Paragraph>
+					)}
 					<InputStyle
 						type="password"
 						placeholder="비밀번호"
 						name="password"
 						onChange={inputValueHandler}
+						isValid={namePasswordInputIsInValid}
 					/>
+					{namePasswordInputIsInValid && (
+						<Paragraph>비밀번호는 최소 6자리 이상이어야 합니다.</Paragraph>
+					)}
 					<AuthButton title="로그인" />
 				</Wrapper>
 			</Form>
