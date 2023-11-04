@@ -35,7 +35,7 @@ export const InfoRightBox = styled.div`
     flex: 1 0 auto;
     padding-left: 32px;
 `
-export const Grid = styled.section`
+export const GridSection = styled.section`
     width: 100%;
     display: grid;
     align-items: center;
@@ -61,7 +61,7 @@ export const Btn = styled.button`
     border: none;
 `
 
-export const Descrption = styled.section`
+export const DescSection = styled.section`
     margin-top: 25px;
     font-size: 14px;
     line-height: 22px;
