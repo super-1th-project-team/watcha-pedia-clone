@@ -33,6 +33,16 @@ const SnsIcon = () => {
 					}),
 				);
 
+				localStorage.setItem(
+					'user',
+					JSON.stringify({
+						isLoggedIn: true,
+						id: user.uid,
+						email: user.email,
+						photoURL: user.photoURL,
+					}),
+				);
+
 				dispatch(CANCEL_AUTH({ isLogInPopUp: false, isRegisterPopUp: false }));
 				navigate('/');
 			})

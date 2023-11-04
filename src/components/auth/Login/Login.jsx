@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import {
@@ -49,6 +49,7 @@ const Login = () => {
 		signInWithEmailAndPassword(auth, inputValue.email, inputValue.password)
 			.then((userCredential) => {
 				const user = userCredential.user;
+
 				dispatch(
 					LOGIN_USER({
 						isLoggedIn: true,
@@ -57,6 +58,17 @@ const Login = () => {
 						photoURL: user.photoURL,
 					}),
 				);
+
+				localStorage.setItem(
+					'user',
+					JSON.stringify({
+						isLoggedIn: true,
+						id: user.uid,
+						email: user.email,
+						photoURL: user.photoURL,
+					}),
+				);
+
 				dispatch(CANCEL_AUTH({ isLogInPopUp: false, isRegisterPopUp: false }));
 				navigate('/');
 			})
@@ -75,9 +87,11 @@ const Login = () => {
 			if (e.target.value.trim() === '') {
 				setEmailIsValid(false);
 			}
-			if (e.target.value.length > 0 && !e.target.value.includes('@')) {
+			if (e.target.value.length === 0 || /^.+@.+\..+$/.test(e.target.value)) {
+				setEmailIsValid(true);
+			} else {
 				setEmailIsValid(false);
-			} else setEmailIsValid(true);
+			}
 		}
 
 		if (name === 'password') {
@@ -90,6 +104,14 @@ const Login = () => {
 			} else setPasswordIsValid(true);
 		}
 	};
+
+	useEffect(() => {
+		const storedUser = localStorage.getItem('user');
+		if (storedUser) {
+			const loadedUser = JSON.parse(storedUser);
+			dispatch(LOGIN_USER(loadedUser));
+		}
+	}, [dispatch]);
 
 	const nameEmailInputIsInValid = !emailIsValid && textIsTouched;
 	const namePasswordInputIsInValid = !passwordIsValid && textIsTouched;
