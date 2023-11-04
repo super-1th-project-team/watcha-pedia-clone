@@ -11,8 +11,8 @@ import {
 import AuthButton from '../AuthButton/AuthButton';
 import SnsIcon from '../SnsIcon/SnsIcon';
 import {
-	TOGGLE_LOGIN_USER,
-	TOGGLE_REGISTER_USER,
+	TOGGLE_LOGIN_POPUP,
+	TOGGLE_REGISTER_POPUP,
 } from '../../../slice/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -30,8 +30,8 @@ const Register = () => {
 	const auth = getAuth();
 
 	const AuthToggleHandler = () => {
-		if (isRegistered) dispatch(TOGGLE_REGISTER_USER());
-		dispatch(TOGGLE_LOGIN_USER());
+		if (isRegistered) dispatch(TOGGLE_REGISTER_POPUP());
+		dispatch(TOGGLE_LOGIN_POPUP());
 	};
 
 	const authHandler = (e) => {
@@ -40,7 +40,7 @@ const Register = () => {
 		createUserWithEmailAndPassword(auth, inputValue.email, inputValue.password)
 			.then((userCredential) => {
 				const user = userCredential.user;
-				console.log(user);
+				AuthToggleHandler();
 			})
 			.catch((error) => {
 				const errorCode = error.code;

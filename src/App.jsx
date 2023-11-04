@@ -16,8 +16,8 @@ import { FETCH_BOOKS_DATA } from './slice/booksSlice';
 import AuthContainer from './components/auth/AuthContainer/AuthContainer';
 
 const App = () => {
-	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-	const isRegistered = useSelector((state) => state.user.isRegistered);
+	const isLogInPopUp = useSelector((state) => state.user.isLogInPopUp);
+	const isRegisterPopUp = useSelector((state) => state.user.isRegisterPopUp);
 
 	const dispatch = useDispatch();
 
@@ -48,12 +48,12 @@ const App = () => {
 			<Nav />
 			<Outlet />
 			<Footer />
-			{isLoggedIn &&
+			{isLogInPopUp &&
 				createPortal(
 					<AuthContainer />,
 					document.getElementById('register-login-root'),
 				)}
-			{isRegistered &&
+			{isRegisterPopUp &&
 				createPortal(
 					<AuthContainer />,
 					document.getElementById('register-login-root'),

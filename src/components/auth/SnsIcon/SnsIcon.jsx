@@ -1,13 +1,16 @@
 import { Button, ButtonWrapper, Image } from './SnsIcon.style';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { getAuth } from 'firebase/auth';
-import { useDispatch } from 'react-redux';
-import { CANCEL_AUTH } from '../../../slice/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { CANCEL_AUTH, LOGIN_USER } from '../../../slice/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const SnsIcon = () => {
 	const provider = new GoogleAuthProvider();
 	const auth = getAuth();
+
+	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -20,7 +23,17 @@ const SnsIcon = () => {
 
 				const user = result.user;
 
-				dispatch(CANCEL_AUTH({ isLoggedIn: false, isRegistered: false }));
+				dispatch(
+					LOGIN_USER({
+						isLoggedIn: true,
+						id: user.uid,
+						name: user.displayName,
+						email: user.email,
+						photoURL: user.photoURL,
+					}),
+				);
+
+				dispatch(CANCEL_AUTH({ isLogInPopUp: false, isRegisterPopUp: false }));
 				navigate('/');
 			})
 			.catch((error) => {

@@ -14,8 +14,8 @@ export const Container = styled.section`
 	transform: translate(-50%, -50%);
 	background-color: var(--color-bg-white);
 
-	${({ isLoginError }) =>
-		isLoginError &&
+	${(props) =>
+		props.isLoginError === true &&
 		css`
 			background-color: var(--color-bg-gray);
 		`}
