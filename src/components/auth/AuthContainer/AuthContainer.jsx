@@ -7,18 +7,18 @@ import BackDrop from '../BackDrop/BackDrop';
 import AuthErrorModal from '../AuthErrorModal/AuthErrorModal';
 
 const AuthContainer = () => {
-	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-	const isRegistered = useSelector((state) => state.user.isRegistered);
+	const isLogInPopUp = useSelector((state) => state.user.isLogInPopUp);
+	const isRegisterPopUp = useSelector((state) => state.user.isRegisterPopUp);
 	const isLoginError = useSelector((state) => state.user.isLoginError);
 
 	return (
 		<>
-			{(isLoggedIn || isRegistered) &&
+			{(isLogInPopUp || isRegisterPopUp) &&
 				createPortal(<BackDrop />, document.getElementById('backdrop-root'))}
 			<Container isLoginError={isLoginError}>
 				<Image src="/assets/WATCHA_PEDIA_Logo_Main.png" alt="" />
-				{isLoggedIn && <Login />}
-				{isRegistered && <Register />}
+				{isLogInPopUp && <Login />}
+				{isRegisterPopUp && <Register />}
 				{isLoginError && <AuthErrorModal />}
 			</Container>
 		</>

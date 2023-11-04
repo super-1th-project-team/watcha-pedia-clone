@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TOGGLE_LOGIN_USER, TOGGLE_REGISTER_USER } from '../../slice/userSlice';
+import {
+	TOGGLE_LOGIN_POPUP,
+	TOGGLE_REGISTER_POPUP,
+} from '../../slice/userSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
 	NavButton,
@@ -8,6 +11,7 @@ import {
 	NavTVSeasonsButton,
 	NavBooksButton,
 	RegisterButton,
+	UserButton,
 	NavContent,
 	NavLi,
 	NavLogo,
@@ -20,25 +24,25 @@ const Nav = () => {
 	const [searchValue, setSearchValue] = useState('');
 	const searchInputRef = useRef('');
 
-	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-	const isRegistered = useSelector((state) => state.user.isRegistered);
+	const { isLoggedIn, isLogInPopUp, isRegisterPopUp, photoURL, id } =
+		useSelector((state) => state.user);
+
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const location = useLocation();
 	const query = new URLSearchParams(location.search);
 	const domain = query.get('domain');
 
 	const loginHandler = () => {
-		if (isRegistered) dispatch(TOGGLE_REGISTER_USER());
-		dispatch(TOGGLE_LOGIN_USER());
+		if (isRegisterPopUp) dispatch(TOGGLE_REGISTER_POPUP());
+		dispatch(TOGGLE_LOGIN_POPUP());
 	};
 
 	const signUpHandler = () => {
-		dispatch(TOGGLE_REGISTER_USER());
-		if (isLoggedIn) dispatch(TOGGLE_LOGIN_USER());
+		dispatch(TOGGLE_REGISTER_POPUP());
+		if (isLogInPopUp) dispatch(TOGGLE_LOGIN_POPUP());
 	};
-
-	const navigate = useNavigate();
 
 	const onHomeClick = () => {
 		navigate('/');
@@ -64,6 +68,14 @@ const Nav = () => {
 		e.preventDefault();
 		navigate('/search');
 		searchInputRef.current.value = '';
+	};
+
+	const moveReviewPageHandler = () => {
+		navigate('/review');
+	};
+
+	const moveUserPageHadler = () => {
+		navigate(`/users/${id}`);
 	};
 
 	return (
@@ -104,12 +116,31 @@ const Nav = () => {
 								</form>
 							</NavLi>
 							<NavLi>
-								<NavButton onClick={loginHandler}>로그인</NavButton>
+								{!isLoggedIn && (
+									<NavButton onClick={loginHandler}>로그인</NavButton>
+								)}
+								{isLoggedIn && (
+									<NavButton onClick={moveReviewPageHandler}>
+										평가하기
+									</NavButton>
+								)}
 							</NavLi>
 							<NavLi>
-								<RegisterButton onClick={signUpHandler}>
-									회원가입
-								</RegisterButton>
+								{!isLoggedIn && (
+									<RegisterButton onClick={signUpHandler}>
+										회원가입
+									</RegisterButton>
+								)}
+								{isLoggedIn && (
+									<UserButton onClick={moveUserPageHadler}>
+										<img
+											src={
+												photoURL === null ? '/assets/icon-user.png' : photoURL
+											}
+											alt=""
+										/>
+									</UserButton>
+								)}
 							</NavLi>
 						</NavUl>
 					</div>

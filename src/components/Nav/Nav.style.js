@@ -90,3 +90,10 @@ export const RegisterButton = styled(NavButton)`
 	padding: 7px 15px;
 	color: var(--color-dark-black);
 `;
+
+export const UserButton = styled(NavButton)`
+	& img {
+		width: 25px;
+		border-radius: 50%;
+	}
+`;

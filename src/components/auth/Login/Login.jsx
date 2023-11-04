@@ -16,10 +16,11 @@ import AuthButton from '../AuthButton/AuthButton';
 import SnsIcon from '../SnsIcon/SnsIcon';
 import {
 	CANCEL_AUTH,
-	TOGGLE_LOGIN_USER,
-	TOGGLE_REGISTER_USER,
+	TOGGLE_LOGIN_POPUP,
+	TOGGLE_REGISTER_POPUP,
 	CHECK_LOGIN_ERROR,
 	UPDATE_INPUT_VALUE,
+	LOGIN_USER,
 } from '../../../slice/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -29,7 +30,7 @@ const Login = () => {
 	const [textIsTouched, setTextIsTouched] = useState(false);
 
 	const dispatch = useDispatch();
-	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+	const isLogInPopUp = useSelector((state) => state.user.isLogInPopUp);
 
 	const navigate = useNavigate();
 
@@ -38,8 +39,8 @@ const Login = () => {
 	const auth = getAuth();
 
 	const AuthToggleHandler = () => {
-		dispatch(TOGGLE_REGISTER_USER());
-		if (isLoggedIn) dispatch(TOGGLE_LOGIN_USER());
+		dispatch(TOGGLE_REGISTER_POPUP());
+		if (isLogInPopUp) dispatch(TOGGLE_LOGIN_POPUP());
 	};
 
 	const authHandler = (e) => {
@@ -48,7 +49,15 @@ const Login = () => {
 		signInWithEmailAndPassword(auth, inputValue.email, inputValue.password)
 			.then((userCredential) => {
 				const user = userCredential.user;
-				dispatch(CANCEL_AUTH({ isLoggedIn: false, isRegistered: false }));
+				dispatch(
+					LOGIN_USER({
+						isLoggedIn: true,
+						id: user.uid,
+						email: user.email,
+						photoURL: user.photoURL,
+					}),
+				);
+				dispatch(CANCEL_AUTH({ isLogInPopUp: false, isRegisterPopUp: false }));
 				navigate('/');
 			})
 			.catch((error) => {
