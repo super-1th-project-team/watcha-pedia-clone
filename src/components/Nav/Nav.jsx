@@ -1,6 +1,8 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+	LOGIN_USER,
+	LOGOUT_USER,
 	TOGGLE_LOGIN_POPUP,
 	TOGGLE_REGISTER_POPUP,
 } from '../../slice/userSlice';
@@ -77,6 +79,18 @@ const Nav = () => {
 	const moveUserPageHadler = () => {
 		navigate(`/users/${id}`);
 	};
+
+	useEffect(() => {
+		const storedUser = localStorage.getItem('user');
+		if (storedUser) {
+			const user = JSON.parse(storedUser);
+			if (user.isLoggedIn) {
+				dispatch(LOGIN_USER(user));
+			}
+		} else {
+			dispatch(LOGOUT_USER());
+		}
+	}, [dispatch]);
 
 	return (
 		<header>

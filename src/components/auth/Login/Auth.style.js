@@ -28,6 +28,7 @@ export const Paragraph = styled.p`
 	margin-top: 10px;
 	margin-left: 10px;
 	font-size: 12px;
+	line-height: 1.2;
 `;
 
 export const Desc = styled.div`

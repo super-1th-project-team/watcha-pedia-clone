@@ -32,6 +32,7 @@ const userSlice = createSlice({
 			state.id = 0;
 			state.email = '';
 			state.password = '';
+			state.isLoggedIn = false;
 		},
 		TOGGLE_LOGIN_POPUP(state) {
 			state.isLogInPopUp = !state.isLogInPopUp;
