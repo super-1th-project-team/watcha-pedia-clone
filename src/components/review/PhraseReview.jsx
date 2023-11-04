@@ -3,7 +3,7 @@ import React from 'react';
 const PhraseReview = () => {
 	return (
 		<div className="PhraseReview">
-			<span></span>
+			<span>평가 수가 적어요ㅜㅜ</span>
 		</div>
 	);
 };
