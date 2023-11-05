@@ -33,6 +33,7 @@ export const Button = styled.button`
 	border-bottom: 0.5px solid var(--color-bg-light-gray);
 	outline: none;
 	background-color: transparent;
+	cursor: pointer;
 `;
 
 export const Text = styled.span`

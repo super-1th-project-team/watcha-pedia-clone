@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Evaluation from '../Evaluation/Evaluation';
 import {
 	UserInfoContainer,
@@ -8,13 +9,19 @@ import {
 	NameText,
 	EmailText,
 } from './UserInfo.style';
+import UsersSettingPopup from '../UsersSettingPopup/UsersSettingPopup';
 
 const UsersInfo = () => {
+	const [isPopup, setIsPopup] = useState(false);
+	const isPopUpHandler = () => {
+		setIsPopup((prev) => !prev);
+	};
+
 	return (
 		<>
 			<UserInfoContainer>
 				<IconWrap>
-					<StyledSettingsIcon />
+					<StyledSettingsIcon onClick={isPopUpHandler} />
 				</IconWrap>
 				<ImgWrap>
 					<img src="/assets/icon-user.png" alt="" />
@@ -25,6 +32,9 @@ const UsersInfo = () => {
 				</UserInfoWrap>
 			</UserInfoContainer>
 			<Evaluation />
+			{isPopup && (
+				<UsersSettingPopup isPopup={isPopup} setIsPopup={setIsPopup} />
+			)}
 		</>
 	);
 };

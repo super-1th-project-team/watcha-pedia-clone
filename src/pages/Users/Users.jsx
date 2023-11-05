@@ -1,12 +1,13 @@
 import { Outlet } from 'react-router-dom';
 import UsersBox from '../../components/users/UsersBox/UsersBox';
+import { UsersPageContainer } from './Users.style';
 
 const Users = () => {
 	return (
-		<div>
+		<UsersPageContainer>
 			<UsersBox />
 			<Outlet />
-		</div>
+		</UsersPageContainer>
 	);
 };
 
