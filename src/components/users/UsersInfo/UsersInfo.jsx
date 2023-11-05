@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Evaluation from '../Evaluation/Evaluation';
 import {
 	UserInfoContainer,
@@ -10,6 +10,8 @@ import {
 	EmailText,
 } from './UserInfo.style';
 import UsersSettingPopup from '../UsersSettingPopup/UsersSettingPopup';
+import { useDispatch, useSelector } from 'react-redux';
+import { LOGIN_USER } from '../../../slice/userSlice';
 
 const UsersInfo = () => {
 	const [isPopup, setIsPopup] = useState(false);
