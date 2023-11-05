@@ -87,7 +87,7 @@ const Login = () => {
 			if (e.target.value.trim() === '') {
 				setEmailIsValid(false);
 			}
-			if (e.target.value.length === 0 || /^.+@.+\..+$/.test(e.target.value)) {
+			if (e.target.value.length > 0 && /^.+@.+\..+$/.test(e.target.value)) {
 				setEmailIsValid(true);
 			} else {
 				setEmailIsValid(false);
