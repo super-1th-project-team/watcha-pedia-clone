@@ -43,26 +43,28 @@ export const Text = styled.div`
 	font-size: 18px;
 `;
 
+export const Count = styled.span`
+	margin-top: 3px;
+	color: #c6c3bd;
+`;
+
 export const Wrap = styled.div`
 	display: flex;
 	align-items: center;
 	padding-bottom: 20px;
 	margin-bottom: 30px;
-	border-bottom: 1px solid #c6c3bd;
 `;
 
 export const RatingsWrap = styled(Wrap)`
+	justify-content: space-between;
 	height: 300px;
 	align-items: start;
-
-	& :nth-child(2) {
-		margin-top: 3px;
-		color: #c6c3bd;
-	}
+	border-bottom: 1px solid #c6c3bd;
 `;
 
 export const WishesWrap = styled(Wrap)`
 	justify-content: space-between;
+	border-bottom: 1px solid #c6c3bd;
 
 	& :nth-child(2) {
 		color: #c6c3bd;
@@ -70,4 +72,10 @@ export const WishesWrap = styled(Wrap)`
 	}
 
 	cursor: pointer;
+`;
+
+export const AddButton = styled(Button)`
+	color: var(--color-lignt-red);
+	font-size: 16px;
+	text-align: right;
 `;
