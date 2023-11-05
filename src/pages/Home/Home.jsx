@@ -2,11 +2,14 @@ import { useLocation } from 'react-router-dom';
 import Movies from '../../components/theme/Movies/Movies';
 import Books from '../../components/theme/Books/Books';
 import TVSeasons from '../../components/theme/TVSeasons/TVSeasons';
+import { useScrollToTop } from '../../hooks/useScrollToTop';
 
 const Home = () => {
 	const location = useLocation();
 	const query = new URLSearchParams(location.search);
 	const domain = query.get('domain');
+
+	useScrollToTop();
 
 	if (domain === 'movies') return <Movies />;
 	else if (domain === 'books') return <Books />;
