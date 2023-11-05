@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {
 	ContentsBoxSection,
 	Button,
+	AddButton,
 	Title,
 	SubTitle,
 	Container,
@@ -9,16 +10,21 @@ import {
 	WishesWrap,
 	Text,
 	StyledBsArrowLeftShort,
+	Count,
+	Wrap,
 } from './ContentsBox.style';
 import { useScrollToTop } from '../../../hooks/useScrollToTop';
 
 const ContentsBox = () => {
-	const { contentType } = useParams();
-	const { id } = useParams();
+	const { id, contentType } = useParams();
 	const navigate = useNavigate();
 
 	const backToTheUserPageHandler = () => {
 		navigate(`/users/${id}`);
+	};
+
+	const moveToContentTypeRatingsPage = () => {
+		navigate(`/users/${id}/contents/${contentType}/ratings`);
 	};
 
 	useScrollToTop();
@@ -39,8 +45,11 @@ const ContentsBox = () => {
 			</div>
 			<Container>
 				<RatingsWrap>
-					<SubTitle>평가</SubTitle>
-					<span>0</span>
+					<Wrap>
+						<SubTitle>평가</SubTitle>
+						<Count>0</Count>
+					</Wrap>
+					<AddButton onClick={moveToContentTypeRatingsPage}>더보기</AddButton>
 				</RatingsWrap>
 				<WishesWrap>
 					<Text>보고싶어요</Text>
