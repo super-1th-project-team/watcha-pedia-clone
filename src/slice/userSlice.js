@@ -10,10 +10,10 @@ const initialState = {
 	isLogInPopUp: false,
 	isRegisterPopUp: false,
 	isLoginError: false,
-	inputValue: {
-		email: '',
-		password: '',
-	},
+	// inputValue: {
+	// 	email: '',
+	// 	password: '',
+	// },
 };
 
 const userSlice = createSlice({
@@ -31,7 +31,9 @@ const userSlice = createSlice({
 		LOGOUT_USER(state) {
 			state.id = 0;
 			state.email = '';
+			state.name = '';
 			state.password = '';
+			state.photoURL = '';
 			state.isLoggedIn = false;
 		},
 		TOGGLE_LOGIN_POPUP(state) {

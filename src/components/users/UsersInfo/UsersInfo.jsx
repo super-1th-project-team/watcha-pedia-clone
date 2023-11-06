@@ -10,14 +10,18 @@ import {
 	EmailText,
 } from './UserInfo.style';
 import UsersSettingPopup from '../UsersSettingPopup/UsersSettingPopup';
-import { useDispatch, useSelector } from 'react-redux';
-import { LOGIN_USER } from '../../../slice/userSlice';
 
 const UsersInfo = () => {
 	const [isPopup, setIsPopup] = useState(false);
 	const isPopUpHandler = () => {
 		setIsPopup((prev) => !prev);
 	};
+
+	const storedUser = JSON.parse(localStorage.getItem('user'));
+
+	const userPhotoURL = storedUser?.photoURL || '/assets/icon-user.png';
+	const userName = storedUser?.name || '이름 없음';
+	const userEmail = storedUser?.email || '이메일 없음';
 
 	return (
 		<>
@@ -26,11 +30,11 @@ const UsersInfo = () => {
 					<StyledSettingsIcon onClick={isPopUpHandler} />
 				</IconWrap>
 				<ImgWrap>
-					<img src="/assets/icon-user.png" alt="" />
+					<img src={userPhotoURL} alt="" />
 				</ImgWrap>
 				<UserInfoWrap>
-					<NameText>이종현</NameText>
-					<EmailText>dataliteracy@icloud.com</EmailText>
+					<NameText>{userName}</NameText>
+					<EmailText>{userEmail}</EmailText>
 				</UserInfoWrap>
 			</UserInfoContainer>
 			<Evaluation />
