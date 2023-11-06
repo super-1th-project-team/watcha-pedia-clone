@@ -1,28 +1,9 @@
 import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import styled from 'styled-components';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-
-const BooksBody = styled.body`
-	margin-top: 100px;
-	margin-bottom: 100px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-`;
-
-const BooksContent = styled.div`
-	width: 90%;
-`;
-
-const BooksTitle = styled.div`
-	font-size: 20px;
-	font-weight: 600;
-	width: 200px;
-	height: 40px;
-`;
+import { BooksBody, BooksContent, BooksTitle } from './Books.style';
 
 const Books = () => {
 	const newBooksData = useSelector((state) => state.books);
