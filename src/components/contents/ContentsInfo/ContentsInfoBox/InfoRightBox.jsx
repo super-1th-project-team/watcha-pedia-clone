@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import InfoBtns from './InfoBtns';
 import * as style from './ContentsInfoBox.style'
+import { useSelector } from 'react-redux';
 
 const InfoRightBox = () => {
+    const mockMovieData = useSelector(state=> state.movie[0]);
+
     const [wantIsClicked, setWantIsClicked] = useState(false);
     const [watchingIsClicked, setWatchingIsClicked] = useState(false);
 
@@ -29,8 +32,8 @@ const InfoRightBox = () => {
                         <style.GrayText>예상별점</style.GrayText>
                     </div>
                     <div style={{marginLeft: 55}}>
-                        <style.ScoreText>4.5</style.ScoreText>
-                        <style.GrayText>평균별점(2,932명)</style.GrayText>
+                        <style.ScoreText>{mockMovieData.vote_average/2}</style.ScoreText>
+                        <style.GrayText>평균별점({mockMovieData.vote_count}명)</style.GrayText>
                     </div>
                 </style.ScoreDiv>
                 <InfoBtns 
@@ -47,8 +50,8 @@ const InfoRightBox = () => {
                         <button>코멘트 남기기</button>
                     </style.WriteDiv>
                 </style.CommentDiv> : null}
-            <section>비슷한 작품</section>
-            <style.DescSection>작품 설명</style.DescSection>
+            {/* <section>비슷한 작품</section> */}
+            <style.DescSection>{mockMovieData.overview}</style.DescSection>
         </style.InfoRightBox>
     );
 };

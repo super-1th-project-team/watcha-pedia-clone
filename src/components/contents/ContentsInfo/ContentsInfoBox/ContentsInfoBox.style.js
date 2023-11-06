@@ -6,7 +6,7 @@ export const BgGray = styled.div`
 `
 
 export const InfoBox = styled.div`
-    width: 100%;
+    max-width: 1320px;
     display:flex;
 `
 
@@ -32,7 +32,7 @@ export const Average = styled.em`
 `
 
 export const InfoRightBox = styled.div`
-    flex: 1 0 auto;
+    flex: 1 0 0;
     padding-left: 32px;
 `
 export const GridSection = styled.section`
@@ -62,6 +62,7 @@ export const Btn = styled.button`
 `
 
 export const DescSection = styled.section`
+    width: 100%;
     margin-top: 25px;
     font-size: 14px;
     line-height: 22px;
