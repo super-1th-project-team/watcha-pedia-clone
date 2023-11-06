@@ -1,16 +1,17 @@
 import React from 'react';
-import Comment from './Comment';
 import * as style from './ContentsComments.style'
+import Comment from './Comment';
 
 const ContentsComments = () => {
     return (
-        <style.CommentsDiv>
-            <div>
-                <h3>코멘트<span>개수</span></h3>
-            </div>
+        <style.CommentsBoxDiv>
+            <style.CommentsTitleDiv>
+                <style.CommentsH3>코멘트</style.CommentsH3>
+                <style.CommentsCountSpan>개수</style.CommentsCountSpan>
+            </style.CommentsTitleDiv>
             <Comment/>
-            <button>더보기</button> 
-        </style.CommentsDiv>
+            <style.MoreBtn>더보기</style.MoreBtn> 
+        </style.CommentsBoxDiv>
     );
 };
 
