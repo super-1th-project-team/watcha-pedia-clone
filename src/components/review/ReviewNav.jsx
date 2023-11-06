@@ -1,47 +1,43 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { styled } from 'styled-components';
-import { setContentType } from '../../slice/reviewSlice';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const ReviewNav = () => {
-	const dispatch = useDispatch();
-	const selectedContentType = useSelector((state) => state.contentType);
 	const navigate = useNavigate();
 
-	const clickContentTypeHandler = (contentType) => {
-		dispatch(setContentType(contentType));
+	const clickNavHandler = (contentType) => {
 		navigate(`/review/${contentType}`);
 	};
 
 	return (
-		<div className="ReviewNav">
+		<RNav className="ReviewNav">
 			<NavUl>
-				<NavLi
-					onClick={() => clickContentTypeHandler('movies')}
-					className={selectedContentType === 'movies' ? 'active' : ''}>
-					영화
-				</NavLi>
-				<NavLi
-					onClick={() => clickContentTypeHandler('tv_seasons')}
-					className={selectedContentType === 'tv_seasons' ? 'active' : ''}>
-					TV 프로그램
-				</NavLi>
-				<NavLi
-					onClick={() => clickContentTypeHandler('books')}
-					className={selectedContentType === 'books' ? 'active' : ''}>
-					책
-				</NavLi>
+				<NavLi onClick={() => clickNavHandler('movies')}>영화</NavLi>
+				<NavLi onClick={() => clickNavHandler('tv_seasons')}>TV 프로그램</NavLi>
+				<NavLi onClick={() => clickNavHandler('books')}>책</NavLi>
 			</NavUl>
-		</div>
+		</RNav>
 	);
 };
 
 export default ReviewNav;
 
+const RNav = styled.div`
+	width: 100%;
+`;
+
 const NavUl = styled.ul`
 	display: flex;
+	width: 100%;
 `;
 const NavLi = styled.li`
 	cursor: pointer;
+	flex: 1;
+	padding: 20px 0;
+	text-align: center;
+	&:active,
+	&:focus {
+		color: var(--color-light-red);
+		border-bottom: 2px solid var(--color-light-red);
+	}
 `;

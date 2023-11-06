@@ -1,11 +1,16 @@
 import React from 'react';
+import { styled } from 'styled-components';
 
 const PhraseReview = () => {
 	return (
-		<div className="PhraseReview">
+		<RPhrase className="PhraseReview">
 			<span>평가 수가 적어요ㅜㅜ</span>
-		</div>
+		</RPhrase>
 	);
 };
 
 export default PhraseReview;
+
+const RPhrase = styled.div`
+	margin: 10px 0;
+`;
