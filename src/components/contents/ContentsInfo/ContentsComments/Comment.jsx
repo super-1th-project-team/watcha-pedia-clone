@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as style from './ContentsComments.style';
 import { IoStarSharp } from 'react-icons/io5';
 import { FaThumbsUp } from 'react-icons/fa6';
 import { BsFillChatFill } from 'react-icons/bs'
 
 const Comment = () => {
+	const [isClicked, setIsClicked] = useState(false);
+	const [count, setCount] = useState(0)
+	const likeBtnHandler = () => {
+		setIsClicked(!isClicked)
+		if(!isClicked){
+			setCount(count+1)
+		}else{
+			setCount(count-1)
+		}
+		
+	}
 	return (
 		<style.CommentDiv>
 			<style.CommentHeaderDiv>
@@ -22,14 +33,18 @@ const Comment = () => {
 			</style.UserCommentDiv>
 			<style.UserCommentResUl>
 				<li>
-					<FaThumbsUp style={{margin:'0 3px'}}/>654
+					<FaThumbsUp style={{margin:'0 3px'}}/>{654 + count}
 				</li>
 				<li style={{marginLeft:'13px'}}>
 					<BsFillChatFill style={{margin:'0 3px'}}/>54
 				</li>
 			</style.UserCommentResUl>
 			<style.LikeBtnDiv>
-				<style.LikeBtn>좋아요</style.LikeBtn>
+				<style.LikeBtn 
+					onClick={likeBtnHandler} 
+					color={isClicked ? '#fff' : 'rgb(255,47,110)'} 
+					bgColor={isClicked ? 'rgb(255,47,110)' : 'none'}>좋아요
+				</style.LikeBtn>
 			</style.LikeBtnDiv>
 		</style.CommentDiv>
 	);

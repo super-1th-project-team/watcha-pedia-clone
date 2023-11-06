@@ -1,18 +1,11 @@
 import { styled } from 'styled-components';
 
-export const CommentsBoxDiv = styled.div`
-	padding: 60px 60px 0;
-    position: relative;
-`;
 export const CommentsTitleDiv = styled.div`
 	display: flex;
 	height: 48px;
 	margin-bottom: 20px;
 `;
-export const SectionTitleH3 = styled.h3`
-	font-size: 24px;
-	font-weight: 700;
-`;
+
 export const CommentsCountSpan = styled.span`
 	font-size: 24px;
 	color: rgb(255, 47, 110);
@@ -63,11 +56,12 @@ export const LikeBtnDiv = styled.div`
     padding: 9.5px 0 ;
 `
 export const LikeBtn = styled.button`
-    background: none;
+    background: ${props => props.bgColor};
     font-size: 17px;
-    color: rgb(255,47,110);
+    color: ${props => props.color};
     border: none;
-    padding: 0;
+	border-radius: 3px;
+    padding: 2px 8px;
 `
 export const MoreBtn = styled.button`
     position: absolute;
