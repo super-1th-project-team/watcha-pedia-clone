@@ -5,7 +5,7 @@ import StarInput from './StarInput';
 const StarRating = () => {
 	const [rating, setRating] = useState(0);
 
-	const clickRatingHandling = (value) => {
+	const clickRatingHandler = (value) => {
 		if (rating === value) {
 			setRating(0);
 		} else {
@@ -19,7 +19,7 @@ const StarRating = () => {
 				{[5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5].map((value, index) => (
 					<StarInput
 						key={index}
-						onClickRating={() => clickRatingHandling(value)}
+						onClickRating={() => clickRatingHandler(value)}
 						value={value}
 						isHalf={index % 2 === 1}
 						isChecked={value === rating}

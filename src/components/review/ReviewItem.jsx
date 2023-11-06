@@ -17,14 +17,17 @@ const ReviewItem = () => {
 							src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
 							alt={movie.title}
 						/>
-						<div>
-							<p>{movie.title}</p>
-							<p>・</p>
+						<MovieText>
+							<p>
+								{movie.title}
+								<br />
+								{movie.release_date ? movie.release_date.split('-')[0] : ''}
+							</p>
 							<StarRating />
-						</div>
+						</MovieText>
 					</div>
 
-					<AiOutlineMore />
+					<AiOutlineMore size={22} />
 				</RItem>
 			))}
 		</>
@@ -38,4 +41,14 @@ const RItem = styled.div`
 	justify-content: space-between;
 	border-bottom: 1px solid var(--color-bg-light-gray);
 	padding: 20px 0;
+	& > div {
+		display: flex;
+		gap: 20px;
+	}
+`;
+
+const MovieText = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 `;
