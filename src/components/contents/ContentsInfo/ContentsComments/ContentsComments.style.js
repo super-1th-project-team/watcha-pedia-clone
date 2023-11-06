@@ -9,7 +9,7 @@ export const CommentsTitleDiv = styled.div`
 	height: 48px;
 	margin-bottom: 20px;
 `;
-export const CommentsH3 = styled.h3`
+export const SectionTitleH3 = styled.h3`
 	font-size: 24px;
 	font-weight: 700;
 `;
