@@ -5,7 +5,7 @@ export const Banner = styled.div`
     height: 550px;
     position: relative;
 `
-export const BgImg = styled.div`
+export const BgImg = styled.img`
     width: 100%;
     height: 100%;
     background-color: green;
