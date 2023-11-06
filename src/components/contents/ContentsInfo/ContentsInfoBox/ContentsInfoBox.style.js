@@ -67,3 +67,19 @@ export const DescSection = styled.section`
     line-height: 22px;
     color:var(--color-light-gray);
 `
+export const CommentDiv = styled.div`
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(217, 217, 217);
+`
+export const WriteDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+export const moreDiv = styled.div`
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    width: 176px;
+    background-color: #fff;
+`
