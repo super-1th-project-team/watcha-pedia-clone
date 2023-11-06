@@ -10,7 +10,7 @@ const Home = () => {
 
 	if (domain === 'movies') return <Movies />;
 	else if (domain === 'books') return <Books />;
-	else if (domain === 'tv') return <TVSeasons />;
+	else if (domain === 'tv_seasons') return <TVSeasons />;
 
 	return <Movies />;
 };
