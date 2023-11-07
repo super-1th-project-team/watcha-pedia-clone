@@ -42,6 +42,9 @@ export const UserCommentDiv = styled.div`
 	padding: 12px 0 15px;
 	font-size: 15px;
 	line-height: 24px;
+	height: 120px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	border-bottom: 1px solid rgb(229, 229, 229);
 `;
 export const UserCommentResUl = styled.ul`
