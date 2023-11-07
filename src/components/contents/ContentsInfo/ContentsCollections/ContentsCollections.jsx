@@ -1,6 +1,5 @@
 import React from 'react';
-import { ContentsSection } from '../ContentsInfo.style';
-import { SectionTitleH3 } from './../ContentsComments/ContentsComments.style';
+import { SectionTitleH3, ContentsSection } from '../ContentsInfo.style';
 
 const ContentsCollections = () => {
     return (
