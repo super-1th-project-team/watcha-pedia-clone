@@ -1,10 +1,16 @@
 import React from 'react';
 import * as style from './ContentsComments.style'
-import { SectionTitleH3 } from './ContentsComments.style'
 import Comment from './Comment';
-import { ContentsSection } from '../ContentsInfo.style';
+import { ContentsSection, SectionTitleH3 } from '../ContentsInfo.style';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ContentsComments = () => {
+    const navToComments = useNavigate();
+
+    const moveToMoreComments = () => {
+        navToComments(`/comments`)
+    }
+
     return (
         <ContentsSection>
             <style.CommentsTitleDiv>
@@ -12,7 +18,7 @@ const ContentsComments = () => {
                 <style.CommentsCountSpan>개수</style.CommentsCountSpan>
             </style.CommentsTitleDiv>
             <Comment/>
-            <style.MoreBtn>더보기</style.MoreBtn> 
+            <style.MoreBtn onClick={moveToMoreComments}>더보기</style.MoreBtn> 
         </ContentsSection>
     );
 };
