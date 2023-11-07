@@ -18,6 +18,7 @@ import UsersComments from './components/users/UsersComments/UsersComments';
 import UsersDecks from './components/users/UsersDecks/UsersDecks';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import app from './firebase';
 
 const router = createBrowserRouter([
 	{
