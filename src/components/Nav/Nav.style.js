@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const NavNav = styled.nav`
-	z-index: 9999;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -14,10 +13,11 @@ export const NavNav = styled.nav`
 
 export const NavLogo = styled.img.attrs({
 	src: '/assets/WATCHA_PEDIA_Logo_Main.png',
-	alt: '로고 들어갈 자리',
+	alt: 'Main Logo Image',
 })`
 	width: 100px;
 	height: 30px;
+	cursor: pointer;
 `;
 
 export const NavContent = styled.div`
@@ -41,9 +41,11 @@ export const NavLi = styled.li`
 
 export const NavSearchInput = styled.input`
 	border: none;
-	background-color: white;
+	background-color: var(--color-bg-light-gray);
 	width: 300px;
 	height: 38px;
+	text-align: center;
+	font-size: 15px;
 `;
 
 export const NavButton = styled.button`
@@ -56,4 +58,35 @@ export const NavButton = styled.button`
 	&:hover {
 		cursor: pointer;
 	}
+`;
+
+export const NavMovieButton = styled(NavButton)`
+	${(props) =>
+		(props.domain === 'movies' || props.domain === null) &&
+		`
+    color: var(--color-dark-black);
+  `}
+`;
+
+export const NavTVSeansonsButton = styled(NavButton)`
+	${(props) =>
+		props.domain === 'tv_seasons' &&
+		`
+    color: var(--color-dark-black);
+  `}
+`;
+
+export const NavBooksButton = styled(NavButton)`
+	${(props) =>
+		props.domain === 'books' &&
+		`
+    color: var(--color-dark-black);
+  `}
+`;
+
+export const RegisterButton = styled(NavButton)`
+	border: 1px solid var(--color-dark-gray);
+	border-radius: 5px;
+	padding: 7px 15px;
+	color: var(--color-dark-black);
 `;
