@@ -4,7 +4,7 @@ import InfoRightBox from './InfoRightBox';
 import { useSelector } from 'react-redux';
 
 const ContentsInfoBox = () => {
-	const mockMovieData = useSelector(state=> state.movie[0]);
+	const mockMovieData = useSelector(state => state.movie[0]);
 
     return (
         <style.BgGray>
