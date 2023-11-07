@@ -57,7 +57,7 @@ export const NavSearchInput = styled.input`
 
 export const NavButton = styled.button`
 	font-weight: 500;
-	font-size: 1em;
+	font-size: 1.2em;
 	border: none;
 	outline: none;
 	color: #828282;
