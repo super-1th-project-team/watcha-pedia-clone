@@ -13,6 +13,7 @@ export const Container = styled.section`
 	border-radius: 7px;
 	transform: translate(-50%, -50%);
 	background-color: var(--color-bg-white);
+	z-index: 2;
 
 	${(props) =>
 		props.isLoginError === true &&

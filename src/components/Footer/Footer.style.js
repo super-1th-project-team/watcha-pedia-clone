@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const FooterFooter = styled.footer`
-	position: relative;
 	width: 100%;
 	height: 320px;
 	display: flex;

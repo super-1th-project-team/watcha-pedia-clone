@@ -7,4 +7,5 @@ export const BackDropElem = styled.div`
 	width: 100%;
 	height: 100vh;
 	background: rgba(0, 0, 0, 0.55);
+	z-index: 2;
 `;

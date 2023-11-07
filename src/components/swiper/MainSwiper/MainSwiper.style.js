@@ -1,15 +1,9 @@
 import styled from 'styled-components';
 
-export const MoviesBody = styled.div`
-	margin-top: 100px;
-	margin-bottom: 100px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-`;
-
-export const MovieContent = styled.div`
-	width: 90%;
+export const DataTitle = styled.h1`
+	font-size: 22px;
+	font-weight: bold;
+	margin: 50px 0 12px 0;
 `;
 
 export const RankNumber = styled.div`
@@ -27,6 +21,13 @@ export const RankNumber = styled.div`
 	height: 30px;
 	left: 8px;
 	top: 8px;
+`;
+
+export const Title = styled.div`
+	font-size: 1.1rem;
+	font-weight: 600;
+	width: 200px;
+	margin-top: 5px;
 `;
 
 export const SwiperImg = styled.img`
@@ -50,10 +51,35 @@ export const StyledSwiperContainer = styled.div`
 	}
 
 	.swiper-button-prev {
+		width: 35px;
+		height: 35px;
+		border-radius: 50%;
+		top: 50%;
+		transform: translateY(-60%);
 		left: -10px;
 	}
 
 	.swiper-button-next {
-		/* right: -30px; // 버튼을 오른쪽으로 이동 */
+		width: 35px;
+		height: 35px;
+		border-radius: 50%;
+		top: 50%;
+		transform: translateY(-60%);
 	}
+`;
+
+export const InfoWrap = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
+export const DateText = styled.div`
+	font-size: 16px;
+	margin-top: 7px;
+`;
+
+export const AverageText = styled.div`
+	font-size: 14px;
+	color: var(--color-light-gray);
+	margin-top: 10px;
 `;

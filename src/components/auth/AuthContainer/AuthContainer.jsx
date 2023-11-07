@@ -10,6 +10,7 @@ const AuthContainer = () => {
 	const isLogInPopUp = useSelector((state) => state.user.isLogInPopUp);
 	const isRegisterPopUp = useSelector((state) => state.user.isRegisterPopUp);
 	const isLoginError = useSelector((state) => state.user.isLoginError);
+	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
 	return (
 		<>

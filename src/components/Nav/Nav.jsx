@@ -8,6 +8,7 @@ import {
 } from '../../slice/userSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
+	Header,
 	NavButton,
 	NavMovieButton,
 	NavTVSeasonsButton,
@@ -93,7 +94,7 @@ const Nav = () => {
 	}, [dispatch]);
 
 	return (
-		<header>
+		<Header>
 			<NavNav>
 				<NavContent>
 					<div>
@@ -160,7 +161,7 @@ const Nav = () => {
 					</div>
 				</NavContent>
 			</NavNav>
-		</header>
+		</Header>
 	);
 };
 

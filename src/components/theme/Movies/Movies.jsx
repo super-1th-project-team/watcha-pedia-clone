@@ -1,70 +1,56 @@
 import { useSelector } from 'react-redux';
-import { useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { MovieContent, MovieTitle, MoviesBody } from './Movies.style';
+import { MovieContent, MoviesBody } from './Movies.style';
+import { useNavigate } from 'react-router-dom';
+import MainSwiper from '../../swiper/MainSwiper/MainSwiper';
 
 const Movies = () => {
 	const nowPlayingMovieData = useSelector((state) => state.movie);
-	const tredingMovieData = useSelector((state) => state.movie);
+	const navigate = useNavigate();
+
+	const moveToContentsPage = (id) => {
+		navigate(`/contents/${id}`);
+	};
 
 	return (
 		<MoviesBody>
 			<MovieContent>
-				<div>
-					<Swiper
-						loop={false}
-						spaceBetween={0}
-						slidesPerView={5}
-						slidesPerGroup={5}
-						grabCursor={true}
-						allowTouchMove={false}
-						cssMode={true}
-						navigation={true}
-						modules={[Navigation]}
-						className="mySwiper">
-						{nowPlayingMovieData.map((movie, index) => (
-							<SwiperSlide key={index}>
-								<MovieTitle>{index + 1}</MovieTitle>
-								<img
-									style={{
-										width: '200px',
-										height: '300px',
-										borderRadius: '8px',
-									}}
-									src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-									alt=""
-								/>
-								<MovieTitle>{movie.title}</MovieTitle>
-							</SwiperSlide>
-						))}
-					</Swiper>
-				</div>
-				<Swiper
-					loop={false}
-					spaceBetween={0}
-					slidesPerView={5}
-					slidesPerGroup={5}
-					grabCursor={true}
-					allowTouchMove={false}
-					cssMode={true}
-					navigation={true}
-					modules={[Navigation]}
-					className="mySwiper">
-					{tredingMovieData.map((movie, index) => (
-						<SwiperSlide key={index}>
-							<MovieTitle>{index + 1}</MovieTitle>
-							<img
-								style={{ width: '200px', height: '300px', borderRadius: '8px' }}
-								src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-								alt=""
-							/>
-							<MovieTitle>{movie.title}</MovieTitle>
-						</SwiperSlide>
-					))}
-				</Swiper>
+				<MainSwiper
+					dataTitle="현재 상영 중인 영화"
+					fetchData={nowPlayingMovieData}
+					movePageFunc={moveToContentsPage}
+				/>
+				<MainSwiper
+					dataTitle="트렌드 영화"
+					fetchData={nowPlayingMovieData}
+					movePageFunc={moveToContentsPage}
+				/>
+				<MainSwiper
+					dataTitle="인기 영화"
+					fetchData={nowPlayingMovieData}
+					movePageFunc={moveToContentsPage}
+				/>
+				<MainSwiper
+					dataTitle="액션 영화"
+					fetchData={nowPlayingMovieData}
+					movePageFunc={moveToContentsPage}
+				/>
+				<MainSwiper
+					dataTitle="호러 영화"
+					fetchData={nowPlayingMovieData}
+					movePageFunc={moveToContentsPage}
+				/>
+				<MainSwiper
+					dataTitle="로맨틱 영화"
+					fetchData={nowPlayingMovieData}
+					movePageFunc={moveToContentsPage}
+				/>
+				<MainSwiper
+					dataTitle="다큐멘터리 영화"
+					fetchData={nowPlayingMovieData}
+					movePageFunc={moveToContentsPage}
+				/>
 			</MovieContent>
 		</MoviesBody>
 	);

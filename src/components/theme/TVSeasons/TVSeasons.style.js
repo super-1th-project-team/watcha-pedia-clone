@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TvBody = styled.body`
+export const TvBody = styled.div`
 	margin-top: 100px;
 	margin-bottom: 100px;
 	display: flex;

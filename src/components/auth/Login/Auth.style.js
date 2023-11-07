@@ -44,8 +44,8 @@ export const Desc = styled.div`
 
 export const InputStyle = styled.input`
 	font-size: 16px;
-	width: 85%;
-	height: 25px;
+	width: 90%;
+	height: 45px;
 	padding: 10px;
 	margin-top: 10px;
 	background-color: var(--color-bg-light-gray);

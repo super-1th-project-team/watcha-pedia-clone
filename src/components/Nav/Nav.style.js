@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 
-export const NavNav = styled.nav`
+export const Header = styled.header`
 	position: fixed;
-	left: 0;
-	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
 	height: 62px;
-	background-color: rgba(255, 255, 255, 0.7);
-	/* 가려진 부분 확인을 위해 배경색을 반투명하게 넣었습니다.*/
-	border-bottom: 1px solid black;
+	background-color: var(--color-bg-white);
+	border-bottom: 1px solid var(--color-light-gray);
+	left: 0;
+	top: 0;
+	z-index: 2;
+`;
+
+export const NavNav = styled.nav`
+	width: 80%;
 `;
 
 export const NavLogo = styled.img.attrs({

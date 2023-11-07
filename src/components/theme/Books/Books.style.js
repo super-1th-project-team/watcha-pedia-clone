@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BooksBody = styled.body`
+export const BooksBody = styled.div`
 	margin-top: 100px;
 	margin-bottom: 100px;
 	display: flex;
