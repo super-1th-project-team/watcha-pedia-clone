@@ -1,3 +1,4 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 :root {
 	/* color */
 	--color-bg-white: #ffffff;
@@ -138,4 +139,37 @@ q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+* {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+.swiper-button-prev {
+	background-color: #ffffff;
+	opacity: 1;
+	color: #a9aaad !important;
+	border-radius: 100%;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.swiper-button-prev:hover {
+	color: #000000 !important;
+}
+.swiper-button-next {
+	background-color: #ffffff;
+	opacity: 1;
+	color: #a9aaad !important;
+	border-radius: 40%;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.swiper-button-next:hover {
+	color: #000000 !important;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+	font-size: 1.1rem !important;
+	font-weight: 600 !important;
 }
