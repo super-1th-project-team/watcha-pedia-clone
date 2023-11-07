@@ -1,66 +1,28 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-	NavButton,
-	NavContent,
-	NavLi,
-	NavLogo,
-	NavNav,
-	NavSearchInput,
-	NavUl,
-} from './Nav.style';
+import { useDispatch, useSelector } from 'react-redux';
+import { TOGGLE_LOGIN_USER, TOGGLE_REGISTER_USER } from '../../slice/userSlice';
 
 const Nav = () => {
-	const navigate = useNavigate();
+	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+	const isRegistered = useSelector((state) => state.user.isRegistered);
+	const dispatch = useDispatch();
 
-	const onMovieClick = () => {
-		navigate('/?domain=movies');
+	const loginHandler = () => {
+		if (isRegistered) dispatch(TOGGLE_REGISTER_USER());
+		dispatch(TOGGLE_LOGIN_USER());
 	};
 
-	const onTvClick = () => {
-		navigate('/?domain=tv_seasons');
+	const signUpHandler = () => {
+		dispatch(TOGGLE_REGISTER_USER());
+		if (isLoggedIn) dispatch(TOGGLE_LOGIN_USER());
 	};
-
-	const onBookClick = () => {
-		navigate('/?domain=books');
-	};
-
 	return (
-		<header>
-			<NavNav>
-				<NavContent>
-					<div>
-						<NavUl>
-							<NavLi>
-								<NavLogo></NavLogo>
-							</NavLi>
-							<NavLi>
-								<NavButton onClick={onMovieClick}>영화</NavButton>
-							</NavLi>
-							<NavLi>
-								<NavButton onClick={onTvClick}>TV</NavButton>
-							</NavLi>
-							<NavLi>
-								<NavButton onClick={onBookClick}>책</NavButton>
-							</NavLi>
-						</NavUl>
-					</div>
-					<div>
-						<NavUl>
-							<NavLi>
-								<NavSearchInput placeholder="콘텐츠,인물,컬렉션,유저를 검색해보세요." />
-							</NavLi>
-							<NavLi>
-								<NavButton>로그인</NavButton>
-							</NavLi>
-							<NavLi>
-								<NavButton>회원가입</NavButton>
-							</NavLi>
-						</NavUl>
-					</div>
-				</NavContent>
-			</NavNav>
-		</header>
+		<section style={{ display: 'flex', justifyContent: 'space-between' }}>
+			<div>Nav</div>
+			<div style={{ display: 'flex' }}>
+				<button onClick={loginHandler}>로그인</button>
+				<button onClick={signUpHandler}>회원가입</button>
+			</div>
+		</section>
 	);
 };
 
