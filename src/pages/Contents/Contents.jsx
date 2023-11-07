@@ -6,11 +6,12 @@ const Contents = () => {
 	const { id } = useParams();
 
 	return (
-	<div>
-		{id}
-		<ContentsBanner/>
-		<ContentsInfo/>
-	</div>)
+		<div>
+			{id}
+			<ContentsBanner />
+			<ContentsInfo />
+		</div>
+	);
 };
 
 export default Contents;

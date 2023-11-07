@@ -43,7 +43,7 @@ const Comment = () => {
 				<style.LikeBtn 
 					onClick={likeBtnHandler} 
 					color={isClicked ? '#fff' : 'rgb(255,47,110)'} 
-					bgColor={isClicked ? 'rgb(255,47,110)' : 'none'}>좋아요
+					bgcolor={isClicked ? 'rgb(255,47,110)' : 'none'}>좋아요
 				</style.LikeBtn>
 			</style.LikeBtnDiv>
 		</style.CommentDiv>

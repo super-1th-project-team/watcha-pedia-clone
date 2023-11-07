@@ -59,7 +59,7 @@ export const LikeBtnDiv = styled.div`
     padding: 9.5px 0 ;
 `
 export const LikeBtn = styled.button`
-    background: ${props => props.bgColor};
+    background: ${props => props.bgcolor};
     font-size: 17px;
     color: ${props => props.color};
     border: none;
