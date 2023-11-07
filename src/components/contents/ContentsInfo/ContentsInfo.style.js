@@ -15,7 +15,12 @@ export const SectionTitleH3 = styled.h3`
 export const SwiperUl = styled.ul`
     display:flex;
     margin-top:25px;
+    height: 300px;
 `
 export const SwiperImgDiv = styled.div`
-    padding:0 5px;
+    width: 100%;
+`
+export const SwiperLi = styled.li`
+    width: 33%;
+    margin:0 5px;
 `
