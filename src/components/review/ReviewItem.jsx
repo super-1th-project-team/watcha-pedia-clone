@@ -1,33 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import StarRating from './StarRating';
 import { styled } from 'styled-components';
 import { AiOutlineMore } from 'react-icons/ai';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ReviewItem = () => {
 	const movie = useSelector((state) => state.movie);
+	const tv = useSelector((state) => state.tv);
+	const book = useSelector((state) => state.book);
 
 	return (
 		<>
-			{movie.map((movie, index) => (
+			{movie.map((item, index) => (
 				<RItem className="ReviewItem" key={index}>
 					<div>
 						<img
 							style={{ width: '75px', height: 'auto' }}
-							src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-							alt={movie.title}
+							src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+							alt={item.title}
 						/>
 						<MovieText>
 							<p>
-								{movie.title}
+								{item.title}
 								<br />
-								{movie.release_date ? movie.release_date.split('-')[0] : ''}
+								{item.release_date ? item.release_date.split('-')[0] : ''}
 							</p>
 							<StarRating />
 						</MovieText>
 					</div>
-
-					<AiOutlineMore size={22} />
+					<IconMoreBTN>
+						<AiOutlineMore size={22} />
+					</IconMoreBTN>
 				</RItem>
 			))}
 		</>
@@ -51,4 +54,9 @@ const MovieText = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+`;
+
+const IconMoreBTN = styled.div`
+	cursor: pointer;
+	height: fit-content;
 `;
