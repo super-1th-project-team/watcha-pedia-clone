@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import StarInput from './StarInput';
+import StarInput from '../StarRating/StarInput';
 import PropTypes from 'prop-types';
 
 const StarRating = () => {

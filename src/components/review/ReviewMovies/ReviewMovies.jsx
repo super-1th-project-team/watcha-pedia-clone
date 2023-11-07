@@ -1,13 +1,14 @@
-import ReviewFilter from '../ReviewFilter';
+import { useSelector } from 'react-redux';
 import ReviewHeader from '../ReviewHeader';
 import ReviewList from '../ReviewList';
 import { styled } from 'styled-components';
 
 const ReviewMovies = () => {
+	const movieData = useSelector((state) => state.movie);
 	return (
 		<ReviewWrapper>
 			<ReviewHeader />
-			<ReviewList />
+			<ReviewList data={movieData} />
 		</ReviewWrapper>
 	);
 };

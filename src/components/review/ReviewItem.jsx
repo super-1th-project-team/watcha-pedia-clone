@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import StarRating from './StarRating';
+import StarRating from '../StarRating/StarRating';
 import { styled } from 'styled-components';
 import { AiOutlineMore } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const ReviewItem = () => {
-	const movie = useSelector((state) => state.movie);
-	const tv = useSelector((state) => state.tv);
-	const book = useSelector((state) => state.book);
-
+const ReviewItem = ({ data }) => {
 	return (
 		<>
-			{movie.map((item, index) => (
+			{data.map((item, index) => (
 				<RItem className="ReviewItem" key={index}>
 					<div>
 						<img
@@ -19,14 +16,14 @@ const ReviewItem = () => {
 							src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
 							alt={item.title}
 						/>
-						<MovieText>
+						<TextContainer>
 							<p>
 								{item.title}
 								<br />
 								{item.release_date ? item.release_date.split('-')[0] : ''}
 							</p>
 							<StarRating />
-						</MovieText>
+						</TextContainer>
 					</div>
 					<IconMoreBTN>
 						<AiOutlineMore size={22} />
@@ -50,7 +47,7 @@ const RItem = styled.div`
 	}
 `;
 
-const MovieText = styled.div`
+const TextContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -60,3 +57,7 @@ const IconMoreBTN = styled.div`
 	cursor: pointer;
 	height: fit-content;
 `;
+
+ReviewItem.propTypes = {
+	data: PropTypes.string.isRequired,
+};
