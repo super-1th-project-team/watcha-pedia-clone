@@ -23,6 +23,7 @@ export const ImgWrap = styled.div`
 	margin: 60px 0 0 20px;
 
 	& img {
+		border-radius: 50%;
 		width: 135px;
 	}
 `;

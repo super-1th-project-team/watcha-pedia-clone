@@ -38,6 +38,7 @@ const SnsIcon = () => {
 					JSON.stringify({
 						isLoggedIn: true,
 						id: user.uid,
+						name: user.displayName,
 						email: user.email,
 						photoURL: user.photoURL,
 					}),

@@ -1,4 +1,8 @@
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+	getAuth,
+	createUserWithEmailAndPassword,
+	updateProfile,
+} from 'firebase/auth';
 import {
 	Form,
 	Title,
@@ -50,7 +54,13 @@ const Register = () => {
 			)
 				.then((userCredential) => {
 					const user = userCredential.user;
-					AuthToggleHandler();
+					updateProfile(user, {
+						displayName: inputValue.name,
+					}).then(() => {
+						console.log(user);
+
+						AuthToggleHandler();
+					});
 				})
 				.catch((error) => {
 					const errorCode = error.code;

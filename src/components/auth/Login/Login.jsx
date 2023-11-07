@@ -28,13 +28,15 @@ const Login = () => {
 	const [emailIsValid, setEmailIsValid] = useState(false);
 	const [passwordIsValid, setPasswordIsValid] = useState(false);
 	const [textIsTouched, setTextIsTouched] = useState(false);
+	const [inputValue, setInputValue] = useState({
+		email: '',
+		password: '',
+	});
 
 	const dispatch = useDispatch();
 	const isLogInPopUp = useSelector((state) => state.user.isLogInPopUp);
 
 	const navigate = useNavigate();
-
-	const inputValue = useSelector((state) => state.user.inputValue);
 
 	const auth = getAuth();
 
@@ -54,6 +56,7 @@ const Login = () => {
 					LOGIN_USER({
 						isLoggedIn: true,
 						id: user.uid,
+						name: user.displayName,
 						email: user.email,
 						photoURL: user.photoURL,
 					}),
@@ -64,6 +67,7 @@ const Login = () => {
 					JSON.stringify({
 						isLoggedIn: true,
 						id: user.uid,
+						name: user.displayName,
 						email: user.email,
 						photoURL: user.photoURL,
 					}),
@@ -79,7 +83,7 @@ const Login = () => {
 
 	const inputValueHandler = (e) => {
 		const { name, value } = e.target;
-		dispatch(UPDATE_INPUT_VALUE({ name, value }));
+		setInputValue({ ...inputValue, [name]: value });
 
 		setTextIsTouched(true);
 
