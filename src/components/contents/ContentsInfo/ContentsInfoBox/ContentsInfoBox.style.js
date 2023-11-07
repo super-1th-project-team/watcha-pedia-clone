@@ -7,12 +7,12 @@ export const BgGray = styled.div`
 
 export const InfoBox = styled.div`
     max-width: 1320px;
+    margin: 0 auto;
     display:flex;
 `
 
 export const InfoLeftBox = styled.div`
     width: 280px;
-
 `
 export const InfoImg = styled.img`
     width: 100%;
