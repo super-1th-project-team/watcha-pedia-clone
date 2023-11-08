@@ -23,8 +23,8 @@ export const FooterRating = styled.div`
 `;
 
 export const FooterContent = styled.div`
-	font-size: 12px;
-	font-weight: 500;
+	font-size: 14px;
+	font-weight: 700;
 	width: 80%;
 	height: 260px;
 	display: flex;
@@ -40,10 +40,17 @@ export const ContentLeft = styled.div`
 	line-height: 20px;
 `;
 export const ContentLeftDiv = styled.div`
-	margin-bottom: 5px;
-	font-weight: 400;
+	margin-bottom: 10px;
+	font-weight: 600;
+`;
+
+export const ContentLeftDivWeak = styled.div`
+	margin-bottom: 10px;
+	font-weight: 500;
 `;
 
 export const RatingCount = styled.p`
 	color: #ff064a;
 `;
+
+export const csEmail = styled.a``;
