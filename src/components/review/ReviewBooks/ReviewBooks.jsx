@@ -9,7 +9,7 @@ const ReviewBooks = () => {
 	return (
 		<ReviewWrapper>
 			<ReviewHeader />
-			<ReviewList data={booksData} />
+			<ReviewList data={booksData} type="books" />
 		</ReviewWrapper>
 	);
 };

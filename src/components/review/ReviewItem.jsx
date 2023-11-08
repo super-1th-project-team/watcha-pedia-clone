@@ -2,32 +2,60 @@ import React, { useEffect, useState } from 'react';
 import StarRating from '../StarRating/StarRating';
 import { styled } from 'styled-components';
 import { AiOutlineMore } from 'react-icons/ai';
-import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import MoreReviewModal from '../Modal/MoreReviewModal';
 
-const ReviewItem = ({ data }) => {
+const ReviewItem = ({ data, type }) => {
+	const [rating, setRating] = useState(0);
+	const [isOpenedModal, setIsOpenedModal] = useState(false);
+	const openModal = () => {
+		setIsOpenedModal(true);
+	};
+	const closeModal = () => {
+		setIsOpenedModal(false);
+	};
+
+	const changeRatingHandler = (newRating) => {
+		setRating(newRating);
+	};
+
 	return (
 		<>
-			{data.map((item, index) => (
-				<RItem className="ReviewItem" key={index}>
+			{data.map((item, id) => (
+				<RItem className="ReviewItem" key={id}>
 					<div>
 						<img
 							style={{ width: '75px', height: 'auto' }}
-							src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+							src={
+								type === 'books'
+									? `${item.cover}`
+									: `https://image.tmdb.org/t/p/original/${item.poster_path}`
+							}
 							alt={item.title}
 						/>
 						<TextContainer>
 							<p>
-								{item.title}
+								{type === 'tv_seasons' ? item.name : item.title}
 								<br />
-								{item.release_date ? item.release_date.split('-')[0] : ''}
+								{type === 'movie'
+									? item.release_date
+										? item.release_date.split('-')[0]
+										: ''
+									: type === 'tv_seasons'
+									? item.first_air_date
+										? item.first_air_date.split('-')[0]
+										: ''
+									: item.pubDate
+									? item.pubDate.split('-')[0]
+									: ''}
 							</p>
-							<StarRating />
+							<StarRating value={rating} onRatingChange={changeRatingHandler} />
 						</TextContainer>
 					</div>
-					<IconMoreBTN>
+					<IconMoreBTN onClick={openModal}>
 						<AiOutlineMore size={22} />
 					</IconMoreBTN>
+					<MoreReviewModal isOpened={isOpenedModal} closeModal={closeModal} />
 				</RItem>
 			))}
 		</>
@@ -60,4 +88,5 @@ const IconMoreBTN = styled.div`
 
 ReviewItem.propTypes = {
 	data: PropTypes.string.isRequired,
+	type: PropTypes.string.isRequired,
 };

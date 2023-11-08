@@ -3,10 +3,10 @@ import ReviewItem from './ReviewItem';
 import { styled } from 'styled-components';
 import PropTypes from 'prop-types';
 
-const ReviewList = ({ data }) => {
+const ReviewList = ({ data, type }) => {
 	return (
 		<RItemList className="ReviewList">
-			<ReviewItem data={data} />
+			<ReviewItem data={data} type={type} />
 		</RItemList>
 	);
 };
@@ -20,4 +20,5 @@ const RItemList = styled.div`
 
 ReviewList.propTypes = {
 	data: PropTypes.string.isRequired,
+	type: PropTypes.string.isRequired,
 };

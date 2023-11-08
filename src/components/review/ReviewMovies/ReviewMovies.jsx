@@ -8,7 +8,7 @@ const ReviewMovies = () => {
 	return (
 		<ReviewWrapper>
 			<ReviewHeader />
-			<ReviewList data={movieData} />
+			<ReviewList data={movieData} type="movies" />
 		</ReviewWrapper>
 	);
 };
