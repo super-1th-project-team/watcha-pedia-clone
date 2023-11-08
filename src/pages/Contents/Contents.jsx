@@ -12,6 +12,7 @@ import {
 } from '../../slice/movieSlice';
 import { useScrollToTop } from '../../hooks/useScrollToTop';
 import { SET_TV_DETAIL, SET_TV_SIMILAR } from '../../slice/tvSeasonsSlice';
+import { ModalProvider } from '../../context/ModalContext';
 
 const Contents = () => {
 	const { id } = useParams();
@@ -89,8 +90,10 @@ const Contents = () => {
 
 	return (
 		<div>
-			<ContentsBanner />
-			<ContentsInfo />
+			<ModalProvider>
+				<ContentsBanner />
+				<ContentsInfo />
+			</ModalProvider>
 		</div>
 	);
 };
