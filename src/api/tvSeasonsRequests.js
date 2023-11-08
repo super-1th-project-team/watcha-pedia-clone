@@ -1,11 +1,13 @@
 const tvSeasonsRequests = {
 	fetchTVDayTrend: '/trending/tv/day',
+	fetchTVWeekTrend: '/trending/tv/week',
 	fetchTVOnTheAir: '/tv/on_the_air',
-	fetchTVTopRated: '/tv/top_rated',
+	fetchTVPopular: '/tv/popular',
 	fetchTVAction: '/discover/tv?with_genres=10759',
 	fetchTVAnimation: '/discover/tv?with_genres=16',
-	fetchTVComedy: '/discover/tv?with_genres=35',
 	fetchTVKids: '/discover/tv?with_genres=10762',
+	fetchTVDetail: '/tv',
+	fetchTVSimilar: '/tv',
 };
 
 export default tvSeasonsRequests;

@@ -1,19 +1,34 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import { useEffect } from 'react';
+import movieAxios from './api/axios';
 import tvAxios from './api/axios';
 import booksAxios from './api/booksAxios';
-import axios from 'axios';
 import movieRequests from './api/movieRequests';
 import { useDispatch, useSelector } from 'react-redux';
-import { FETCH_MOVIE_DATA } from './slice/movieSlice';
+import {
+	SET_ACTION_MOVIES,
+	SET_MOVIE_DETAIL,
+	SET_NOW_PLAYING,
+	SET_POPULAR,
+	SET_ROMANTIC_MOVIES,
+	SET_TOP_RATED,
+	SET_TRENDING,
+	SET_UPCOMING,
+} from './slice/movieSlice';
 import tvSeasonsRequests from './api/tvSeasonsRequests';
-import { FETCH_TV_SEASONS_DATA } from './slice/tvSeasonsSlice';
 import booksRequests from './api/booksRequests';
-import { FETCH_BOOKS_DATA } from './slice/booksSlice';
 import AuthContainer from './components/auth/AuthContainer/AuthContainer';
+import shuffleArray from './utils/shuffleArray';
+import {
+	SET_BEST_SELLER_BOOKS,
+	SET_FOREIGN_BEST_SELLER_BOOKS,
+	SET_NEW_BOOKS,
+	SET_USED_BOOKS,
+} from './slice/booksSlice';
+import { SET_TV_DAY_TREND } from './slice/tvSeasonsSlice';
 
 const App = () => {
 	const isLogInPopUp = useSelector((state) => state.user.isLogInPopUp);
@@ -21,26 +36,94 @@ const App = () => {
 
 	const dispatch = useDispatch();
 
-	const fetchMovieData = async () => {
-		const response = await axios.get('/data/movie.json');
-		dispatch(FETCH_MOVIE_DATA(response.data));
+	const fetchNowPlayingData = async () => {
+		const response = await movieAxios.get(movieRequests.fetchNowPlaying);
+		dispatch(SET_NOW_PLAYING(shuffleArray(response.data.results.reverse())));
 	};
 
-	const fetchTVSeasonsData = async () => {
-		const response = await axios.get('/data/tvSeasons.json');
-		dispatch(FETCH_TV_SEASONS_DATA(response.data));
+	const fetchPopularData = async () => {
+		const response = await movieAxios.get(movieRequests.fetchPopular);
+		dispatch(SET_POPULAR(response.data.results));
 	};
 
-	const fetchBooksData = async () => {
-		const response = await axios.get('/data/books.json');
+	const fetchTopRatedData = async () => {
+		const response = await movieAxios.get(movieRequests.fetchTopRated);
+		dispatch(SET_TOP_RATED(shuffleArray(response.data.results)));
+	};
 
-		dispatch(FETCH_BOOKS_DATA(response.data));
+	const fetchUpComingData = async () => {
+		const response = await movieAxios.get(movieRequests.fetchUpComing);
+		dispatch(SET_UPCOMING(shuffleArray(response.data.results)));
+	};
+
+	const fetchTrendingData = async () => {
+		const response = await movieAxios.get(movieRequests.fetchTrending);
+		dispatch(SET_TRENDING(shuffleArray(response.data.results)));
+	};
+
+	const fetchActionData = async () => {
+		const response = await movieAxios.get(movieRequests.fetchActionMovies);
+		dispatch(SET_ACTION_MOVIES(shuffleArray(response.data.results)));
+	};
+
+	const fetchRomanticData = async () => {
+		const response = await movieAxios.get(movieRequests.fetchRomanceMovies);
+		dispatch(SET_ROMANTIC_MOVIES(shuffleArray(response.data.results)));
+	};
+
+	const fetchTvDayTrendData = async () => {
+		const response = await tvAxios.get(tvSeasonsRequests.fetchTVDayTrend);
+
+		dispatch(SET_TV_DAY_TREND(shuffleArray(response.data.results)));
+	};
+
+	const fetchNewBooksData = async () => {
+		const response = await booksAxios.get('ItemList.aspx', {
+			params: booksRequests.fetchNewBooks,
+		});
+
+		dispatch(SET_NEW_BOOKS(shuffleArray(response.data.item)));
+	};
+
+	const fetchBestSellerData = async () => {
+		const response = await booksAxios.get('ItemList.aspx', {
+			params: booksRequests.fetchBestSeller,
+		});
+
+		dispatch(SET_BEST_SELLER_BOOKS(shuffleArray(response.data.item)));
+	};
+
+	const fetchForeignBestSellerData = async () => {
+		const response = await booksAxios.get('ItemList.aspx', {
+			params: booksRequests.fetchBlogBestSeller,
+		});
+
+		dispatch(SET_FOREIGN_BEST_SELLER_BOOKS(shuffleArray(response.data.item)));
+	};
+
+	const fetchUsedBooksData = async () => {
+		const response = await booksAxios.get('ItemList.aspx', {
+			params: booksRequests.fetchUsedBooks,
+		});
+
+		dispatch(SET_USED_BOOKS(shuffleArray(response.data.item)));
 	};
 
 	useEffect(() => {
-		fetchMovieData();
-		fetchTVSeasonsData();
-		fetchBooksData();
+		fetchNowPlayingData();
+		fetchPopularData();
+		fetchTopRatedData();
+		fetchUpComingData();
+		fetchTrendingData();
+		fetchActionData();
+		fetchRomanticData();
+
+		fetchTvDayTrendData();
+
+		fetchNewBooksData();
+		fetchBestSellerData();
+		fetchForeignBestSellerData();
+		fetchUsedBooksData();
 	}, []);
 
 	return (

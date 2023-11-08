@@ -11,8 +11,13 @@ import {
 } from './MainSwiper.style';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Mousewheel } from 'swiper/modules';
+import { useLocation } from 'react-router-dom';
 
 const MainSwiper = ({ dataTitle, fetchData, movePageFunc }) => {
+	const location = useLocation();
+	const query = new URLSearchParams(location.search);
+	const domain = query.get('domain');
+
 	return (
 		<SwiperWrap>
 			<DataTitle>{dataTitle}</DataTitle>
@@ -37,13 +42,23 @@ const MainSwiper = ({ dataTitle, fetchData, movePageFunc }) => {
 							<RankNumber>{index + 1}</RankNumber>
 							<SwiperImg>
 								<img
-									src={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
+									src={
+										domain === 'books'
+											? data.cover
+											: `https://image.tmdb.org/t/p/original/${data.poster_path}`
+									}
 									alt=""
 								/>
 							</SwiperImg>
 							<InfoWrap>
-								<Title>{data.title}</Title>
-								<DateText>{data.release_date}</DateText>
+								<Title>
+									{domain === 'tv_seasons' ? data.name : data.title}
+								</Title>
+								<DateText>
+									{domain === 'tv_seasons'
+										? data.first_air_date
+										: data.release_date}
+								</DateText>
 								<AverageText>
 									평점 : {Math.round(data.vote_average * 10) / 10}
 								</AverageText>

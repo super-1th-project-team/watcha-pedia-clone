@@ -6,8 +6,10 @@ export const MoviesBody = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	height: 100%;
 `;
 
 export const MovieContent = styled.div`
 	width: 90%;
+	height: 100%;
 `;

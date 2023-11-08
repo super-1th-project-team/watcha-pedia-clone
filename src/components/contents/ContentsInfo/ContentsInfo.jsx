@@ -7,16 +7,16 @@ import ContentsComments from './ContentsComments/ContentsComments';
 import ContentsVideo from './ContentsImgs/ContentsVideo';
 
 const ContentsInfo = () => {
-    return (
-        <>
-            <ContentsInfoBox />
-            <ContentsComments />
-            <ContentsGallery />
-            <ContentsVideo />
-            {/* <ContentsCollections /> */}
-            <SimilarContents />
-        </>
-    );
+	return (
+		<>
+			<ContentsInfoBox />
+			<ContentsComments />
+			<ContentsGallery />
+			<ContentsVideo />
+			{/* <ContentsCollections /> */}
+			<SimilarContents />
+		</>
+	);
 };
 
 export default ContentsInfo;

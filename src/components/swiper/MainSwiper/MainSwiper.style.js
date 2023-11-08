@@ -31,8 +31,10 @@ export const Title = styled.div`
 `;
 
 export const SwiperImg = styled.div`
+	height: 90%;
 	& img {
 		width: 95%;
+		height: 100%;
 		border-radius: 5px;
 		cursor: pointer;
 	}
@@ -40,6 +42,7 @@ export const SwiperImg = styled.div`
 
 export const SwiperWrap = styled.div`
 	width: 80%;
+	height: 30%;
 	margin: auto;
 `;
 
@@ -50,6 +53,7 @@ export const StyledSwiperContainer = styled.div`
 	}
 
 	.swiper-slide {
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		font-size: 16px;
@@ -76,8 +80,8 @@ export const StyledSwiperContainer = styled.div`
 export const InfoWrap = styled.div`
 	display: flex;
 	flex-direction: column;
-	text-align: left;
-	margin-left: -50px;
+	/* text-align: left; */
+	/* margin-left: -50px; */
 `;
 
 export const DateText = styled.div`

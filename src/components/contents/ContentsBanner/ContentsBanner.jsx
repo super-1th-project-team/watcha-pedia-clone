@@ -1,23 +1,38 @@
 import React from 'react';
-import * as style from './ContentsBanner.style'
+import * as style from './ContentsBanner.style';
 import { useSelector } from 'react-redux';
 
 const ContentsBanner = () => {
-	const mockMovieData = useSelector(state=> state.movie);
-    const mocckMovie1 = mockMovieData[0];
+	const movieDetailData = useSelector((state) => state.movie.movieDetail);
+	const tvDetailData = useSelector((state) => state.tvSeasons.tvDetail);
 
-    return (
-        <style.Banner>
-            <style.BgImg></style.BgImg>
-            <style.contentsInfoBox>
-                <style.contentsTitle>{mocckMovie1.title}</style.contentsTitle>
-                <style.contentsInfo>{mocckMovie1.original_title}</style.contentsInfo>
-                <style.contentsInfo>{mocckMovie1.release_date} · 장르 · 국가</style.contentsInfo>
-                <style.contentsInfo>러닝타임 · 전체</style.contentsInfo>
-                <style.contentsInfo>예매 순위 1위(24%)</style.contentsInfo>
-            </style.contentsInfoBox>
-        </style.Banner>
-    );
+	const isCheckTVPage = useSelector((state) => state.tvSeasons.isTVPage);
+
+	const detailData = isCheckTVPage === true ? tvDetailData : movieDetailData;
+
+	return (
+		<style.Banner>
+			<style.BgImg
+				src={`https://image.tmdb.org/t/p/original/${detailData.backdrop_path}`}
+			/>
+			<style.contentsInfoBox>
+				<style.contentsTitle>{detailData.title}</style.contentsTitle>
+				<style.contentsInfo>{detailData.original_title}</style.contentsInfo>
+				<style.contentsInfo>
+					{detailData.release_date} ·{' '}
+					{detailData.genres &&
+						detailData.genres.map((genre) => (
+							<style.genreText key={genre.id}>{genre.name}</style.genreText>
+						))}{' '}
+					· 국가
+				</style.contentsInfo>
+				<style.contentsInfo>{detailData.runtime}분</style.contentsInfo>
+				<style.contentsInfo>
+					인기도 : {detailData.popularity}
+				</style.contentsInfo>
+			</style.contentsInfoBox>
+		</style.Banner>
+	);
 };
 
 export default ContentsBanner;
