@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import MoreReviewModal from '../Modal/MoreReviewModal';
 
 const ReviewItem = ({ data, type }) => {
-	const [rating, setRating] = useState(0);
 	const [isOpenedModal, setIsOpenedModal] = useState(false);
 	const [selectedItem, setSelectedItem] = useState({});
 
@@ -16,10 +15,6 @@ const ReviewItem = ({ data, type }) => {
 	};
 	const closeModal = () => {
 		setIsOpenedModal(false);
-	};
-
-	const changeRatingHandler = (newRating) => {
-		setRating(newRating);
 	};
 
 	return (
@@ -48,7 +43,7 @@ const ReviewItem = ({ data, type }) => {
 									).split('-')[0]
 								}
 							</p>
-							<StarRating value={rating} onRatingChange={changeRatingHandler} />
+							<StarRating />
 						</TextContainer>
 					</div>
 					<IconMoreBTN onClick={() => openModal(item, type)}>
@@ -84,6 +79,7 @@ const TextContainer = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	color: var(--color-light-gray);
+	padding-top: 5px;
 	& span {
 		font-weight: 700;
 		font-size: 1.125rem;

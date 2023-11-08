@@ -3,21 +3,23 @@ import styled from 'styled-components';
 import StarInput from '../StarRating/StarInput';
 import PropTypes from 'prop-types';
 
-const StarRating = ({ value, onRatingChange }) => {
+const StarRating = () => {
+	const [selectedRating, setSelectedRating] = useState(0);
+
 	const clickRatingHandler = (value) => {
-		onRatingChange(value);
+		setSelectedRating((prev) => (prev === value ? 0 : value));
 	};
 
 	return (
 		<Base>
 			<RatingField>
-				{[5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5].map((ratingValue, index) => (
+				{[5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5].map((value, index) => (
 					<StarInput
 						key={index}
-						onClickRating={() => clickRatingHandler(ratingValue)}
-						value={ratingValue}
+						onClickRating={() => clickRatingHandler(value)}
+						value={value}
 						isHalf={index % 2 === 1}
-						isChecked={value === ratingValue}
+						isChecked={selectedRating === value}
 					/>
 				))}
 			</RatingField>

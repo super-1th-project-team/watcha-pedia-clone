@@ -38,6 +38,7 @@ const Label = styled.label`
 	cursor: pointer;
 	font-size: 40px;
 	color: lightgray;
+	height: 40px;
 
 	${({ isHalf }) =>
 		isHalf &&
