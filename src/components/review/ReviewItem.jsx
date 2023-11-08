@@ -8,13 +8,25 @@ import MoreReviewModal from '../Modal/MoreReviewModal';
 const ReviewItem = ({ data, type }) => {
 	const [isOpenedModal, setIsOpenedModal] = useState(false);
 	const [selectedItem, setSelectedItem] = useState({});
+	const [clickedINGItemId, setClickedINGItemId] = useState();
+	const [textContent, setTextContent] = useState('');
 
 	const openModal = (item, type) => {
 		setSelectedItem(item, type);
+		setClickedINGItemId(item.id);
 		setIsOpenedModal(true);
+		document.body.style.overflow = 'hidden';
 	};
 	const closeModal = () => {
 		setIsOpenedModal(false);
+		document.body.style.overflow = 'unset';
+	};
+
+	const clickedINGItem = data.find(({ id }) => id === clickedINGItemId);
+
+	const clickINGHandler = (itemId) => {
+		setClickedINGItemId(itemId);
+		setTextContent('보는 중');
 	};
 
 	return (
@@ -32,21 +44,20 @@ const ReviewItem = ({ data, type }) => {
 							alt={item.title}
 						/>
 						<TextContainer>
-							<p>
+							<p onClick={() => clickINGHandler(item)}>
 								<span>{type === 'tvSeasons' ? item.name : item.title}</span>
-								{
+								{textContent ||
 									(type === 'movie'
 										? item.release_date
 										: type === 'tvSeasons'
 										? item.first_air_date
 										: item.author
-									).split('-')[0]
-								}
+									).split('-')[0]}
 							</p>
 							<StarRating />
 						</TextContainer>
 					</div>
-					<IconMoreBTN onClick={() => openModal(item, type)}>
+					<IconMoreBTN onClick={() => openModal(item, type, item.id)}>
 						<AiOutlineMore size={22} />
 					</IconMoreBTN>
 					<MoreReviewModal
@@ -54,6 +65,8 @@ const ReviewItem = ({ data, type }) => {
 						closeModal={closeModal}
 						selectedItem={selectedItem}
 						type={type}
+						updateTextContent={clickINGHandler}
+						clickedINGItem={clickedINGItem}
 					/>
 				</RItem>
 			))}
@@ -62,6 +75,11 @@ const ReviewItem = ({ data, type }) => {
 };
 
 export default ReviewItem;
+
+ReviewItem.propTypes = {
+	data: PropTypes.object,
+	type: PropTypes.string.isRequired,
+};
 
 const RItem = styled.div`
 	display: flex;
@@ -93,8 +111,3 @@ const IconMoreBTN = styled.div`
 	cursor: pointer;
 	height: fit-content;
 `;
-
-ReviewItem.propTypes = {
-	data: PropTypes.string.isRequired,
-	type: PropTypes.string.isRequired,
-};

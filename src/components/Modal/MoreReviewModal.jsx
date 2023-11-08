@@ -4,7 +4,14 @@ import { BsEye, BsBookmark } from 'react-icons/bs';
 import { FaBan, FaComment } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
-const MoreReviewModal = ({ closeModal, isOpened, selectedItem, type }) => {
+const MoreReviewModal = ({
+	closeModal,
+	isOpened,
+	selectedItem,
+	type,
+	updateTextContent,
+	clickedINGItem,
+}) => {
 	const clickClosingHandler = (e) => {
 		if (e.target === e.currentTarget) {
 			closeModal();
@@ -13,6 +20,10 @@ const MoreReviewModal = ({ closeModal, isOpened, selectedItem, type }) => {
 	if (!isOpened) {
 		return null;
 	}
+
+	const clickINGhandler = () => {
+		updateTextContent(clickedINGItem);
+	};
 
 	return (
 		<ModalContainer onClick={clickClosingHandler}>
@@ -56,7 +67,7 @@ const MoreReviewModal = ({ closeModal, isOpened, selectedItem, type }) => {
 						<BsBookmark size={42} color="var(--color-light-gray)" />
 						<p>보고싶어요</p>
 					</div>
-					<div>
+					<div onClick={clickINGhandler}>
 						<BsEye size={50} color="var(--color-light-gray)" />
 						<p>보는 중</p>
 					</div>
@@ -82,6 +93,8 @@ MoreReviewModal.propTypes = {
 	isOpened: PropTypes.bool.isRequired,
 	selectedItem: PropTypes.object,
 	type: PropTypes.string.isRequired,
+	updateTextContent: PropTypes.func.isRequired,
+	clickedINGItem: PropTypes.object,
 };
 
 const ModalContainer = styled.div`
