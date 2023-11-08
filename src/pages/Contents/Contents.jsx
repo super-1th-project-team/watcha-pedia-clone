@@ -43,8 +43,6 @@ const Contents = () => {
 		try {
 			const response = await movieAxios.get(`/movie/${id}/similar`);
 
-			console.log('response', response);
-
 			dispatch(SET_SIMILAR(response.data.results));
 		} catch (error) {
 			console.error('Similar Movies Fetch Error:', error);

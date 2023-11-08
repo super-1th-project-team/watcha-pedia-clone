@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+	CHECK_AUTH_POPUP,
 	LOGIN_USER,
 	LOGOUT_USER,
 	TOGGLE_LOGIN_POPUP,
@@ -43,8 +44,8 @@ const Nav = () => {
 	};
 
 	const signUpHandler = () => {
-		dispatch(TOGGLE_REGISTER_POPUP());
 		if (isLogInPopUp) dispatch(TOGGLE_LOGIN_POPUP());
+		dispatch(TOGGLE_REGISTER_POPUP());
 	};
 
 	const onHomeClick = () => {

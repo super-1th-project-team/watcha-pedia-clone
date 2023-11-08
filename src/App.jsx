@@ -33,6 +33,7 @@ import { SET_TV_DAY_TREND } from './slice/tvSeasonsSlice';
 const App = () => {
 	const isLogInPopUp = useSelector((state) => state.user.isLogInPopUp);
 	const isRegisterPopUp = useSelector((state) => state.user.isRegisterPopUp);
+	const isAuthCheckPopUp = useSelector((state) => state.user.isAuthCheckPopUp);
 
 	const dispatch = useDispatch();
 
@@ -137,6 +138,11 @@ const App = () => {
 					document.getElementById('register-login-root'),
 				)}
 			{isRegisterPopUp &&
+				createPortal(
+					<AuthContainer />,
+					document.getElementById('register-login-root'),
+				)}
+			{isAuthCheckPopUp &&
 				createPortal(
 					<AuthContainer />,
 					document.getElementById('register-login-root'),

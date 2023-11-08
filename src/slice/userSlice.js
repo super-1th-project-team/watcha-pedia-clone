@@ -10,10 +10,8 @@ const initialState = {
 	isLogInPopUp: false,
 	isRegisterPopUp: false,
 	isLoginError: false,
-	// inputValue: {
-	// 	email: '',
-	// 	password: '',
-	// },
+	isAuthCheckPopUp: false,
+	buttonType: '',
 };
 
 const userSlice = createSlice({
@@ -51,9 +49,15 @@ const userSlice = createSlice({
 			const isLoginError = action.payload;
 			state.isLoginError = isLoginError;
 		},
+		CHECK_AUTH_POPUP(state, action) {
+			state.isAuthCheckPopUp = action.payload;
+		},
 		UPDATE_INPUT_VALUE(state, action) {
 			const { name, value } = action.payload;
 			state.inputValue[name] = value;
+		},
+		SET_BUTTON_TYPE(state, action) {
+			state.buttonType = action.payload;
 		},
 	},
 });
@@ -63,9 +67,11 @@ export const {
 	LOGOUT_USER,
 	TOGGLE_LOGIN_POPUP,
 	TOGGLE_REGISTER_POPUP,
+	CHECK_AUTH_POPUP,
 	CANCEL_AUTH,
 	CHECK_LOGIN_ERROR,
 	UPDATE_INPUT_VALUE,
+	SET_BUTTON_TYPE,
 } = userSlice.actions;
 
 export default userSlice.reducer;

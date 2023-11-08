@@ -11,9 +11,6 @@ const SimilarContents = () => {
 
 	const isCheckTVPage = useSelector((state) => state.tvSeasons.isTVPage);
 
-	console.log(similarMovieData);
-	console.log(similarTVData);
-
 	const similarData = isCheckTVPage === true ? similarTVData : similarMovieData;
 
 	return (
