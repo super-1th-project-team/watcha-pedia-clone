@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import * as style from './ContentsInfoBox.style';
-import './ico.css';
 import { BiPlus } from 'react-icons/bi';
 import { RiPencilFill } from 'react-icons/ri';
 import { BsEyeFill, BsBookmarkPlusFill } from 'react-icons/bs';
 import { FiMoreHorizontal } from 'react-icons/fi';
+import { MdNotInterested } from 'react-icons/md';
+import { PiArchiveBoxFill } from 'react-icons/pi';
+import { LuCalendarPlus } from 'react-icons/lu';
 import { useDispatch, useSelector } from 'react-redux';
 import { CHECK_AUTH_POPUP, SET_BUTTON_TYPE } from '../../../../slice/userSlice';
 
@@ -54,15 +56,15 @@ const InfoBtns = ({
 
 	return (
 		<>
-			<div>
+			<style.BtnContainer>
 				<style.Btn
 					onClick={
 						isLoggedIn ? wantClickHandler : () => clickButtonHandler('wishes')
 					}>
 					{wantIsClicked ? (
-						<BsBookmarkPlusFill className="ico active" />
+						<BsBookmarkPlusFill className="ico active rotate" />
 					) : (
-						<BiPlus className="ico" />
+						<BiPlus className="ico cancel-rotate" />
 					)}
 					<style.GrayText>보고싶어요</style.GrayText>
 				</style.Btn>
@@ -89,13 +91,21 @@ const InfoBtns = ({
 					<style.GrayText>더보기</style.GrayText>
 					{moreIsClicked && (
 						<style.moreDiv>
-							<p>관심없어요</p>
-							<p>컬렉션에 추가</p>
-							<p>본 날짜에 추가</p>
+							<style.moreBtn>
+								<MdNotInterested className="more-btns" />
+								관심없어요
+							</style.moreBtn>
+							<style.moreBtn margin="3px 0">
+								<PiArchiveBoxFill className="more-btns" />
+								컬렉션에 추가
+							</style.moreBtn>
+							<style.moreBtn>
+								<LuCalendarPlus className="more-btns" />본 날짜에 추가
+							</style.moreBtn>
 						</style.moreDiv>
 					)}
 				</style.Btn>
-			</div>
+			</style.BtnContainer>
 		</>
 	);
 };
