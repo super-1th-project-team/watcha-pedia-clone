@@ -9,7 +9,7 @@ const ReviewTVSeasons = () => {
 	return (
 		<ReviewWrapper>
 			<ReviewHeader />
-			<ReviewList data={tvData} type="tv_seasons" />
+			<ReviewList data={tvData} type="tvSeasons" />
 		</ReviewWrapper>
 	);
 };

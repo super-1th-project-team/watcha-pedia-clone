@@ -24,8 +24,8 @@ const ReviewNav = () => {
 		<RNav className="ReviewNav">
 			<NavUl>
 				<NavLi
-					onClick={() => clickNavHandler('movies')}
-					isSelected={selectedLi === 'movies'}>
+					onClick={() => clickNavHandler('movie')}
+					isSelected={selectedLi === 'movie'}>
 					영화
 				</NavLi>
 				<NavLi

@@ -8,7 +8,7 @@ const ReviewMovies = () => {
 	return (
 		<ReviewWrapper>
 			<ReviewHeader />
-			<ReviewList data={movieData} type="movies" />
+			<ReviewList data={movieData} type="movie" />
 		</ReviewWrapper>
 	);
 };
@@ -20,5 +20,6 @@ const ReviewWrapper = styled.div`
 	width: 640px;
 	border: 1px solid var(--color-light-gray);
 	border-radius: 5px;
+	box-sizing: border-box;
 	overflow: hidden;
 `;

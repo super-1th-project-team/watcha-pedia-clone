@@ -4,28 +4,51 @@ import { BsEye, BsBookmark } from 'react-icons/bs';
 import { FaBan, FaComment } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
-const MoreReviewModal = ({ closeModal, isOpened }) => {
-	const clickBackgroundHandler = (e) => {
+const MoreReviewModal = ({ closeModal, isOpened, selectedItem, type }) => {
+	const clickClosingHandler = (e) => {
 		if (e.target === e.currentTarget) {
-			// 모달 배경을 클릭했을 때만 모달을 닫음
 			closeModal();
 		}
 	};
 	if (!isOpened) {
-		return null; // 모달이 닫혔을 때는 아무것도 렌더링하지 않음
+		return null;
 	}
 
 	return (
-		<ModalContainer onClick={clickBackgroundHandler}>
+		<ModalContainer onClick={clickClosingHandler}>
 			<RModal>
 				<RModalTitle>
 					<div>
-						<img src="" alt="" />
+						<img
+							style={{ width: '50px', height: 'auto' }}
+							src={
+								type === 'books'
+									? `${selectedItem.cover}`
+									: `https://image.tmdb.org/t/p/original/${selectedItem.poster_path}`
+							}
+							alt={selectedItem.name}
+						/>
 					</div>
 					<div>
-						<h2>title</h2>
-						<br />
-						<p>theme ・ 개봉연도</p>
+						<h2>
+							{type === 'tvSeasons' ? selectedItem.name : selectedItem.title}
+						</h2>
+						<p>
+							{type === 'movie'
+								? '영화'
+								: type === 'tvSeasons'
+								? 'TV 프로그램'
+								: '책'}
+							・
+							{
+								(type === 'movie'
+									? selectedItem.release_date
+									: type === 'tvSeasons'
+									? selectedItem.first_air_date
+									: selectedItem.pubDate
+								).split('-')[0]
+							}
+						</p>
 					</div>
 				</RModalTitle>
 				<RModalIconBox>
@@ -46,7 +69,7 @@ const MoreReviewModal = ({ closeModal, isOpened }) => {
 					<p>관심없어요</p>
 					<FaBan size={28} color="var(--color-light-gray)" />
 				</RModalContentBox>
-				<div>취소</div>
+				<div onClick={closeModal}>취소</div>
 			</RModal>
 		</ModalContainer>
 	);
@@ -57,6 +80,8 @@ export default MoreReviewModal;
 MoreReviewModal.propTypes = {
 	closeModal: PropTypes.func.isRequired,
 	isOpened: PropTypes.bool.isRequired,
+	selectedItem: PropTypes.object,
+	type: PropTypes.string.isRequired,
 };
 
 const ModalContainer = styled.div`
@@ -65,7 +90,7 @@ const ModalContainer = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100vh;
-	background: #43434310;
+	background: #1c1d2010;
 `;
 
 const RModal = styled.div`
@@ -76,12 +101,13 @@ const RModal = styled.div`
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
+	justify-content: space-between;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background: #fff;
+	box-sizing: border-box;
 	& > div:last-child {
 		display: flex;
 		align-items: center;
@@ -89,20 +115,29 @@ const RModal = styled.div`
 		padding-top: 20px;
 		color: var(--color-light-red);
 		font-weight: 600;
+		cursor: pointer;
 	}
 `;
 
 const RModalTitle = styled.div`
 	border-bottom: 1px solid var(--color-bg-light-gray);
-	padding-bottom: 20px;
 	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding-bottom: 20px;
+	& h2 {
+		font-weight: 700;
+		font-size: 1.125rem;
+		margin-bottom: 10px;
+	}
 `;
 
 const RModalIconBox = styled.div`
 	border-bottom: 1px solid var(--color-bg-light-gray);
 	height: 100px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
+	cursor: pointer;
 	& > div {
 		width: 50%;
 		display: flex;
@@ -110,6 +145,7 @@ const RModalIconBox = styled.div`
 		align-items: center;
 		justify-content: center;
 		gap: 10px;
+		padding: 10px 0;
 	}
 	& > div:first-child {
 		border-right: 1px solid var(--color-bg-light-gray);
@@ -118,8 +154,9 @@ const RModalIconBox = styled.div`
 
 const RModalContentBox = styled.div`
 	border-bottom: 1px solid var(--color-bg-light-gray);
-	padding: 20px 0;
+	padding: 10px 0;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	cursor: pointer;
 `;

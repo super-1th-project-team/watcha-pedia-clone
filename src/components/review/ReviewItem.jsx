@@ -8,7 +8,10 @@ import MoreReviewModal from '../Modal/MoreReviewModal';
 const ReviewItem = ({ data, type }) => {
 	const [rating, setRating] = useState(0);
 	const [isOpenedModal, setIsOpenedModal] = useState(false);
-	const openModal = () => {
+	const [selectedItem, setSelectedItem] = useState({});
+
+	const openModal = (item, type) => {
+		setSelectedItem(item, type);
 		setIsOpenedModal(true);
 	};
 	const closeModal = () => {
@@ -25,7 +28,7 @@ const ReviewItem = ({ data, type }) => {
 				<RItem className="ReviewItem" key={id}>
 					<div>
 						<img
-							style={{ width: '75px', height: 'auto' }}
+							style={{ width: '90px', height: 'auto' }}
 							src={
 								type === 'books'
 									? `${item.cover}`
@@ -35,27 +38,28 @@ const ReviewItem = ({ data, type }) => {
 						/>
 						<TextContainer>
 							<p>
-								{type === 'tv_seasons' ? item.name : item.title}
-								<br />
-								{type === 'movie'
-									? item.release_date
-										? item.release_date.split('-')[0]
-										: ''
-									: type === 'tv_seasons'
-									? item.first_air_date
-										? item.first_air_date.split('-')[0]
-										: ''
-									: item.pubDate
-									? item.pubDate.split('-')[0]
-									: ''}
+								<span>{type === 'tvSeasons' ? item.name : item.title}</span>
+								{
+									(type === 'movie'
+										? item.release_date
+										: type === 'tvSeasons'
+										? item.first_air_date
+										: item.author
+									).split('-')[0]
+								}
 							</p>
 							<StarRating value={rating} onRatingChange={changeRatingHandler} />
 						</TextContainer>
 					</div>
-					<IconMoreBTN onClick={openModal}>
+					<IconMoreBTN onClick={() => openModal(item, type)}>
 						<AiOutlineMore size={22} />
 					</IconMoreBTN>
-					<MoreReviewModal isOpened={isOpenedModal} closeModal={closeModal} />
+					<MoreReviewModal
+						isOpened={isOpenedModal}
+						closeModal={closeModal}
+						selectedItem={selectedItem}
+						type={type}
+					/>
 				</RItem>
 			))}
 		</>
@@ -79,6 +83,14 @@ const TextContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	color: var(--color-light-gray);
+	& span {
+		font-weight: 700;
+		font-size: 1.125rem;
+		margin-bottom: 10px;
+		display: block;
+		color: var(--color-light-black);
+	}
 `;
 
 const IconMoreBTN = styled.div`
