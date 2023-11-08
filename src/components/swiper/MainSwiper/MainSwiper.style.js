@@ -19,7 +19,7 @@ export const RankNumber = styled.div`
 	padding: 7px 3px 5px 3px;
 	width: 30px;
 	height: 30px;
-	left: 8px;
+	left: 18px;
 	top: 8px;
 `;
 
@@ -30,22 +30,28 @@ export const Title = styled.div`
 	margin-top: 5px;
 `;
 
-export const SwiperImg = styled.img`
-	width: 90%;
-	height: 100%;
-	border-radius: 5px;
-	margin-right: 10px;
-	cursor: pointer;
+export const SwiperImg = styled.div`
+	& img {
+		width: 95%;
+		border-radius: 5px;
+		cursor: pointer;
+	}
 `;
 
 export const SwiperWrap = styled.div`
 	width: 80%;
-	height: 100%;
 	margin: auto;
 `;
 
 export const StyledSwiperContainer = styled.div`
+	.swiper {
+		width: 100%;
+		height: 100%;
+	}
+
 	.swiper-slide {
+		display: flex;
+		flex-direction: column;
 		font-size: 16px;
 		overflow: hidden;
 	}
@@ -55,8 +61,7 @@ export const StyledSwiperContainer = styled.div`
 		height: 35px;
 		border-radius: 50%;
 		top: 50%;
-		transform: translateY(-60%);
-		left: -10px;
+		transform: translateY(-100%);
 	}
 
 	.swiper-button-next {
@@ -64,13 +69,15 @@ export const StyledSwiperContainer = styled.div`
 		height: 35px;
 		border-radius: 50%;
 		top: 50%;
-		transform: translateY(-60%);
+		transform: translateY(-100%);
 	}
 `;
 
 export const InfoWrap = styled.div`
 	display: flex;
 	flex-direction: column;
+	text-align: left;
+	margin-left: -50px;
 `;
 
 export const DateText = styled.div`

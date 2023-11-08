@@ -27,17 +27,20 @@ const MainSwiper = ({ dataTitle, fetchData, movePageFunc }) => {
 					cssMode={false}
 					navigation={true}
 					modules={[Navigation, Mousewheel]}
-					mousewheel={{ forceToAxis: true }}>
+					mousewheel={{ forceToAxis: true }}
+					className="swiper">
 					{fetchData.map((data, index) => (
 						<SwiperSlide
 							className="swiper-slide"
 							key={index}
 							onClick={() => movePageFunc(data.id)}>
 							<RankNumber>{index + 1}</RankNumber>
-							<SwiperImg
-								src={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
-								alt=""
-							/>
+							<SwiperImg>
+								<img
+									src={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
+									alt=""
+								/>
+							</SwiperImg>
 							<InfoWrap>
 								<Title>{data.title}</Title>
 								<DateText>{data.release_date}</DateText>
