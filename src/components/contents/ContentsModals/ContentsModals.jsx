@@ -5,16 +5,14 @@ import CommentModal from './CommentModal/CommentModal';
 
 const ContentsModals = () => {
 	const context = useContext(ModalContext);
-
-	const overlayClickHandler = () => {
-		context.closeModal();
-		context.setIsImg(false);
-	}
-
 	return (
-		<style.ModalOverlay onClick={overlayClickHandler}>
-			<style.ModalContentDiv onClick={(e) => e.stopPropagation() }>
-				{context.isImg ? <style.ModalImg src={context.imgUrl} alt="" /> : <CommentModal/>}
+		<style.ModalOverlay onClick={context.closeModal}>
+			<style.ModalContentDiv onClick={(e) => e.stopPropagation()}>
+				{context.imgUrl ? (
+					<style.ModalImg src={context.imgUrl} alt="" />
+				) : (
+					<CommentModal />
+				)}
 			</style.ModalContentDiv>
 		</style.ModalOverlay>
 	);
