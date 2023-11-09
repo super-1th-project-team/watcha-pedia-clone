@@ -24,7 +24,7 @@ const SearchSwiper = ({ dataTitle, fetchData, movePageFunc }) => {
 			<StyledSwiperContainer>
 				<Swiper
 					loop={false}
-					spaceBetween={0}
+					spaceBetween={15}
 					slidesPerView={6}
 					slidesPerGroup={5}
 					grabCursor={true}

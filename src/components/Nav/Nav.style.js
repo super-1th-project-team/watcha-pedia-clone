@@ -8,14 +8,16 @@ export const Header = styled.header`
 	width: 100%;
 	height: 62px;
 	background-color: var(--color-bg-white);
-	border-bottom: 1px solid var(--color-light-gray);
+	border-bottom: 1px solid #e9e9e9;
 	left: 0;
 	top: 0;
 	z-index: 2;
+	padding: 0 50px;
+	box-sizing: border-box;
 `;
 
 export const NavNav = styled.nav`
-	width: 80%;
+	width: 100%;
 `;
 
 export const NavLogo = styled.img.attrs({
@@ -29,7 +31,7 @@ export const NavLogo = styled.img.attrs({
 
 export const NavContent = styled.div`
 	display: flex;
-	width: 96%;
+	width: 100%;
 	height: 100%;
 	margin: 0 auto;
 	align-items: center;
@@ -40,10 +42,10 @@ export const NavUl = styled.div`
 	display: flex;
 	list-style: none;
 	align-items: center;
+	gap: 20px;
 `;
 
 export const NavLi = styled.li`
-	margin-left: 30px;
 	& form {
 		position: relative;
 	}
@@ -67,7 +69,7 @@ export const NavSearchInput = styled.input`
 
 export const NavButton = styled.button`
 	font-weight: 500;
-	font-size: 1.2em;
+	font-size: 1.125em;
 	border: none;
 	outline: none;
 	color: #828282;
