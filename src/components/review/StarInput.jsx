@@ -3,21 +3,18 @@ import { css } from '@emotion/react';
 import { LiaStarSolid, LiaStarHalfSolid } from 'react-icons/lia';
 import PropTypes from 'prop-types';
 
-const StarInput = ({ onClickRating, value, isHalf }) => {
-	const handleClickRatingInput = (event) => {
-		const selectedValue = parseFloat(event.target.value);
-		if (!isNaN(selectedValue)) {
-			onClickRating(selectedValue);
-		}
-	};
-
+const StarInput = ({ onClickRating, value, isHalf, isChecked }) => {
 	return (
 		<>
-			<Input type="radio" name="rating" id={`star${value}`} value={value} />
-			<Label
-				onClick={handleClickRatingInput}
-				isHalf={isHalf}
-				htmlFor={`star${value}`}>
+			<Input
+				type="checkbox"
+				name="rating"
+				id={`star${value}`}
+				value={value}
+				checked={isChecked}
+				onChange={onClickRating}
+			/>
+			<Label isHalf={isHalf} htmlFor={`star${value}`}>
 				{isHalf ? <LiaStarHalfSolid /> : <LiaStarSolid />}
 			</Label>
 		</>
@@ -30,6 +27,7 @@ StarInput.propTypes = {
 	onClickRating: PropTypes.func.isRequired,
 	value: PropTypes.number.isRequired,
 	isHalf: PropTypes.bool.isRequired,
+	isChecked: PropTypes.bool.isRequired,
 };
 
 const Input = styled.input`
