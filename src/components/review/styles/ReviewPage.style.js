@@ -7,6 +7,7 @@ export const ReviewWrapper = styled.div`
 	border-radius: 5px;
 	overflow: hidden;
 	background: var(--color-bg-white);
+	position: relative;
 `;
 
 export const RHeader = styled.div`
@@ -15,6 +16,8 @@ export const RHeader = styled.div`
 	align-items: center;
 	justify-content: center;
 	padding: 15px 20px 0 20px;
+	background: #fff;
+	text-align: center;
 `;
 
 export const RItem = styled.div`

@@ -69,14 +69,11 @@ const MoreReviewModal = ({
 								? 'TV 프로그램'
 								: '책'}
 							・
-							{
-								(type === 'movie'
-									? selectedItem.release_date
-									: type === 'tvSeasons'
-									? selectedItem.first_air_date
-									: selectedItem.pubDate
-								).split('-')[0]
-							}
+							{type === 'movie'
+								? selectedItem.release_date
+								: type === 'tvSeasons'
+								? selectedItem.first_air_date
+								: selectedItem.pubDate}
 						</p>
 					</div>
 				</RModalTitle>

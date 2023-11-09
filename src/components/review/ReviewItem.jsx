@@ -35,6 +35,10 @@ const ReviewItem = ({ data, type }) => {
 		}));
 	};
 
+	const truncate = (str, n) => {
+		return str?.length > n ? str.substr(0, n - 1) + '...' : str;
+	};
+
 	return (
 		<>
 			{data &&
@@ -52,14 +56,18 @@ const ReviewItem = ({ data, type }) => {
 							/>
 							<TextContainer>
 								<p onClick={() => clickINGHandler(item.id)}>
-									<span>{type === 'tvSeasons' ? item.name : item.title}</span>
+									<span>
+										{truncate(
+											type === 'tvSeasons' ? item.name : item.title,
+											21,
+										)}
+									</span>
 									{activeTextContent[item.id] ||
 										(type === 'movie'
 											? item.release_date || ''
 											: type === 'tvSeasons'
 											? item.first_air_date || ''
-											: item.author
-										).split('-')[0]}
+											: item.author)}
 								</p>
 								<StarRating
 									itemId={item.id}
