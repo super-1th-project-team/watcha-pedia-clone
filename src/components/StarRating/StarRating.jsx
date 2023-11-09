@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import StarInput from '../StarRating/StarInput';
 import PropTypes from 'prop-types';
 
-const StarRating = () => {
+const StarRating = ({ itemId, onRatingChange, value, selectedItem, type }) => {
 	const [selectedRating, setSelectedRating] = useState(0);
 
 	const clickRatingHandler = (value) => {
+		onRatingChange(selectedItem.id);
 		setSelectedRating((prev) => (prev === value ? 0 : value));
 	};
 
@@ -29,6 +30,14 @@ const StarRating = () => {
 
 export default StarRating;
 
+StarRating.propTypes = {
+	value: PropTypes.number.isRequired,
+	onRatingChange: PropTypes.func.isRequired,
+	selectedItem: PropTypes.object,
+	type: PropTypes.string.isRequired,
+	itemId: PropTypes.number.isRequired,
+};
+
 const Base = styled.section`
 	display: flex;
 	align-items: center;
@@ -49,8 +58,3 @@ const RatingField = styled.fieldset`
 		color: var(--color-light-red);
 	}
 `;
-
-StarRating.propTypes = {
-	value: PropTypes.number.isRequired,
-	onRatingChange: PropTypes.func.isRequired,
-};

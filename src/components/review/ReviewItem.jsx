@@ -9,6 +9,7 @@ const ReviewItem = ({ data, type }) => {
 	const [isOpenedModal, setIsOpenedModal] = useState(false);
 	const [selectedItem, setSelectedItem] = useState({});
 	const [activeTextContent, setActiveTextContent] = useState({});
+	const [starRatings, setStarRatings] = useState({});
 
 	const openModal = (item, type) => {
 		setSelectedItem(item, type);
@@ -24,6 +25,13 @@ const ReviewItem = ({ data, type }) => {
 		setActiveTextContent((prevTextContent) => ({
 			...prevTextContent,
 			[itemId]: '보는중',
+		}));
+	};
+
+	const changeStarRatingHandler = (itemId, rating) => {
+		setStarRatings((prevRatings) => ({
+			...prevRatings,
+			[itemId]: rating,
 		}));
 	};
 
@@ -52,7 +60,13 @@ const ReviewItem = ({ data, type }) => {
 										: item.author
 									).split('-')[0]}
 							</p>
-							<StarRating />
+							<StarRating
+								itemId={item.id}
+								value={starRatings[item.id] || 0}
+								onRatingChange={changeStarRatingHandler}
+								selectedItem={selectedItem}
+								type={type}
+							/>
 						</TextContainer>
 					</div>
 					<IconMoreBTN onClick={() => openModal(item, type, item.id)}>
