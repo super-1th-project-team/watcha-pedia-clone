@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 import ReviewHeader from '../ReviewHeader';
 import ReviewList from '../ReviewList';
 import { useSelector } from 'react-redux';
+import shuffleArray from '../../../utils/shuffleArray';
 
 const ReviewBooks = () => {
 	const newBooksData = useSelector((state) => state.books.newBooks);
@@ -21,7 +22,7 @@ const ReviewBooks = () => {
 	return (
 		<ReviewWrapper>
 			<ReviewHeader />
-			<ReviewList data={allBooksData} type="books" />
+			<ReviewList data={shuffleArray(allBooksData)} type="books" />
 		</ReviewWrapper>
 	);
 };

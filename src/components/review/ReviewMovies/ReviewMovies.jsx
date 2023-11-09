@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import ReviewHeader from '../ReviewHeader';
 import ReviewList from '../ReviewList';
 import { styled } from 'styled-components';
+import shuffleArray from '../../../utils/shuffleArray';
 
 const ReviewMovies = () => {
 	const nowPlayingMovieData = useSelector((state) => state.movie.nowPlaying);
@@ -22,12 +23,10 @@ const ReviewMovies = () => {
 		...romanticMovieData,
 	];
 
-	console.log(allMovieData);
-
 	return (
 		<ReviewWrapper>
 			<ReviewHeader />
-			<ReviewList data={allMovieData} type="movie" />
+			<ReviewList data={shuffleArray(allMovieData)} type="movie" />
 		</ReviewWrapper>
 	);
 };

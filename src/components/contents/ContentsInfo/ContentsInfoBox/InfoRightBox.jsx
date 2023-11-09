@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import ModalContext from '../../../../context/ModalContext';
 
 const InfoRightBox = () => {
-	const context = useContext(ModalContext)
+	const context = useContext(ModalContext);
 	const movieDetailData = useSelector((state) => state.movie.movieDetail);
 	const tvDetailData = useSelector((state) => state.tvSeasons.tvDetail);
 
@@ -25,8 +25,8 @@ const InfoRightBox = () => {
 	};
 
 	const commentOpenHandler = () => {
-		context.openModal()
-	}
+		context.openModal();
+	};
 
 	return (
 		<style.InfoRightBox>
@@ -38,17 +38,22 @@ const InfoRightBox = () => {
 				<style.ScoreDiv>
 					<div>
 						<style.ScoreText>3.2</style.ScoreText>
-						<style.GrayText margintp='7px'>예상별점</style.GrayText>
+						<style.GrayText margintp="7px">예상별점</style.GrayText>
 					</div>
 					<div style={{ marginLeft: 55 }}>
-						<style.ScoreText>{(detailData.vote_average / 2).toFixed(1)}</style.ScoreText>
-						<style.GrayText margintp='7px'>평균별점({detailData.vote_count}명)</style.GrayText>
+						<style.ScoreText>
+							{(detailData.vote_average / 2).toFixed(1)}
+						</style.ScoreText>
+						<style.GrayText margintp="7px">
+							평균별점({detailData.vote_count}명)
+						</style.GrayText>
 					</div>
 				</style.ScoreDiv>
 				<InfoBtns
 					wantIsClicked={wantIsClicked}
 					wantBtnHandler={wantBtnHandler}
 					watchingIsClicked={watchingIsClicked}
+					setWatchingIsClicked={setWatchingIsClicked}
 					watchingBtnHandler={watchingBtnHandler}
 				/>
 			</style.GridSection>
@@ -56,7 +61,9 @@ const InfoRightBox = () => {
 				<style.CommentDiv>
 					<style.WriteDiv>
 						<p>user 님의 생각을 글로 적어보세요.</p>
-						<style.WriteBtn onClick={commentOpenHandler}>코멘트 남기기</style.WriteBtn>
+						<style.WriteBtn onClick={commentOpenHandler}>
+							코멘트 남기기
+						</style.WriteBtn>
 					</style.WriteDiv>
 				</style.CommentDiv>
 			) : null}
