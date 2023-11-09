@@ -21,6 +21,17 @@ const MoreReviewModal = ({
 }) => {
 	const [commentModalOpen, setCommentModalOpen] = useState(false);
 
+<<<<<<< HEAD
+=======
+const MoreReviewModal = ({
+	closeModal,
+	isOpened,
+	selectedItem,
+	type,
+	updateTextContent,
+	clickedINGItem,
+}) => {
+>>>>>>> ad3b691 (모달 배경 스크롤막기)
 	const clickClosingHandler = (e) => {
 		if (e.target === e.currentTarget) {
 			closeModal();
@@ -43,6 +54,14 @@ const MoreReviewModal = ({
 	if (!isOpened) {
 		return null;
 	}
+<<<<<<< HEAD
+=======
+
+	const clickINGhandler = () => {
+		updateTextContent(clickedINGItem);
+	};
+
+>>>>>>> ad3b691 (모달 배경 스크롤막기)
 	return (
 		<ModalContainer onClick={clickClosingHandler}>
 			<RModal>
@@ -119,5 +138,9 @@ MoreReviewModal.propTypes = {
 	selectedItem: PropTypes.object,
 	type: PropTypes.string.isRequired,
 	updateTextContent: PropTypes.func.isRequired,
+<<<<<<< HEAD
 	itemId: PropTypes.number.isRequired,
+=======
+	clickedINGItem: PropTypes.object,
+>>>>>>> ad3b691 (모달 배경 스크롤막기)
 };
