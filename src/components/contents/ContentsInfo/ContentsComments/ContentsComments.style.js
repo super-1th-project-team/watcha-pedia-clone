@@ -41,7 +41,7 @@ export const UserDiv = styled.div`
 export const UserImgDiv = styled.div`
 	width: 34px;
 	height: 34px;
-	`;
+`;
 export const UserImg = styled.img`
 	border-radius: 50%;
 	width: 100%;
@@ -56,9 +56,9 @@ export const UserRating = styled.div`
 	border: 1px solid rgb(234, 234, 234);
 	border-radius: 13px;
 	background-color: #fff;
-	color: rgb(74,74,74);
+	color: rgb(74, 74, 74);
 	font-size: 14px;
-	.star-icon{
+	.star-icon {
 		width: 18px;
 		height: 18px;
 		vertical-align: -3px;
@@ -76,18 +76,18 @@ export const UserCommentP = styled.p`
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
-	text-overflow: ellipsis; 
-	display: -webkit-box; 
-  -webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 5;
-`
+`;
 export const UserCommentResUl = styled.ul`
 	display: flex;
 	align-items: center;
 	height: 44px;
 	border-bottom: 1px solid rgb(229, 229, 229);
 	font-size: 14px;
-	.res-btns{
+	.res-btns {
 		margin: 0 3px;
 		vertical-align: -1px;
 	}
@@ -107,7 +107,7 @@ export const LikeBtn = styled.button`
 export const MoreBtn = styled.button`
 	position: absolute;
 	top: 78px;
-	right: 0px;
+	right: 60px;
 	color: rgb(255, 47, 110);
 	font-size: 16px;
 	border: none;
