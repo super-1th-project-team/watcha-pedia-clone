@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as logo} from './white-logo.svg'
+import { ReactComponent as logo } from './white-logo.svg';
 
 export const Header = styled.header`
 	position: fixed;
@@ -14,14 +14,17 @@ export const Header = styled.header`
 	top: 0;
 	z-index: 2;
 	transition: background-color 200ms ease 0s;
-	${props => props.contents && `
+	${(props) =>
+		props.contents &&
+		`
 		background-color: transparent;
 		border-bottom: transparent;
 	`}
 `;
 
 export const NavNav = styled.nav`
-	width: 1320px;
+	width: 75%;
+	min-width: 1150px;
 	margin: 0 auto;
 `;
 
@@ -31,11 +34,10 @@ export const NavLogo = styled(logo)`
 	cursor: pointer;
 `;
 export const NavWhiteLogo = styled(NavLogo)`
-	path{
+	path {
 		fill: #fff;
 	}
-`
-
+`;
 
 export const NavContent = styled.div`
 	display: flex;
@@ -68,7 +70,9 @@ export const NavSearchInput = styled.input`
 	font-size: 15px;
 	border: 1px solid rgba(255, 255, 255, 0.25);
 	border-radius: 2px;
-	${props => props.contents && `
+	${(props) =>
+		props.contents &&
+		`
 		background-color: rgba(0, 0, 0, 0.1);
 		color: #fff;
 		&::placeholder{
@@ -77,13 +81,13 @@ export const NavSearchInput = styled.input`
 	`}
 `;
 
-
 export const NavButton = styled.button`
 	font-weight: 500;
 	font-size: 1.2em;
 	border: none;
 	outline: none;
-	color:  ${props => props.contents ? 'rgba(255, 255, 255, 0.7)' : '#828282'};
+	color: ${(props) =>
+		props.contents ? 'rgba(255, 255, 255, 0.7)' : '#828282'};
 	background-color: transparent;
 	&:hover {
 		cursor: pointer;
@@ -96,7 +100,7 @@ export const NavMovieButton = styled(NavButton)`
 		`
     color: var(--color-dark-black);
   `}
-	${props => props.contents && `color: rgba(255, 255, 255, 0.7)`}
+	${(props) => props.contents && `color: rgba(255, 255, 255, 0.7)`}
 `;
 
 export const NavTVSeasonsButton = styled(NavButton)`
@@ -119,8 +123,10 @@ export const RegisterButton = styled(NavButton)`
 	border: 1px solid var(--color-dark-gray);
 	border-radius: 5px;
 	padding: 7px 15px;
-	color:var(--color-dark-black);
-	${props => props.contents && `
+	color: var(--color-dark-black);
+	${(props) =>
+		props.contents &&
+		`
 		border: 1px solid rgba(255, 255, 255, 0.7);
 		color: rgba(255, 255, 255, 0.7);
 	`}

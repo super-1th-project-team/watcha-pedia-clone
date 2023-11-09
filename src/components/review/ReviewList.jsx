@@ -2,6 +2,7 @@ import React from 'react';
 import ReviewItem from './ReviewItem';
 import { styled } from 'styled-components';
 import PropTypes from 'prop-types';
+import { RItemList } from './styles/ReviewPage.style';
 
 const ReviewList = ({ data, type }) => {
 	return (
@@ -12,11 +13,6 @@ const ReviewList = ({ data, type }) => {
 };
 
 export default ReviewList;
-
-const RItemList = styled.div`
-	border: 1px solid var(--color-bg-light-gray);
-	padding: 20px;
-`;
 
 ReviewList.propTypes = {
 	data: PropTypes.string.isRequired,
