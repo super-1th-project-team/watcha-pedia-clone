@@ -17,8 +17,7 @@ import {
 	RegisterButton,
 	UserButton,
 	NavContent,
-	NavLeftLi,
-	NavRightLi,
+	NavLi,
 	NavLogo,
 	NavNav,
 	NavSearchInput,
@@ -30,8 +29,8 @@ const Nav = () => {
 	const [searchValue, setSearchValue] = useState('');
 	const searchInputRef = useRef('');
 
-	const [transparent, setTransparent] = useState(true)
-	const [scrollPosition, setScrollPosition] = useState(0)
+	const [transparent, setTransparent] = useState(true);
+	const [scrollPosition, setScrollPosition] = useState(0);
 
 	const { isLoggedIn, isLogInPopUp, isRegisterPopUp, photoURL, id } =
 		useSelector((state) => state.user);
@@ -42,8 +41,7 @@ const Nav = () => {
 	const location = useLocation();
 	const query = new URLSearchParams(location.search);
 	const domain = query.get('domain');
-	let contentsUrl = location.pathname.includes('/contents')
-
+	let contentsUrl = location.pathname.includes('/contents');
 
 	const loginHandler = () => {
 		if (isRegisterPopUp) dispatch(TOGGLE_REGISTER_POPUP());
@@ -102,20 +100,18 @@ const Nav = () => {
 		}
 	}, [dispatch]);
 
-
-	
 	const updateScroll = () => {
-			setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-	}
-	useEffect(()=>{
-			window.addEventListener('scroll', updateScroll);
-	}, [])
+		setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+	};
+	useEffect(() => {
+		window.addEventListener('scroll', updateScroll);
+	}, []);
 
 	useEffect(() => {
-		contentsUrl && scrollPosition < 60 ? setTransparent(true) : setTransparent(false);
-	}, [scrollPosition, contentsUrl])
-
-
+		contentsUrl && scrollPosition < 60
+			? setTransparent(true)
+			: setTransparent(false);
+	}, [scrollPosition, contentsUrl]);
 
 	return (
 		<Header contents={transparent}>
@@ -123,29 +119,38 @@ const Nav = () => {
 				<NavContent>
 					<div>
 						<NavUl>
-							<NavLeftLi>
-								{transparent ? <NavWhiteLogo onClick={onHomeClick}/> : <NavLogo onClick={onHomeClick}/>}
-							</NavLeftLi>
-							<NavLeftLi>
-								<NavMovieButton contents={transparent} domain={domain} onClick={onMovieClick}>
+							<NavLi>
+								<NavLogo onClick={onHomeClick} />
+							</NavLi>
+							<NavLi>
+								<NavMovieButton
+									contents={transparent}
+									domain={domain}
+									onClick={onMovieClick}>
 									영화
 								</NavMovieButton>
-							</NavLeftLi>
-							<NavLeftLi>
-								<NavTVSeasonsButton contents={transparent} domain={domain} onClick={onTvClick}>
+							</NavLi>
+							<NavLi>
+								<NavTVSeasonsButton
+									contents={transparent}
+									domain={domain}
+									onClick={onTvClick}>
 									TV
 								</NavTVSeasonsButton>
-							</NavLeftLi>
-							<NavLeftLi>
-								<NavBooksButton contents={transparent} domain={domain} onClick={onBookClick}>
+							</NavLi>
+							<NavLi>
+								<NavBooksButton
+									contents={transparent}
+									domain={domain}
+									onClick={onBookClick}>
 									책
 								</NavBooksButton>
-							</NavLeftLi>
+							</NavLi>
 						</NavUl>
 					</div>
 					<div>
 						<NavUl>
-							<NavRightLi>
+							<NavLi>
 								<form onSubmit={SearchValueSubmitHandler}>
 									<NavSearchInput
 										placeholder="콘텐츠,인물,컬렉션,유저를 검색해보세요."
@@ -154,20 +159,26 @@ const Nav = () => {
 										contents={transparent}
 									/>
 								</form>
-							</NavRightLi>
-							<NavRightLi>
+							</NavLi>
+							<NavLi>
 								{!isLoggedIn && (
-									<NavButton onClick={loginHandler} contents={transparent}>로그인</NavButton>
+									<NavButton onClick={loginHandler} contents={transparent}>
+										로그인
+									</NavButton>
 								)}
 								{isLoggedIn && (
-									<NavButton onClick={moveReviewPageHandler} contents={transparent}>
+									<NavButton
+										onClick={moveReviewPageHandler}
+										contents={transparent}>
 										평가하기
 									</NavButton>
 								)}
-							</NavRightLi>
-							<NavRightLi>
+							</NavLi>
+							<NavLi>
 								{!isLoggedIn && (
-									<RegisterButton onClick={signUpHandler} contents={transparent}>
+									<RegisterButton
+										onClick={signUpHandler}
+										contents={transparent}>
 										회원가입
 									</RegisterButton>
 								)}
@@ -181,7 +192,7 @@ const Nav = () => {
 										/>
 									</UserButton>
 								)}
-							</NavRightLi>
+							</NavLi>
 						</NavUl>
 					</div>
 				</NavContent>
