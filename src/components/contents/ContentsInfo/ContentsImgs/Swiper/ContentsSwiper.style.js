@@ -58,3 +58,5 @@ export const ContentsSwiperContainer = styled.div`
 		font-size: 12px;
 	}
 `;
+
+export const SwiperImgDiv = styled.div``;
