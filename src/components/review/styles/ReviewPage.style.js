@@ -1,13 +1,22 @@
 import { styled, css } from 'styled-components';
 
 export const ReviewWrapper = styled.div`
-	margin: 100px auto;
+	margin: 0 auto 100px auto;
 	width: 640px;
-	border: 1px solid var(--color-bg-light-gray);
+	/* border: 1px solid var(--color-bg-light-gray); */
 	border-radius: 5px;
 	overflow: hidden;
 	background: var(--color-bg-white);
 	position: relative;
+`;
+
+export const HiddenBox = styled.div`
+	width: 100%;
+	height: 100px;
+	z-index: 1;
+	background: #eee;
+	position: fixed;
+	top: 0;
 `;
 
 export const RHeader = styled.div`
@@ -17,7 +26,15 @@ export const RHeader = styled.div`
 	justify-content: center;
 	padding: 15px 20px 0 20px;
 	background: #fff;
-	text-align: center;
+	width: 640px;
+	margin: 0 auto;
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-radius: 5px;
+	border: 1px solid var(--color-bg-light-gray);
+	z-index: 100;
 `;
 
 export const RItem = styled.div`
@@ -54,6 +71,7 @@ export const IconMoreBTN = styled.div`
 export const RItemList = styled.div`
 	border: 1px solid var(--color-bg-light-gray);
 	padding: 20px;
+	z-index: -1;
 `;
 
 export const RNav = styled.div`

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import ReviewHeader from '../ReviewHeader';
 import ReviewList from '../ReviewList';
-import { ReviewWrapper } from '../styles/ReviewPage.style';
+import { HiddenBox, ReviewWrapper } from '../styles/ReviewPage.style';
 
 const ReviewMovies = () => {
 	const nowPlayingMovieData = useSelector((state) => state.movie.nowPlaying);
@@ -26,6 +26,7 @@ const ReviewMovies = () => {
 
 	return (
 		<ReviewWrapper>
+			<HiddenBox />
 			<ReviewHeader />
 			<ReviewList data={allMovieData} type="movie" />
 		</ReviewWrapper>
