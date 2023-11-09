@@ -67,7 +67,7 @@ export const StyledSwiperContainer = styled.div`
 	}
 
 	.swiper-slide > div:nth-child(2) img {
-		width: 95%;
+		width: 100%;
 	}
 
 	.swiper-button-prev {
