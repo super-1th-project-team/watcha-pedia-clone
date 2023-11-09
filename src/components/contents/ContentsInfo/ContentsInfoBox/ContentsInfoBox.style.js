@@ -40,7 +40,7 @@ export const GraphSection = styled.section`
 `;
 export const GrayText = styled.p`
 	margin-bottom: ${(props) => props.marginbtm};
-	margin-top: ${props => props.margintp};
+	margin-top: ${(props) => props.margintp};
 	font-size: 12px;
 	color: #8c8c8c;
 `;
@@ -72,15 +72,15 @@ export const ScoreText = styled.strong`
 	line-height: 42px;
 `;
 export const BtnContainer = styled.div`
-    display: flex;
-    justify-content: end;
-`
+	display: flex;
+	justify-content: end;
+`;
 export const Btn = styled.button`
 	width: 80px;
 	height: 90px;
 	background: none;
 	border: none;
-    cursor: pointer;
+	cursor: pointer;
 	.ico {
 		width: 40px;
 		height: 40px;

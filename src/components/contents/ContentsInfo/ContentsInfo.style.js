@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContentsSection = styled.section`
-	padding: 60px 0 25px 0;
-  position: relative;
+	padding: 60px 60px 25px;
+	position: relative;
 	max-width: 1320px;
 	margin: 0 auto;
 `;
