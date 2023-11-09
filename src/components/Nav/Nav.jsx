@@ -22,11 +22,15 @@ import {
 	NavNav,
 	NavSearchInput,
 	NavUl,
+	NavWhiteLogo,
 } from './Nav.style';
 
 const Nav = () => {
 	const [searchValue, setSearchValue] = useState('');
 	const searchInputRef = useRef('');
+
+	const [transparent, setTransparent] = useState(true)
+	const [scrollPosition, setScrollPosition] = useState(0)
 
 	const { isLoggedIn, isLogInPopUp, isRegisterPopUp, photoURL, id } =
 		useSelector((state) => state.user);
@@ -37,6 +41,8 @@ const Nav = () => {
 	const location = useLocation();
 	const query = new URLSearchParams(location.search);
 	const domain = query.get('domain');
+	let contentsUrl = location.pathname.includes('/contents')
+
 
 	const loginHandler = () => {
 		if (isRegisterPopUp) dispatch(TOGGLE_REGISTER_POPUP());
@@ -94,8 +100,23 @@ const Nav = () => {
 		}
 	}, [dispatch]);
 
+
+	
+	const updateScroll = () => {
+			setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+	}
+	useEffect(()=>{
+			window.addEventListener('scroll', updateScroll);
+	}, [])
+
+	useEffect(() => {
+		contentsUrl && scrollPosition < 60 ? setTransparent(true) : setTransparent(false);
+	}, [scrollPosition, contentsUrl])
+
+
+
 	return (
-		<Header>
+		<Header contents={transparent}>
 			<NavNav>
 				<NavContent>
 					<div>
@@ -104,17 +125,17 @@ const Nav = () => {
 								<NavLogo onClick={onHomeClick} />
 							</NavLi>
 							<NavLi>
-								<NavMovieButton domain={domain} onClick={onMovieClick}>
+								<NavMovieButton contents={transparent} domain={domain} onClick={onMovieClick}>
 									영화
 								</NavMovieButton>
 							</NavLi>
 							<NavLi>
-								<NavTVSeasonsButton domain={domain} onClick={onTvClick}>
+								<NavTVSeasonsButton contents={transparent} domain={domain} onClick={onTvClick}>
 									TV
 								</NavTVSeasonsButton>
 							</NavLi>
 							<NavLi>
-								<NavBooksButton domain={domain} onClick={onBookClick}>
+								<NavBooksButton contents={transparent} domain={domain} onClick={onBookClick}>
 									책
 								</NavBooksButton>
 							</NavLi>
@@ -128,22 +149,23 @@ const Nav = () => {
 										placeholder="콘텐츠,인물,컬렉션,유저를 검색해보세요."
 										onChange={onSearchValueHandler}
 										ref={searchInputRef}
+										contents={transparent}
 									/>
 								</form>
 							</NavLi>
 							<NavLi>
 								{!isLoggedIn && (
-									<NavButton onClick={loginHandler}>로그인</NavButton>
+									<NavButton onClick={loginHandler} contents={transparent}>로그인</NavButton>
 								)}
 								{isLoggedIn && (
-									<NavButton onClick={moveReviewPageHandler}>
+									<NavButton onClick={moveReviewPageHandler} contents={transparent}>
 										평가하기
 									</NavButton>
 								)}
 							</NavLi>
 							<NavLi>
 								{!isLoggedIn && (
-									<RegisterButton onClick={signUpHandler}>
+									<RegisterButton onClick={signUpHandler} contents={transparent}>
 										회원가입
 									</RegisterButton>
 								)}
