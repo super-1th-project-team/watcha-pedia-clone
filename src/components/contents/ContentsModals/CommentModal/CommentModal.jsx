@@ -19,7 +19,7 @@ const CommentModal = () => {
 		<ModalOverlay onClick={context.closeModal}>
 			<style.CommentModalDiv onClick={(e) => e.stopPropagation()}>
 				<form action="">
-					<style.CommentModalTitle>{detailData.title}</style.CommentModalTitle>
+					<style.CommentModalTitle>{detailData.title || detailData.name}</style.CommentModalTitle>
 					<style.CommentInput
 						type="text"
 						placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."

@@ -39,6 +39,15 @@ const Contents = () => {
 			console.error('Gallery Images Fetch Error:', error);
 		}
 	};
+	const fetchTVGalleryImages = async () => {
+		try {
+			const response = await movieAxios.get(`tv/${id}/images`);
+
+			dispatch(SET_GALLERY(response.data.backdrops));
+		} catch (error) {
+			console.error('TV Gallery Images Fetch Error:', error);
+		}
+	};
 
 	const fetchSimilarMovieData = async () => {
 		try {
@@ -74,6 +83,7 @@ const Contents = () => {
 		Promise.all([
 			fetchMovieDetailData(),
 			fetchGalleryImages(),
+			fetchTVGalleryImages(),
 			fetchTVDetailData(),
 			fetchSimilarMovieData(),
 			fetchSimilarTVData(),
