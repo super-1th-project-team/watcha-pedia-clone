@@ -9,6 +9,7 @@ const movieRequests = {
 	fetchMovieDetail: '/movie',
 	fetchGalleryImages: '/movie',
 	fetchSimilar: '/movie',
+	fetchSearchMovie: '/search/movie',
 };
 
 export default movieRequests;
