@@ -11,47 +11,51 @@ export const SimilarLi = styled.li`
 `;
 export const SimilarImgPaddingDiv = styled.div`
 	width: 100%;
-  padding-top: 145.37%;
-  position: relative;
-  background: rgb(248, 248, 248);
+	padding-top: 145.37%;
+	position: relative;
+	background: rgb(248, 248, 248);
 	border: 1px solid rgb(234, 233, 232);
 	border-radius: 5px;
-  overflow: hidden;
+	overflow: hidden;
 	background: rgb(248, 248, 248);
 `;
 export const SimilarImgDiv = styled.div`
-  width: 100%;
-  height: 100%;
-`
+	width: 100%;
+	height: 100%;
+`;
 export const SimilarImg = styled.img`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 `;
 export const SimilarTitle = styled.p`
-  margin-top: 5px;
+	margin-top: 5px;
 	font-size: 16px;
 	line-height: 22px;
 	font-weight: 500;
 	overflow: hidden;
-	text-overflow: ellipsis; 
-	display: -webkit-box; 
-  -webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 1;
 `;
 export const SimilarRating = styled.p`
   margin-top: 2px;
+>>>>>>>>> Temporary merge branch 2
 	font-size: 13px;
 	line-height: 18px;
 	color: rgb(120, 120, 120);
 	margin-top: 2px;
+<<<<<<<<< Temporary merge branch 1
+=========
   .star-icon{
     vertical-align: -1px;
   }
+>>>>>>>>> Temporary merge branch 2
 `;
 export const SimilarGenre = styled.p`
 	font-size: 12px;
@@ -74,8 +78,11 @@ export const MoreSimilarBtn = styled.button`
 	min-width: 72px;
 	font-size: 14px;
 	cursor: pointer;
+<<<<<<<<< Temporary merge branch 1
+=========
   .arr-down{
     width: 12px;
     margin-left: 3px;
   }
+>>>>>>>>> Temporary merge branch 2
 `;
