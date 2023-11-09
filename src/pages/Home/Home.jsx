@@ -3,9 +3,9 @@ import Movies from '../../components/theme/Movies/Movies';
 import Books from '../../components/theme/Books/Books';
 import TVSeasons from '../../components/theme/TVSeasons/TVSeasons';
 import { useScrollToTop } from '../../hooks/useScrollToTop.js';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { CHECK_TV_PAGE } from '../../slice/tvSeasonsSlice';
+
 
 const Home = () => {
 	const location = useLocation();
