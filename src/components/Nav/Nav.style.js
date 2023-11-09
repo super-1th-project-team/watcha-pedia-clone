@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as logo} from './white-logo.svg'
 
 export const Header = styled.header`
 	position: fixed;
@@ -20,35 +21,42 @@ export const Header = styled.header`
 `;
 
 export const NavNav = styled.nav`
-	width: 80%;
+	width: 1320px;
+	margin: 0 auto;
 `;
 
-export const NavLogo = styled.img.attrs({
-	src: '/assets/WATCHA_PEDIA_Logo_Main.png',
-	alt: 'Main Logo Image',
-})`
-	width: 100px;
-	height: 30px;
+export const NavLogo = styled(logo)`
+	width: 151px;
+	height: 59px;
 	cursor: pointer;
 `;
+export const NavWhiteLogo = styled(NavLogo)`
+	path{
+		fill: #fff;
+	}
+`
+
 
 export const NavContent = styled.div`
 	display: flex;
-	width: 96%;
+	width: 100%;
 	height: 100%;
-	margin: 0 auto;
 	align-items: center;
 	justify-content: space-between;
 `;
 
 export const NavUl = styled.div`
+	text-align: left;
 	display: flex;
 	list-style: none;
 	align-items: center;
 `;
 
-export const NavLi = styled.li`
-	margin-left: 30px;
+export const NavLeftLi = styled.li`
+	margin-right: 20px;
+`;
+export const NavRightLi = styled.li`
+	margin-left: 20px;
 `;
 
 export const NavSearchInput = styled.input`
@@ -61,8 +69,11 @@ export const NavSearchInput = styled.input`
 	border: 1px solid rgba(255, 255, 255, 0.25);
 	border-radius: 2px;
 	${props => props.contents && `
-		background-color: rgba(0, 0, 0, 0.2);
+		background-color: rgba(0, 0, 0, 0.1);
 		color: #fff;
+		&::placeholder{
+		color: rgba(255, 255, 255, 0.7);
+		}
 	`}
 `;
 
@@ -117,7 +128,8 @@ export const RegisterButton = styled(NavButton)`
 
 export const UserButton = styled(NavButton)`
 	& img {
-		width: 25px;
+		vertical-align: -2px;
+		width: 28px;
 		border-radius: 50%;
 	}
 `;

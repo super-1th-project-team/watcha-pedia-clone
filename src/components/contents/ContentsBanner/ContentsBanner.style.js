@@ -12,8 +12,10 @@ export const BgImg = styled.img`
 	height: 100%;
 `;
 export const contentsInfoBox = styled.div`
+	width: 1320px;
+	left: 50%;
+	transform: translateX(-50%);
 	position: absolute;
-	left: 60px;
 	bottom: 60px;
 `;
 export const contentsTitle = styled.h2`

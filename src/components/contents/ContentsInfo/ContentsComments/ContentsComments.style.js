@@ -107,7 +107,7 @@ export const LikeBtn = styled.button`
 export const MoreBtn = styled.button`
 	position: absolute;
 	top: 78px;
-	right: 60px;
+	right: 0px;
 	color: rgb(255, 47, 110);
 	font-size: 16px;
 	border: none;
