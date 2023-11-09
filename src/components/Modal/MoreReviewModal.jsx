@@ -1,5 +1,4 @@
-import React from 'react';
-import { styled } from 'styled-components';
+import React, { useState } from 'react';
 import { BsEye, BsBookmark } from 'react-icons/bs';
 import { FaBan, FaComment } from 'react-icons/fa';
 import PropTypes from 'prop-types';
@@ -10,6 +9,7 @@ import {
 	RModalIconBox,
 	RModalTitle,
 } from './Modal.style';
+import CommentModal from './CommentModal';
 
 const MoreReviewModal = ({
 	closeModal,
@@ -19,19 +19,30 @@ const MoreReviewModal = ({
 	updateTextContent,
 	itemId,
 }) => {
+	const [commentModalOpen, setCommentModalOpen] = useState(false);
+
 	const clickClosingHandler = (e) => {
 		if (e.target === e.currentTarget) {
 			closeModal();
+			setCommentModalOpen(false);
 		}
 	};
-	if (!isOpened) {
-		return null;
-	}
 
 	const clickINGhandler = () => {
 		updateTextContent(selectedItem.id);
 	};
 
+	const openCommentModal = () => {
+		setCommentModalOpen(true);
+	};
+
+	const closeCommentModal = () => {
+		setCommentModalOpen(false);
+		closeModal();
+	};
+	if (!isOpened) {
+		return null;
+	}
 	return (
 		<ModalContainer onClick={clickClosingHandler}>
 			<RModal>
@@ -79,7 +90,7 @@ const MoreReviewModal = ({
 						<p>보는 중</p>
 					</div>
 				</RModalIconBox>
-				<RModalContentBox>
+				<RModalContentBox onClick={openCommentModal}>
 					<p>코멘트 작성하기</p>
 					<FaComment size={28} color="var(--color-light-gray)" />
 				</RModalContentBox>
@@ -89,6 +100,13 @@ const MoreReviewModal = ({
 				</RModalContentBox>
 				<div onClick={closeModal}>취소</div>
 			</RModal>
+			{commentModalOpen && (
+				<CommentModal
+					closeModal={closeCommentModal}
+					selectedItem={selectedItem}
+					type={type}
+				/>
+			)}
 		</ModalContainer>
 	);
 };

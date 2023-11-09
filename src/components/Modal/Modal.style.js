@@ -6,10 +6,8 @@ export const ModalContainer = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100vh;
-	/* background-color: #434343; */
-	opacity: 0.1;
+	background-color: #6d6d6d10;
 	z-index: 10000;
-	backdrop-filter: blur(1px);
 `;
 
 export const RModal = styled.div`
@@ -79,4 +77,69 @@ export const RModalContentBox = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	cursor: pointer;
+`;
+
+export const CModal = styled.div`
+	padding: 25px;
+	width: 480px;
+	height: 460px;
+	border: 1px solid var(--color-bg-light-gray);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #fff;
+	box-sizing: border-box;
+	z-index: 10000;
+	opacity: 1;
+	& textarea {
+		flex: 8;
+		border: none;
+		outline: none;
+		resize: none;
+	}
+	& textarea::placeholder {
+		font-size: 1.125rem;
+		color: var(--color-light-gray);
+	}
+`;
+
+export const Title = styled.div`
+	flex: 1;
+	font-size: 1.125rem;
+	line-height: 1.125rem;
+	font-weight: 700;
+`;
+export const CrossBTN = styled.div`
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 35px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: var(--color-bg-light-gray);
+`;
+export const SummitBTN = styled.div`
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: flex-end;
+	& button {
+		padding: 10px 45px;
+		color: var(--color-bg-white);
+		background: var(--color-pink);
+		border: none;
+		font-size: 1.025rem;
+		border-radius: 10px;
+	}
+	& button:hover {
+		background: var(--color-lignt-red);
+	}
 `;
