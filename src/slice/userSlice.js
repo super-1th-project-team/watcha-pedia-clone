@@ -12,6 +12,7 @@ const initialState = {
 	isLoginError: false,
 	isAuthCheckPopUp: false,
 	buttonType: '',
+	searchData: '',
 };
 
 const userSlice = createSlice({
@@ -59,6 +60,9 @@ const userSlice = createSlice({
 		SET_BUTTON_TYPE(state, action) {
 			state.buttonType = action.payload;
 		},
+		SET_SEARCH_DATA(state, action) {
+			state.searchData = action.payload;
+		},
 	},
 });
 
@@ -72,6 +76,7 @@ export const {
 	CHECK_LOGIN_ERROR,
 	UPDATE_INPUT_VALUE,
 	SET_BUTTON_TYPE,
+	SET_SEARCH_DATA,
 } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-	CHECK_AUTH_POPUP,
 	LOGIN_USER,
 	LOGOUT_USER,
+	SET_SEARCH_DATA,
 	TOGGLE_LOGIN_POPUP,
 	TOGGLE_REGISTER_POPUP,
 } from '../../slice/userSlice';
@@ -77,6 +77,7 @@ const Nav = () => {
 	const SearchValueSubmitHandler = (e) => {
 		e.preventDefault();
 		navigate('/search');
+		dispatch(SET_SEARCH_DATA(searchInputRef.current.value));
 		searchInputRef.current.value = '';
 	};
 
