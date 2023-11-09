@@ -9,12 +9,10 @@ import {
 	SET_GALLERY,
 	SET_MOVIE_DETAIL,
 	SET_SIMILAR,
-	SET_VIDEOS,
 } from '../../slice/movieSlice';
 import { useScrollToTop } from '../../hooks/useScrollToTop';
 import { SET_TV_DETAIL, SET_TV_SIMILAR } from '../../slice/tvSeasonsSlice';
 import { ModalProvider } from '../../context/ModalContext';
-import Loading from './Loading/Loading';
 
 const Contents = () => {
 	const { id } = useParams();
@@ -39,15 +37,6 @@ const Contents = () => {
 			dispatch(SET_GALLERY(response.data.backdrops));
 		} catch (error) {
 			console.error('Gallery Images Fetch Error:', error);
-		}
-	};
-	const fetchTVGalleryImages = async () => {
-		try {
-			const response = await movieAxios.get(`tv/${id}/images`);
-
-			dispatch(SET_GALLERY(response.data.backdrops));
-		} catch (error) {
-			console.error('TV Gallery Images Fetch Error:', error);
 		}
 	};
 
@@ -81,36 +70,13 @@ const Contents = () => {
 		}
 	};
 
-	const fetchMovieVideos = async () => {
-		try {
-			const response = await movieAxios.get(`movie/${id}/videos`);
-			
-			dispatch(SET_VIDEOS(response.data.results));
-		} catch (error) {
-			console.error('Similar TV Shows Fetch Error:', error);
-		}
-	};
-
-	const fetcTVVideos = async () => {
-		try {
-			const response = await tvAxios.get(`tv/${id}/videos`);
-			
-			dispatch(SET_VIDEOS(response.data.results));
-		} catch (error) {
-			console.error('Similar TV Shows Fetch Error:', error);
-		}
-	}; 
-
 	useEffect(() => {
 		Promise.all([
 			fetchMovieDetailData(),
 			fetchGalleryImages(),
-			fetchTVGalleryImages(),
 			fetchTVDetailData(),
 			fetchSimilarMovieData(),
 			fetchSimilarTVData(),
-			fetchMovieVideos(),
-			fetcTVVideos()
 		])
 			.then(() => setIsLoading(false))
 			.catch(() => setIsLoading(false));
@@ -119,7 +85,7 @@ const Contents = () => {
 	useScrollToTop();
 
 	if (isLoading) {
-		return <Loading/>;
+		return <div>Loading...</div>;
 	}
 
 	return (
