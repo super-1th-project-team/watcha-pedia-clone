@@ -59,7 +59,6 @@ const Search = () => {
 		<SearchSection>
 			<SearchText>{`"${searchValue}"의 검색결과`}</SearchText>
 			<SearchSwiper fetchData={allData} movePageFunc={moveToContentsPage} />
-			<Divider></Divider>
 			<Title>영화</Title>
 			<Container>
 				{searchMovieData.map((movie) => (
@@ -77,7 +76,6 @@ const Search = () => {
 					</Article>
 				))}
 			</Container>
-			<Divider></Divider>
 			<Title>TV 프로그램</Title>
 			<Container>
 				{searchTVData.map((tv) => (
