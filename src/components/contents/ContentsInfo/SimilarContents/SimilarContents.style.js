@@ -44,14 +44,14 @@ export const SimilarTitle = styled.p`
 	-webkit-line-clamp: 1;
 `;
 export const SimilarRating = styled.p`
-  margin-top: 2px;
+	margin-top: 2px;
 	font-size: 13px;
 	line-height: 18px;
 	color: rgb(120, 120, 120);
 	margin-top: 2px;
-  .star-icon{
-    vertical-align: -1px;
-  }
+	.star-icon {
+		vertical-align: -1px;
+	}
 `;
 export const SimilarGenre = styled.p`
 	font-size: 12px;
@@ -74,8 +74,8 @@ export const MoreSimilarBtn = styled.button`
 	min-width: 72px;
 	font-size: 14px;
 	cursor: pointer;
-  .arr-down{
-    width: 12px;
-    margin-left: 3px;
-  }
+	.arr-down {
+		width: 12px;
+		margin-left: 3px;
+	}
 `;
