@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import ReviewHeader from '../ReviewHeader';
 import ReviewList from '../ReviewList';
-import { styled } from 'styled-components';
+import { ReviewWrapper } from '../styles/ReviewPage.style';
 
 const ReviewMovies = () => {
 	const nowPlayingMovieData = useSelector((state) => state.movie.nowPlaying);
@@ -33,12 +33,3 @@ const ReviewMovies = () => {
 };
 
 export default ReviewMovies;
-
-const ReviewWrapper = styled.div`
-	margin: 100px auto;
-	width: 640px;
-	border: 1px solid var(--color-light-gray);
-	border-radius: 5px;
-	box-sizing: border-box;
-	overflow: hidden;
-`;
