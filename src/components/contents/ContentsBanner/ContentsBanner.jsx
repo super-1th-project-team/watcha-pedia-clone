@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import * as style from './ContentsBanner.style';
 import { useSelector } from 'react-redux';
+import ModalContext from '../../../context/ModalContext';
 
 const ContentsBanner = () => {
 	const movieDetailData = useSelector((state) => state.movie.movieDetail);

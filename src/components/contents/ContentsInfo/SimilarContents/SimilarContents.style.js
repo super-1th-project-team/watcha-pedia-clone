@@ -45,17 +45,13 @@ export const SimilarTitle = styled.p`
 `;
 export const SimilarRating = styled.p`
   margin-top: 2px;
->>>>>>>>> Temporary merge branch 2
 	font-size: 13px;
 	line-height: 18px;
 	color: rgb(120, 120, 120);
 	margin-top: 2px;
-<<<<<<<<< Temporary merge branch 1
-=========
   .star-icon{
     vertical-align: -1px;
   }
->>>>>>>>> Temporary merge branch 2
 `;
 export const SimilarGenre = styled.p`
 	font-size: 12px;
@@ -78,11 +74,8 @@ export const MoreSimilarBtn = styled.button`
 	min-width: 72px;
 	font-size: 14px;
 	cursor: pointer;
-<<<<<<<<< Temporary merge branch 1
-=========
   .arr-down{
     width: 12px;
     margin-left: 3px;
   }
->>>>>>>>> Temporary merge branch 2
 `;
