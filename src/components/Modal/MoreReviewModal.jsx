@@ -10,7 +10,7 @@ const MoreReviewModal = ({
 	selectedItem,
 	type,
 	updateTextContent,
-	clickedINGItem,
+	itemId,
 }) => {
 	const clickClosingHandler = (e) => {
 		if (e.target === e.currentTarget) {
@@ -22,7 +22,7 @@ const MoreReviewModal = ({
 	}
 
 	const clickINGhandler = () => {
-		updateTextContent(clickedINGItem);
+		updateTextContent(selectedItem.id);
 	};
 
 	return (
@@ -94,7 +94,7 @@ MoreReviewModal.propTypes = {
 	selectedItem: PropTypes.object,
 	type: PropTypes.string.isRequired,
 	updateTextContent: PropTypes.func.isRequired,
-	clickedINGItem: PropTypes.object,
+	itemId: PropTypes.number.isRequired,
 };
 
 const ModalContainer = styled.div`

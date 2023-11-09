@@ -8,12 +8,10 @@ import MoreReviewModal from '../Modal/MoreReviewModal';
 const ReviewItem = ({ data, type }) => {
 	const [isOpenedModal, setIsOpenedModal] = useState(false);
 	const [selectedItem, setSelectedItem] = useState({});
-	const [clickedINGItemId, setClickedINGItemId] = useState();
-	const [textContent, setTextContent] = useState('');
+	const [activeTextContent, setActiveTextContent] = useState({});
 
 	const openModal = (item, type) => {
 		setSelectedItem(item, type);
-		setClickedINGItemId(item.id);
 		setIsOpenedModal(true);
 		document.body.style.overflow = 'hidden';
 	};
@@ -22,11 +20,11 @@ const ReviewItem = ({ data, type }) => {
 		document.body.style.overflow = 'unset';
 	};
 
-	const clickedINGItem = data.find(({ id }) => id === clickedINGItemId);
-
 	const clickINGHandler = (itemId) => {
-		setClickedINGItemId(itemId);
-		setTextContent('보는 중');
+		setActiveTextContent((prevTextContent) => ({
+			...prevTextContent,
+			[itemId]: '보는중',
+		}));
 	};
 
 	return (
@@ -44,9 +42,9 @@ const ReviewItem = ({ data, type }) => {
 							alt={item.title}
 						/>
 						<TextContainer>
-							<p onClick={() => clickINGHandler(item)}>
+							<p onClick={() => clickINGHandler(item.id)}>
 								<span>{type === 'tvSeasons' ? item.name : item.title}</span>
-								{textContent ||
+								{activeTextContent[item.id] ||
 									(type === 'movie'
 										? item.release_date
 										: type === 'tvSeasons'
@@ -65,8 +63,8 @@ const ReviewItem = ({ data, type }) => {
 						closeModal={closeModal}
 						selectedItem={selectedItem}
 						type={type}
+						itemId={item.id}
 						updateTextContent={clickINGHandler}
-						clickedINGItem={clickedINGItem}
 					/>
 				</RItem>
 			))}
