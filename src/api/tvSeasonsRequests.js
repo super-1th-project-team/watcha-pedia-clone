@@ -9,6 +9,7 @@ const tvSeasonsRequests = {
 	fetchTVDetail: '/tv',
 	fetchTVGalleryImages: '/tv',
 	fetchTVSimilar: '/tv',
+	fetchTVVideos: '/tv',
 };
 
 export default tvSeasonsRequests;

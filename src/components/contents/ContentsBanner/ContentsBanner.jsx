@@ -25,7 +25,7 @@ const ContentsBanner = () => {
 						detailData.genres.map((genre) => (
 							<style.genreText key={genre.id}>{genre.name}</style.genreText>
 						))}{' '} 
-					{!isCheckTVPage && `· 국가`}
+					{!isCheckTVPage && `· ${detailData.production_countries[0].name}`}
 				</style.contentsInfo>
 				<style.contentsInfo mgtop='8px'>{isCheckTVPage ? detailData.origin_country : `${detailData.runtime}분`}</style.contentsInfo>
 				<style.contentsInfo mgtop='16px'>

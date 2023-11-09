@@ -7,8 +7,10 @@ import ContentsComments from './ContentsComments/ContentsComments';
 import ContentsVideo from './ContentsImgs/ContentsVideo';
 import ModalContext from '../../../context/ModalContext';
 import ContentsModals from '../ContentsModals/ContentsModals';
+import { useSelector } from 'react-redux';
 
 const ContentsInfo = () => {
+	const videoDatas = useSelector((state) => state.movie.videos);
 	const context = useContext(ModalContext);
 	return (
 			<>
@@ -16,7 +18,7 @@ const ContentsInfo = () => {
 					<ContentsInfoBox />
 					<ContentsComments />
 					<ContentsGallery />
-					<ContentsVideo />
+					{videoDatas.length > 1 ? <ContentsVideo /> : null}
 					{/* <ContentsCollections /> */}
 					<SimilarContents />
 			</>

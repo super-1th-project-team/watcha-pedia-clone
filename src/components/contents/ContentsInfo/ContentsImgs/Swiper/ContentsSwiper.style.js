@@ -19,14 +19,13 @@ export const ContentsSwiperContainer = styled.div`
 		text-align: center;
 		font-size: 18px;
 		width: 30%;
-
-		/* Center slide text vertically */
-		display: flex;
-		justify-content: left;
-		align-items: center;
 	}
 
 	.swiper-slide img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
@@ -56,5 +55,26 @@ export const ContentsSwiperContainer = styled.div`
 	.swiper-button-next:after {
 		color: #000;
 		font-size: 12px;
+	}
+`;
+
+export const SwiperImgDiv = styled.div`
+	overflow: hidden;
+	background: rgb(248, 248, 248);
+	box-sizing: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 3px;
+	position: relative;
+	padding-top: 66.4615%;
+	cursor: pointer;
+	.play-icon{
+		position: absolute;
+		z-index: 1000;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 30px;
+		height: 30px;
+		color: #fff;
 	}
 `;
