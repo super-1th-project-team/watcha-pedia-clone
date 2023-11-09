@@ -50,12 +50,13 @@ export const Article = styled.article`
 `;
 
 export const ImgWrap = styled.div`
-	height: 85%;
-	width: 80px;
+	aspect-ratio: 3 / 4.5;
+	width: 100px;
 	border-radius: 3px;
 	overflow: hidden;
+	display: flex;
 	& img {
-		height: 100%;
+		width: 100%;
 		text-align: center;
 	}
 `;

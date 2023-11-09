@@ -66,7 +66,7 @@ const Search = () => {
 						<ImgWrap>
 							<img
 								src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-								alt=""
+								alt={movie.title}
 							/>
 						</ImgWrap>
 						<InfoWrap>
@@ -83,7 +83,10 @@ const Search = () => {
 						<ImgWrap>
 							<img
 								src={`https://image.tmdb.org/t/p/original/${tv.poster_path}`}
-								alt=""
+								alt={tv.name}
+								onError={(e) => {
+									e.target.src = '/assets/icon-empty.svg';
+								}}
 							/>
 						</ImgWrap>
 						<InfoWrap>
