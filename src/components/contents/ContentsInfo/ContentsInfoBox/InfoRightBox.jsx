@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import InfoBtns from './InfoBtns';
 import * as style from './ContentsInfoBox.style';
 import { useSelector } from 'react-redux';
+import ModalContext from '../../../../context/ModalContext';
 
 const InfoRightBox = () => {
+	const context = useContext(ModalContext)
 	const movieDetailData = useSelector((state) => state.movie.movieDetail);
 	const tvDetailData = useSelector((state) => state.tvSeasons.tvDetail);
 
@@ -21,6 +23,10 @@ const InfoRightBox = () => {
 	const watchingBtnHandler = (bool) => {
 		setWatchingIsClicked(bool);
 	};
+
+	const commentOpenHandler = () => {
+		context.openModal()
+	}
 
 	return (
 		<style.InfoRightBox>
@@ -50,7 +56,7 @@ const InfoRightBox = () => {
 				<style.CommentDiv>
 					<style.WriteDiv>
 						<p>user 님의 생각을 글로 적어보세요.</p>
-						<style.WriteBtn>코멘트 남기기</style.WriteBtn>
+						<style.WriteBtn onClick={commentOpenHandler}>코멘트 남기기</style.WriteBtn>
 					</style.WriteDiv>
 				</style.CommentDiv>
 			) : null}

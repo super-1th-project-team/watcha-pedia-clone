@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import * as style from './ContentsInfoBox.style';
 import { BiPlus } from 'react-icons/bi';
 import { RiPencilFill } from 'react-icons/ri';
@@ -9,6 +9,7 @@ import { PiArchiveBoxFill } from 'react-icons/pi';
 import { LuCalendarPlus } from 'react-icons/lu';
 import { useDispatch, useSelector } from 'react-redux';
 import { CHECK_AUTH_POPUP, SET_BUTTON_TYPE } from '../../../../slice/userSlice';
+import ModalContext from '../../../../context/ModalContext';
 
 const InfoBtns = ({
 	wantBtnHandler,
@@ -18,6 +19,7 @@ const InfoBtns = ({
 }) => {
 	const [moreIsClicked, setMoreIsClicked] = useState(false);
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+	const context = useContext(ModalContext);
 
 	const dispatch = useDispatch();
 
@@ -26,6 +28,10 @@ const InfoBtns = ({
 		if (watchingIsClicked) {
 			watchingBtnHandler(false);
 		}
+	};
+
+	const commentPopUpHandler = () => {
+		context.openModal();
 	};
 
 	const watchingClickHandler = () => {
@@ -51,8 +57,6 @@ const InfoBtns = ({
 		dispatch(SET_BUTTON_TYPE(type));
 		checkAuthHandler();
 	};
-
-	const commentPopUpHandler = () => {};
 
 	return (
 		<>
@@ -95,13 +99,17 @@ const InfoBtns = ({
 								<MdNotInterested className="more-btns" />
 								관심없어요
 							</style.moreBtn>
-							<style.moreBtn margin="3px 0">
-								<PiArchiveBoxFill className="more-btns" />
-								컬렉션에 추가
-							</style.moreBtn>
-							<style.moreBtn>
-								<LuCalendarPlus className="more-btns" />본 날짜에 추가
-							</style.moreBtn>
+							{isLoggedIn && (
+								<div>
+									<style.moreBtn margin="3px 0">
+										<PiArchiveBoxFill className="more-btns" />
+										컬렉션에 추가
+									</style.moreBtn>
+									<style.moreBtn>
+										<LuCalendarPlus className="more-btns" />본 날짜에 추가
+									</style.moreBtn>
+								</div>
+							)}
 						</style.moreDiv>
 					)}
 				</style.Btn>
