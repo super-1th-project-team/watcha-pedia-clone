@@ -6,9 +6,10 @@ export const Banner = styled.div`
 	position: relative;
 `;
 export const BgImg = styled.img`
+	object-position: center center;
+	object-fit: cover;
 	width: 100%;
 	height: 100%;
-	background-color: green;
 `;
 export const contentsInfoBox = styled.div`
 	position: absolute;
@@ -17,13 +18,14 @@ export const contentsInfoBox = styled.div`
 `;
 export const contentsTitle = styled.h2`
 	font-size: 36px;
+	font-weight: 700;
 	color: #fff;
 `;
 export const contentsInfo = styled.p`
+	margin-top: ${props => props.mgtop};
 	color: #fff;
 	font-size: 14px;
 	line-height: 18px;
-	margin-top: 8px;
 `;
 
 export const genreText = styled.span`

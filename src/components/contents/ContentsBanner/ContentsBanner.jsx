@@ -17,8 +17,8 @@ const ContentsBanner = () => {
 			/>
 			<style.contentsInfoBox>
 				<style.contentsTitle>{detailData.title}</style.contentsTitle>
-				<style.contentsInfo>{detailData.original_title}</style.contentsInfo>
-				<style.contentsInfo>
+				<style.contentsInfo mgtop='16px'>{detailData.original_title}</style.contentsInfo>
+				<style.contentsInfo mgtop='8px'>
 					{detailData.release_date} ·{' '}
 					{detailData.genres &&
 						detailData.genres.map((genre) => (
@@ -26,8 +26,8 @@ const ContentsBanner = () => {
 						))}{' '}
 					· 국가
 				</style.contentsInfo>
-				<style.contentsInfo>{detailData.runtime}분</style.contentsInfo>
-				<style.contentsInfo>
+				<style.contentsInfo mgtop='8px'>{detailData.runtime}분</style.contentsInfo>
+				<style.contentsInfo mgtop='16px'>
 					인기도 : {detailData.popularity}
 				</style.contentsInfo>
 			</style.contentsInfoBox>

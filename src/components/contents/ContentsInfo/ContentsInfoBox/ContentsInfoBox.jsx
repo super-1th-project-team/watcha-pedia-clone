@@ -2,6 +2,7 @@ import React from 'react';
 import * as style from './ContentsInfoBox.style';
 import InfoRightBox from './InfoRightBox';
 import { useSelector } from 'react-redux';
+import { IoStarSharp } from 'react-icons/io5';
 
 const ContentsInfoBox = () => {
 	const movieDetailData = useSelector((state) => state.movie.movieDetail);
@@ -20,15 +21,16 @@ const ContentsInfoBox = () => {
 						alt=""
 					/>
 					<style.GraphSection>
-						<style.GrayText margin="8px">별점 그래프</style.GrayText>
+						<style.GrayText marginbtm="8px">별점 그래프</style.GrayText>
 						<style.Average>
-							평균
+							평균 <IoStarSharp />
+							{(detailData.vote_average / 2).toFixed(1)}
 							<style.GrayText as="span">
 								{' '}
 								({detailData.vote_count}명)
 							</style.GrayText>
 						</style.Average>
-						<p>그래프</p>
+						{/* <p>그래프</p> */}
 					</style.GraphSection>
 				</style.InfoLeftBox>
 				<InfoRightBox />

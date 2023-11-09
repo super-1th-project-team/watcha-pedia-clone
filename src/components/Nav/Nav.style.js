@@ -7,11 +7,16 @@ export const Header = styled.header`
 	justify-content: center;
 	width: 100%;
 	height: 62px;
-	background-color: var(--color-bg-white);
-	border-bottom: 1px solid var(--color-light-gray);
+	background-color: #fff;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 	left: 0;
 	top: 0;
 	z-index: 2;
+	transition: background-color 200ms ease 0s;
+	${props => props.contents && `
+		background-color: transparent;
+		border-bottom: transparent;
+	`}
 `;
 
 export const NavNav = styled.nav`
@@ -53,14 +58,21 @@ export const NavSearchInput = styled.input`
 	height: 38px;
 	text-align: center;
 	font-size: 15px;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	border-radius: 2px;
+	${props => props.contents && `
+		background-color: rgba(0, 0, 0, 0.2);
+		color: #fff;
+	`}
 `;
+
 
 export const NavButton = styled.button`
 	font-weight: 500;
 	font-size: 1.2em;
 	border: none;
 	outline: none;
-	color: #828282;
+	color:  ${props => props.contents ? 'rgba(255, 255, 255, 0.7)' : '#828282'};
 	background-color: transparent;
 	&:hover {
 		cursor: pointer;
@@ -73,6 +85,7 @@ export const NavMovieButton = styled(NavButton)`
 		`
     color: var(--color-dark-black);
   `}
+	${props => props.contents && `color: rgba(255, 255, 255, 0.7)`}
 `;
 
 export const NavTVSeasonsButton = styled(NavButton)`
@@ -95,7 +108,11 @@ export const RegisterButton = styled(NavButton)`
 	border: 1px solid var(--color-dark-gray);
 	border-radius: 5px;
 	padding: 7px 15px;
-	color: var(--color-dark-black);
+	color:var(--color-dark-black);
+	${props => props.contents && `
+		border: 1px solid rgba(255, 255, 255, 0.7);
+		color: rgba(255, 255, 255, 0.7);
+	`}
 `;
 
 export const UserButton = styled(NavButton)`
