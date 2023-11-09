@@ -13,11 +13,7 @@ const Review = () => {
 	else if (content_type === 'tv_seasons') return <ReviewTVSeasons />;
 	else if (content_type === 'books') return <ReviewBooks />;
 
-	return (
-		<RWrapper>
-			<ReviewMovies />
-		</RWrapper>
-	);
+	return <ReviewMovies />;
 };
 
 export default Review;
