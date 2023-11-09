@@ -5,6 +5,7 @@ const instance = axios.create({
 	params: {
 		api_key: '916d2ebdabad974a800012d13e9985cd',
 		language: 'ko-KR',
+		include_image_language: 'en,null' 
 	},
 });
 

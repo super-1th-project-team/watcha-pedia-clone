@@ -10,8 +10,7 @@ import { ContentsSwiperContainer } from './ContentsSwiper.style';
 
 const ContentsSwiper = () => {
 	const context = useContext(ModalContext);
-	const galleryImages = useSelector((state) => state.galleryImages);
-
+	const galleryImages = useSelector((state) => state.movie.galleryImages);
 	const imgModalHandler = (img) => {
 		context.openModal();
 		context.url(img);
