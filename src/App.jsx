@@ -28,7 +28,15 @@ import {
 	SET_NEW_BOOKS,
 	SET_USED_BOOKS,
 } from './slice/booksSlice';
-import { SET_TV_DAY_TREND } from './slice/tvSeasonsSlice';
+import {
+	SET_TV_ACTION,
+	SET_TV_ANIMATION,
+	SET_TV_DAY_TREND,
+	SET_TV_KIDS,
+	SET_TV_ON_THE_AIR,
+	SET_TV_POPULAR,
+	SET_TV_WEEK_TREND,
+} from './slice/tvSeasonsSlice';
 
 const App = () => {
 	const isLogInPopUp = useSelector((state) => state.user.isLogInPopUp);
@@ -78,6 +86,42 @@ const App = () => {
 		dispatch(SET_TV_DAY_TREND(shuffleArray(response.data.results)));
 	};
 
+	const fetchTvWeekTrend = async () => {
+		const response = await tvAxios.get(tvSeasonsRequests.fetchTVWeekTrend);
+
+		dispatch(SET_TV_WEEK_TREND(shuffleArray(response.data.results)));
+	};
+
+	const fetchTvOnTheAir = async () => {
+		const response = await tvAxios.get(tvSeasonsRequests.fetchTVOnTheAir);
+
+		dispatch(SET_TV_ON_THE_AIR(shuffleArray(response.data.results)));
+	};
+
+	const fetchTvPopular = async () => {
+		const response = await tvAxios.get(tvSeasonsRequests.fetchTVPopular);
+
+		dispatch(SET_TV_POPULAR(shuffleArray(response.data.results)));
+	};
+
+	const fetchTvAction = async () => {
+		const response = await tvAxios.get(tvSeasonsRequests.fetchTVAction);
+
+		dispatch(SET_TV_ACTION(shuffleArray(response.data.results)));
+	};
+
+	const fetchTvAnimation = async () => {
+		const response = await tvAxios.get(tvSeasonsRequests.fetchTVAnimation);
+
+		dispatch(SET_TV_ANIMATION(shuffleArray(response.data.results)));
+	};
+
+	const fetchTvKids = async () => {
+		const response = await tvAxios.get(tvSeasonsRequests.fetchTVKids);
+
+		dispatch(SET_TV_KIDS(shuffleArray(response.data.results)));
+	};
+
 	const fetchNewBooksData = async () => {
 		const response = await booksAxios.get('ItemList.aspx', {
 			params: booksRequests.fetchNewBooks,
@@ -120,6 +164,12 @@ const App = () => {
 		fetchRomanticData();
 
 		fetchTvDayTrendData();
+		fetchTvWeekTrend();
+		fetchTvOnTheAir();
+		fetchTvPopular();
+		fetchTvAction();
+		fetchTvAnimation();
+		fetchTvKids();
 
 		fetchNewBooksData();
 		fetchBestSellerData();
