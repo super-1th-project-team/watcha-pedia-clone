@@ -9,19 +9,22 @@ import {
 } from './UsersComments.style';
 import { useState } from 'react';
 import { useScrollToTop } from '../../../hooks/useScrollToTop';
+import UserCommentBox from './UserCommentBox/UserCommentBox';
 
 const UsersComments = () => {
-	const location = useLocation();
-	const query = new URLSearchParams(location.search);
-	const content_type = query.get('content_type');
-
-	const { id, contentType } = useParams();
+	const [contentType, setContentType] = useState('');
+	const { id } = useParams();
 	const navigate = useNavigate();
 
 	const [activeButton, setActiveButton] = useState(1);
 
 	const handleButtonClick = (id) => {
 		setActiveButton(id);
+		id === 1
+			? setContentType('movies')
+			: id === 2
+			? setContentType('tv_seasons')
+			: setContentType('books');
 	};
 
 	const getButtonStyle = (id) => {
@@ -65,6 +68,7 @@ const UsersComments = () => {
 					책
 				</TypeButton>
 			</ButtonWrap>
+			<UserCommentBox contentType={contentType} />
 		</UsersCommentsSection>
 	);
 };

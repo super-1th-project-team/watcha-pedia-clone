@@ -29,8 +29,8 @@ const Nav = () => {
 	const [searchValue, setSearchValue] = useState('');
 	const searchInputRef = useRef('');
 
-	const [transparent, setTransparent] = useState(true)
-	const [scrollPosition, setScrollPosition] = useState(0)
+	const [transparent, setTransparent] = useState(true);
+	const [scrollPosition, setScrollPosition] = useState(0);
 
 	const { isLoggedIn, isLogInPopUp, isRegisterPopUp, photoURL, id } =
 		useSelector((state) => state.user);
@@ -41,8 +41,7 @@ const Nav = () => {
 	const location = useLocation();
 	const query = new URLSearchParams(location.search);
 	const domain = query.get('domain');
-	let contentsUrl = location.pathname.includes('/contents')
-
+	let contentsUrl = location.pathname.includes('/contents');
 
 	const loginHandler = () => {
 		if (isRegisterPopUp) dispatch(TOGGLE_REGISTER_POPUP());
@@ -85,7 +84,7 @@ const Nav = () => {
 		navigate('/review');
 	};
 
-	const moveUserPageHadler = () => {
+	const moveUserPageHandler = () => {
 		navigate(`/users/${id}`);
 	};
 
@@ -101,20 +100,18 @@ const Nav = () => {
 		}
 	}, [dispatch]);
 
-
-	
 	const updateScroll = () => {
-			setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-	}
-	useEffect(()=>{
-			window.addEventListener('scroll', updateScroll);
-	}, [])
+		setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+	};
+	useEffect(() => {
+		window.addEventListener('scroll', updateScroll);
+	}, []);
 
 	useEffect(() => {
-		contentsUrl && scrollPosition < 60 ? setTransparent(true) : setTransparent(false);
-	}, [scrollPosition, contentsUrl])
-
-
+		contentsUrl && scrollPosition < 60
+			? setTransparent(true)
+			: setTransparent(false);
+	}, [scrollPosition, contentsUrl]);
 
 	return (
 		<Header contents={transparent}>
@@ -126,17 +123,26 @@ const Nav = () => {
 								<NavLogo onClick={onHomeClick} />
 							</NavLi>
 							<NavLi>
-								<NavMovieButton contents={transparent} domain={domain} onClick={onMovieClick}>
+								<NavMovieButton
+									contents={transparent}
+									domain={domain}
+									onClick={onMovieClick}>
 									영화
 								</NavMovieButton>
 							</NavLi>
 							<NavLi>
-								<NavTVSeasonsButton contents={transparent} domain={domain} onClick={onTvClick}>
+								<NavTVSeasonsButton
+									contents={transparent}
+									domain={domain}
+									onClick={onTvClick}>
 									TV
 								</NavTVSeasonsButton>
 							</NavLi>
 							<NavLi>
-								<NavBooksButton contents={transparent} domain={domain} onClick={onBookClick}>
+								<NavBooksButton
+									contents={transparent}
+									domain={domain}
+									onClick={onBookClick}>
 									책
 								</NavBooksButton>
 							</NavLi>
@@ -156,22 +162,28 @@ const Nav = () => {
 							</NavLi>
 							<NavLi>
 								{!isLoggedIn && (
-									<NavButton onClick={loginHandler} contents={transparent}>로그인</NavButton>
+									<NavButton onClick={loginHandler} contents={transparent}>
+										로그인
+									</NavButton>
 								)}
 								{isLoggedIn && (
-									<NavButton onClick={moveReviewPageHandler} contents={transparent}>
+									<NavButton
+										onClick={moveReviewPageHandler}
+										contents={transparent}>
 										평가하기
 									</NavButton>
 								)}
 							</NavLi>
 							<NavLi>
 								{!isLoggedIn && (
-									<RegisterButton onClick={signUpHandler} contents={transparent}>
+									<RegisterButton
+										onClick={signUpHandler}
+										contents={transparent}>
 										회원가입
 									</RegisterButton>
 								)}
 								{isLoggedIn && (
-									<UserButton onClick={moveUserPageHadler}>
+									<UserButton onClick={moveUserPageHandler}>
 										<img
 											src={
 												photoURL === null ? '/assets/icon-user.png' : photoURL

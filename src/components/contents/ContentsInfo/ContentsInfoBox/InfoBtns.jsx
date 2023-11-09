@@ -42,8 +42,6 @@ const InfoBtns = ({
 	const userId = useSelector((state) => state.user.id);
 	const userMovieInfoData = useSelector((state) => state.user.userData.movies);
 	const userTVInfoData = useSelector((state) => state.user.userData.tvShows);
-	console.log(userMovieInfoData);
-	console.log(userTVInfoData);
 
 	const dispatch = useDispatch();
 
@@ -88,7 +86,6 @@ const InfoBtns = ({
 			onValue(userRef, (snapshot) => {
 				const userData = snapshot.val();
 				if (userData) {
-					console.log(userData);
 					dispatch(UPDATE_USER_DATA(userData));
 				}
 			});

@@ -11,6 +11,7 @@ const initialState = {
 	galleryImages: [],
 	similarMovies: [],
 	movieDetail: {},
+	commentMovieDetail: [],
 };
 
 const movieSlice = createSlice({
@@ -47,6 +48,9 @@ const movieSlice = createSlice({
 		SET_SIMILAR(state, action) {
 			state.similarMovies = action.payload;
 		},
+		SET_COMMENT_MOVIE_DETAILS(state, action) {
+			state.commentMovieDetail = action.payload;
+		},
 	},
 });
 
@@ -61,6 +65,7 @@ export const {
 	SET_MOVIE_DETAIL,
 	SET_GALLERY,
 	SET_SIMILAR,
+	SET_COMMENT_MOVIE_DETAILS,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

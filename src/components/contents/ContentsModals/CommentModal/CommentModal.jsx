@@ -28,8 +28,6 @@ const CommentModal = () => {
 
 	const userMovieInfoData = useSelector((state) => state.user.userData.movies);
 	const userTVInfoData = useSelector((state) => state.user.userData.tvShows);
-	console.log(userMovieInfoData);
-	console.log(userTVInfoData);
 
 	const valueChangeHandler = (e) => {
 		setTextAreaValue(e.target.value);

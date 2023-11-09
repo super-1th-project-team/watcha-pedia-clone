@@ -14,42 +14,9 @@ const initialState = {
 	buttonType: '',
 	searchData: '',
 	userData: {
-		movies: [
-			{
-				movieId: '',
-				wishes: false,
-				watching: false,
-				comment: {
-					commentId: 0,
-					text: '',
-				},
-				rating: 0,
-			},
-		],
-		tvShows: [
-			{
-				tvShowsId: '',
-				wishes: false,
-				watching: false,
-				comment: {
-					commentId: 0,
-					text: '',
-				},
-				rating: 0,
-			},
-		],
-		books: [
-			{
-				booksId: '',
-				wishes: false,
-				watching: false,
-				comment: {
-					commentId: 0,
-					text: '',
-				},
-				rating: 0,
-			},
-		],
+		movies: [],
+		tvShows: [],
+		books: [],
 	},
 };
 
@@ -109,25 +76,17 @@ const userSlice = createSlice({
 			);
 
 			if (itemIndex !== -1) {
-				state.userData[arrayKey] = [
-					...state.userData[arrayKey].slice(0, itemIndex),
-					{
-						...state.userData[arrayKey][itemIndex],
-						wishes: !state.userData[arrayKey][itemIndex].wishes,
-					},
-					...state.userData[arrayKey].slice(itemIndex + 1),
-				];
+				state.userData[arrayKey][itemIndex].wishes =
+					!state.userData[arrayKey][itemIndex].wishes;
 			} else {
-				state.userData[arrayKey] = [
-					...state.userData[arrayKey],
-					{
-						...(isTVPage ? { tvShowsId: id } : { movieId: id }),
-						wishes: true,
-						watching: false,
-						comment: { commentId: 0, text: '' },
-						rating: 0,
-					},
-				];
+				const newItem = {
+					...(isTVPage ? { tvShowsId: id } : { movieId: id }),
+					wishes: true,
+					watching: false,
+					comment: { commentId: 0, text: '' },
+					rating: 0,
+				};
+				state.userData[arrayKey].push(newItem);
 			}
 		},
 		TOGGLE_WATCHING(state, action) {
@@ -138,25 +97,16 @@ const userSlice = createSlice({
 			);
 
 			if (itemIndex !== -1) {
-				state.userData[arrayKey] = [
-					...state.userData[arrayKey].slice(0, itemIndex),
-					{
-						...state.userData[arrayKey][itemIndex],
-						watching: !state.userData[arrayKey][itemIndex].watching,
-					},
-					...state.userData[arrayKey].slice(itemIndex + 1),
-				];
+				state.userData[arrayKey][itemIndex].watching =
+					!state.userData[arrayKey][itemIndex].watching;
 			} else {
-				state.userData[arrayKey] = [
-					...state.userData[arrayKey],
-					{
-						...(isTVPage ? { tvShowsId: id } : { movieId: id }),
-						wishes: false,
-						watching: true,
-						comment: { commentId: 0, text: '' },
-						rating: 0,
-					},
-				];
+				state.userData[arrayKey].push({
+					...(isTVPage ? { tvShowsId: id } : { movieId: id }),
+					wishes: false,
+					watching: true,
+					comment: { commentId: 0, text: '' },
+					rating: 0,
+				});
 			}
 		},
 		SET_NO_INTEREST(state, action) {
@@ -167,17 +117,12 @@ const userSlice = createSlice({
 			);
 
 			if (itemIndex !== -1) {
-				state.userData[arrayKey] = [
-					...state.userData[arrayKey].slice(0, itemIndex),
-					{
-						...state.userData[arrayKey][itemIndex],
-						wishes: false,
-						watching: false,
-					},
-					...state.userData[arrayKey].slice(itemIndex + 1),
-				];
+				state.userData[arrayKey][itemIndex].wishes = false;
+				state.userData[arrayKey][itemIndex].watching = false;
 			}
 		},
+
+		// SET_COMMENT 리듀서
 		SET_COMMENT(state, action) {
 			const { id, isTVPage, comment } = action.payload;
 			const arrayKey = isTVPage ? 'tvShows' : 'movies';
@@ -186,16 +131,21 @@ const userSlice = createSlice({
 			);
 
 			if (itemIndex !== -1) {
-				state.userData[arrayKey] = [
-					...state.userData[arrayKey].slice(0, itemIndex),
-					{
-						...state.userData[arrayKey][itemIndex],
-						comment: { commentId: 0, text: comment },
-					},
-					...state.userData[arrayKey].slice(itemIndex + 1),
-				];
+				state.userData[arrayKey][itemIndex].comment = {
+					commentId: 0,
+					text: comment,
+				};
+			} else {
+				state.userData[arrayKey].push({
+					...(isTVPage ? { tvShowsId: id } : { movieId: id }),
+					wishes: false,
+					watching: false,
+					comment: { commentId: 0, text: comment },
+					rating: 0,
+				});
 			}
 		},
+
 		UPDATE_USER_DATA(state, action) {
 			const { movies, tvShows } = action.payload;
 			if (movies) {
