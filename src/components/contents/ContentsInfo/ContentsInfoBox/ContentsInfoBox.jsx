@@ -21,7 +21,7 @@ const ContentsInfoBox = () => {
 						alt=""
 					/>
 					<style.GraphSection>
-						<style.GrayText margin="8px">별점 그래프</style.GrayText>
+						<style.GrayText marginbtm="8px">별점 그래프</style.GrayText>
 						<style.Average>
 							평균 <IoStarSharp />
 							{(detailData.vote_average / 2).toFixed(1)}

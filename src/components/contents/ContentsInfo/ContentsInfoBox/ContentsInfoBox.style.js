@@ -39,7 +39,8 @@ export const GraphSection = styled.section`
 	margin-top: 27px;
 `;
 export const GrayText = styled.p`
-	margin-bottom: ${(props) => props.margin};
+	margin-bottom: ${(props) => props.marginbtm};
+	margin-top: ${props => props.margintp};
 	font-size: 12px;
 	color: #8c8c8c;
 `;

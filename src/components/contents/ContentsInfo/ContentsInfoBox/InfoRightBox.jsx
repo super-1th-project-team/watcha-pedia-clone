@@ -32,11 +32,11 @@ const InfoRightBox = () => {
 				<style.ScoreDiv>
 					<div>
 						<style.ScoreText>3.2</style.ScoreText>
-						<style.GrayText>예상별점</style.GrayText>
+						<style.GrayText margintp='7px'>예상별점</style.GrayText>
 					</div>
 					<div style={{ marginLeft: 55 }}>
 						<style.ScoreText>{(detailData.vote_average / 2).toFixed(1)}</style.ScoreText>
-						<style.GrayText>평균별점({detailData.vote_count}명)</style.GrayText>
+						<style.GrayText margintp='7px'>평균별점({detailData.vote_count}명)</style.GrayText>
 					</div>
 				</style.ScoreDiv>
 				<InfoBtns

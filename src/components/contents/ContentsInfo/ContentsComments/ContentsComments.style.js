@@ -66,15 +66,15 @@ export const UserRating = styled.div`
 	}
 `;
 export const UserCommentDiv = styled.div`
-	padding: 12px 0 15px;
 	font-size: 15px;
 	line-height: 24px;
-	height: 120px;
 	border-bottom: 1px solid rgb(229, 229, 229);
+	padding: 12px 0 15px;
+	height: 147px;
 `;
 export const UserCommentP = styled.p`
-	width: 100%;
 	height: 100%;
+	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis; 
 	display: -webkit-box; 
