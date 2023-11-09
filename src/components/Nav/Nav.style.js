@@ -44,6 +44,15 @@ export const NavUl = styled.div`
 
 export const NavLi = styled.li`
 	margin-left: 30px;
+	& form {
+		position: relative;
+	}
+	& svg {
+		position: absolute;
+		top: 50%;
+		left: 12px;
+		transform: translateY(-50%);
+	}
 `;
 
 export const NavSearchInput = styled.input`
@@ -51,8 +60,9 @@ export const NavSearchInput = styled.input`
 	background-color: var(--color-bg-light-gray);
 	width: 300px;
 	height: 38px;
-	text-align: center;
 	font-size: 15px;
+	outline: none;
+	padding-left: 40px;
 `;
 
 export const NavButton = styled.button`
