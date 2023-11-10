@@ -33,7 +33,7 @@ export const Title = styled.div`
 export const SwiperImg = styled.div`
 	height: 90%;
 	& img {
-		width: 95%;
+		width: 100%;
 		height: 100%;
 		border-radius: 5px;
 		cursor: pointer;
@@ -69,7 +69,7 @@ export const StyledSwiperContainer = styled.div`
 	}
 
 	.swiper-slide > div:nth-child(2) img {
-		width: 95%;
+		width: 100%;
 	}
 
 	.swiper-button-prev {
