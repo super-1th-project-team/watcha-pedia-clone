@@ -4,7 +4,8 @@ import { IoStarSharp } from 'react-icons/io5';
 import { FaThumbsUp } from 'react-icons/fa6';
 import { BsFillChatFill } from 'react-icons/bs';
 
-const Comment = ({ comment }) => {
+const Comment = ({ review }) => {
+	const reviewDetails = review.author_details
 	const [isClicked, setIsClicked] = useState(false);
 	const [count, setCount] = useState(0);
 	const likeBtnHandler = () => {
@@ -20,25 +21,25 @@ const Comment = ({ comment }) => {
 			<style.CommentHeaderDiv>
 				<style.UserDiv>
 					<style.UserImgDiv>
-						<style.UserImg src={comment.userProfileUrl} alt="유저프로필" />
+						<style.UserImg src={`https://image.tmdb.org/t/p/original/${reviewDetails.avatar_path}`} alt="user" />
 					</style.UserImgDiv>
-					<p style={{ marginLeft: '8px' }}>{comment.id}</p>
+					<p style={{ marginLeft: '8px' }}>{reviewDetails.username}</p>
 				</style.UserDiv>
 				<style.UserRating>
-					<IoStarSharp className='star-icon'/>4.0
+					<IoStarSharp className='star-icon'/>{(reviewDetails.rating/2).toFixed(1)}
 				</style.UserRating>
 			</style.CommentHeaderDiv>
 			<style.UserCommentDiv>
-				<style.UserCommentP>{comment.comment}</style.UserCommentP>
+				<style.UserCommentP>{review.content}</style.UserCommentP>
 			</style.UserCommentDiv>
 			<style.UserCommentResUl>
 				<li>
 					<FaThumbsUp className='res-btns'/>
-					{comment.commentLike + count}
+					{~~(Math.random() * 1000) + count}
 				</li>
 				<li style={{ marginLeft: '13px' }}>
 					<BsFillChatFill  className='res-btns'/>
-					54
+					{~~(Math.random() * 100)}
 				</li>
 			</style.UserCommentResUl>
 			<style.LikeBtnDiv>

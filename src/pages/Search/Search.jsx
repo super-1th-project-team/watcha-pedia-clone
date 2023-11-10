@@ -59,7 +59,6 @@ const Search = () => {
 		<SearchSection>
 			<SearchText>{`"${searchValue}"의 검색결과`}</SearchText>
 			<SearchSwiper fetchData={allData} movePageFunc={moveToContentsPage} />
-			<Divider></Divider>
 			<Title>영화</Title>
 			<Container>
 				{searchMovieData.map((movie) => (
@@ -67,7 +66,7 @@ const Search = () => {
 						<ImgWrap>
 							<img
 								src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-								alt=""
+								alt={movie.title}
 							/>
 						</ImgWrap>
 						<InfoWrap>
@@ -77,7 +76,6 @@ const Search = () => {
 					</Article>
 				))}
 			</Container>
-			<Divider></Divider>
 			<Title>TV 프로그램</Title>
 			<Container>
 				{searchTVData.map((tv) => (
@@ -85,7 +83,10 @@ const Search = () => {
 						<ImgWrap>
 							<img
 								src={`https://image.tmdb.org/t/p/original/${tv.poster_path}`}
-								alt=""
+								alt={tv.name}
+								onError={(e) => {
+									e.target.src = '/assets/icon-empty.svg';
+								}}
 							/>
 						</ImgWrap>
 						<InfoWrap>

@@ -7,8 +7,12 @@ const ContentsModals = () => {
 	const context = useContext(ModalContext);
 	return (
 		<style.ModalOverlay onClick={context.closeModal}>
-			<style.ModalContentDiv onClick={(e) => e.stopPropagation() }>
-				{context.imgUrl ? <style.ModalImg src={context.imgUrl} alt="" /> : <CommentModal/>}
+			<style.ModalContentDiv onClick={(e) => e.stopPropagation()}>
+				{context.imgUrl ? (
+					<style.ModalImg src={context.imgUrl} alt="" />
+				) : (
+					<CommentModal />
+				)}
 			</style.ModalContentDiv>
 		</style.ModalOverlay>
 	);

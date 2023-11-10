@@ -1,8 +1,8 @@
-import { styled } from 'styled-components';
 import ReviewHeader from '../ReviewHeader';
 import ReviewList from '../ReviewList';
 import { useSelector } from 'react-redux';
 import shuffleArray from '../../../utils/shuffleArray';
+import { ReviewWrapper } from '../styles/ReviewPage.style';
 
 const ReviewBooks = () => {
 	const newBooksData = useSelector((state) => state.books.newBooks);
@@ -28,11 +28,3 @@ const ReviewBooks = () => {
 };
 
 export default ReviewBooks;
-
-const ReviewWrapper = styled.div`
-	margin: 30px auto;
-	width: 640px;
-	border: 1px solid var(--color-light-gray);
-	border-radius: 5px;
-	overflow: hidden;
-`;

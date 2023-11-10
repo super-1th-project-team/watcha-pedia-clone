@@ -7,7 +7,10 @@ const tvSeasonsRequests = {
 	fetchTVAnimation: '/discover/tv?with_genres=16',
 	fetchTVKids: '/discover/tv?with_genres=10762',
 	fetchTVDetail: '/tv',
+	fetchTVGalleryImages: '/tv',
 	fetchTVSimilar: '/tv',
+	fetchTVVideos: '/tv',
+	fetchTVReviews: '/tv'
 };
 
 export default tvSeasonsRequests;

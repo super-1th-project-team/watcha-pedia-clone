@@ -24,6 +24,7 @@ import {
 	NavUl,
 	NavWhiteLogo,
 } from './Nav.style';
+import { BiSearch } from 'react-icons/bi';
 
 const Nav = () => {
 	const [searchValue, setSearchValue] = useState('');
@@ -152,6 +153,7 @@ const Nav = () => {
 						<NavUl>
 							<NavLi>
 								<form onSubmit={SearchValueSubmitHandler}>
+									<BiSearch size={20} color="var(--color-light-gray)" />
 									<NavSearchInput
 										placeholder="콘텐츠,인물,컬렉션,유저를 검색해보세요."
 										onChange={onSearchValueHandler}

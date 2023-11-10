@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const DataTitle = styled.h1`
 	font-size: 22px;
 	font-weight: bold;
-	margin: 50px 0 12px 0;
 `;
 
 export const RankNumber = styled.div`
@@ -24,9 +23,8 @@ export const RankNumber = styled.div`
 `;
 
 export const Title = styled.div`
-	font-size: 1.1rem;
+	font-size: 1.025rem;
 	font-weight: 600;
-	width: 200px;
 	margin-top: 5px;
 `;
 
@@ -41,9 +39,10 @@ export const SwiperImg = styled.div`
 `;
 
 export const SwiperWrap = styled.div`
-	width: 80%;
+	width: 100%;
+	padding: 40px 50px;
 	height: 30%;
-	margin: auto;
+	border-bottom: 1px solid #e9e9e9;
 `;
 
 export const StyledSwiperContainer = styled.div`
@@ -56,8 +55,19 @@ export const StyledSwiperContainer = styled.div`
 		height: 100%;
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
 		font-size: 16px;
 		overflow: hidden;
+	}
+
+	.swiper-slide > div:nth-child(2) {
+		width: 100%;
+		aspect-ratio: 3 / 4;
+		overflow: hidden;
+	}
+
+	.swiper-slide > div:nth-child(2) img {
+		width: 100%;
 	}
 
 	.swiper-button-prev {
@@ -65,7 +75,7 @@ export const StyledSwiperContainer = styled.div`
 		height: 35px;
 		border-radius: 50%;
 		top: 50%;
-		transform: translateY(-100%);
+		transform: translateY(-50%);
 	}
 
 	.swiper-button-next {
@@ -73,15 +83,15 @@ export const StyledSwiperContainer = styled.div`
 		height: 35px;
 		border-radius: 50%;
 		top: 50%;
-		transform: translateY(-100%);
+		transform: translateY(-50%);
 	}
 `;
 
 export const InfoWrap = styled.div`
 	display: flex;
 	flex-direction: column;
-	/* text-align: left; */
-	/* margin-left: -50px; */
+	text-align: left;
+	width: 100%;
 `;
 
 export const DateText = styled.div`

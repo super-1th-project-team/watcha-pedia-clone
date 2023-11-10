@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { css, styled } from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { RNav, NavLi, NavUl } from './styles/ReviewPage.style';
 
 const ReviewNav = () => {
 	const navigate = useNavigate();
@@ -44,27 +44,6 @@ const ReviewNav = () => {
 };
 
 export default ReviewNav;
-
-const RNav = styled.div`
-	width: 100%;
-`;
-
-const NavUl = styled.ul`
-	display: flex;
-	width: 100%;
-`;
-const NavLi = styled.li`
-	cursor: pointer;
-	flex: 1;
-	padding: 20px 0;
-	text-align: center;
-	${(props) =>
-		props.isSelected &&
-		css`
-			color: var(--color-lignt-red);
-			border-bottom: 3px solid var(--color-lignt-red);
-		`}
-`;
 
 ReviewNav.propTypes = {
 	contentType: PropTypes.string.isRequired,

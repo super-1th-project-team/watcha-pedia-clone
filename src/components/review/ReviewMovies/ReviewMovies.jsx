@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux';
 import ReviewHeader from '../ReviewHeader';
 import ReviewList from '../ReviewList';
-import { styled } from 'styled-components';
-import shuffleArray from '../../../utils/shuffleArray';
+import { HiddenBox, ReviewWrapper } from '../styles/ReviewPage.style';
 
 const ReviewMovies = () => {
 	const nowPlayingMovieData = useSelector((state) => state.movie.nowPlaying);
@@ -23,21 +22,15 @@ const ReviewMovies = () => {
 		...romanticMovieData,
 	];
 
+	console.log(allMovieData);
+
 	return (
 		<ReviewWrapper>
+			<HiddenBox />
 			<ReviewHeader />
-			<ReviewList data={shuffleArray(allMovieData)} type="movie" />
+			<ReviewList data={allMovieData} type="movie" />
 		</ReviewWrapper>
 	);
 };
 
 export default ReviewMovies;
-
-const ReviewWrapper = styled.div`
-	margin: 100px auto;
-	width: 640px;
-	border: 1px solid var(--color-light-gray);
-	border-radius: 5px;
-	box-sizing: border-box;
-	overflow: hidden;
-`;

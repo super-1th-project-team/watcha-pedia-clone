@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import StarRating from '../StarRating/StarRating';
-import { styled } from 'styled-components';
 import { AiOutlineMore } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import MoreReviewModal from '../Modal/MoreReviewModal';
+import { IconMoreBTN, RItem, TextContainer } from './styles/ReviewPage.style';
 
 const ReviewItem = ({ data, type }) => {
 	const [isOpenedModal, setIsOpenedModal] = useState(false);
@@ -35,6 +35,10 @@ const ReviewItem = ({ data, type }) => {
 		}));
 	};
 
+	const truncate = (str, n) => {
+		return str?.length > n ? str.substr(0, n - 1) + '...' : str;
+	};
+
 	return (
 		<>
 			{data &&
@@ -52,14 +56,18 @@ const ReviewItem = ({ data, type }) => {
 							/>
 							<TextContainer>
 								<p onClick={() => clickINGHandler(item.id)}>
-									<span>{type === 'tvSeasons' ? item.name : item.title}</span>
+									<span>
+										{truncate(
+											type === 'tvSeasons' ? item.name : item.title,
+											21,
+										)}
+									</span>
 									{activeTextContent[item.id] ||
 										(type === 'movie'
 											? item.release_date || ''
 											: type === 'tvSeasons'
 											? item.first_air_date || ''
-											: item.author
-										).split('-')[0]}
+											: item.author)}
 								</p>
 								<StarRating
 									itemId={item.id}
@@ -93,34 +101,3 @@ ReviewItem.propTypes = {
 	data: PropTypes.object,
 	type: PropTypes.string.isRequired,
 };
-
-const RItem = styled.div`
-	display: flex;
-	justify-content: space-between;
-	border-bottom: 1px solid var(--color-bg-light-gray);
-	padding: 20px 0;
-	& > div {
-		display: flex;
-		gap: 20px;
-	}
-`;
-
-const TextContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	color: var(--color-light-gray);
-	padding-top: 5px;
-	& span {
-		font-weight: 700;
-		font-size: 1.125rem;
-		margin-bottom: 10px;
-		display: block;
-		color: var(--color-light-black);
-	}
-`;
-
-const IconMoreBTN = styled.div`
-	cursor: pointer;
-	height: fit-content;
-`;

@@ -1,7 +1,7 @@
-import { styled } from 'styled-components';
 import ReviewHeader from '../ReviewHeader';
 import ReviewList from '../ReviewList';
 import { useSelector } from 'react-redux';
+import { ReviewWrapper } from '../styles/ReviewPage.style';
 
 const ReviewTVSeasons = () => {
 	const tyDayTrendData = useSelector((state) => state.tvSeasons.tvDayTrend);
@@ -15,11 +15,3 @@ const ReviewTVSeasons = () => {
 };
 
 export default ReviewTVSeasons;
-
-const ReviewWrapper = styled.div`
-	margin: 30px auto;
-	width: 640px;
-	border: 1px solid var(--color-light-gray);
-	border-radius: 5px;
-	overflow: hidden;
-`;

@@ -42,6 +42,7 @@ export const SwiperImg = styled.div`
 
 export const SwiperWrap = styled.div`
 	width: 80%;
+	min-width: 1150px;
 	height: 30%;
 	margin: auto;
 `;
@@ -56,8 +57,19 @@ export const StyledSwiperContainer = styled.div`
 		height: 100%;
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
 		font-size: 16px;
 		overflow: hidden;
+	}
+
+	.swiper-slide > div:nth-child(2) {
+		width: 100%;
+		aspect-ratio: 3 / 4;
+		overflow: hidden;
+	}
+
+	.swiper-slide > div:nth-child(2) img {
+		width: 95%;
 	}
 
 	.swiper-button-prev {
@@ -80,8 +92,6 @@ export const StyledSwiperContainer = styled.div`
 export const InfoWrap = styled.div`
 	display: flex;
 	flex-direction: column;
-	/* text-align: left; */
-	/* margin-left: -50px; */
 `;
 
 export const DateText = styled.div`
