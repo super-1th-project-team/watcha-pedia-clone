@@ -43,6 +43,7 @@ export const GrayText = styled.p`
 	margin-top: ${(props) => props.margintp};
 	font-size: 12px;
 	color: #8c8c8c;
+	margin-left: 5px;
 `;
 export const Average = styled.em`
 	font-size: 18px;
