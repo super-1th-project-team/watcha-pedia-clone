@@ -17,14 +17,14 @@ import {
 	RegisterButton,
 	UserButton,
 	NavContent,
-	NavLi,
+	NavLeftLi,
+	NavRightLi,
 	NavLogo,
 	NavNav,
 	NavSearchInput,
 	NavUl,
 	NavWhiteLogo,
 } from './Nav.style';
-import { BiSearch } from 'react-icons/bi';
 
 const Nav = () => {
 	const [searchValue, setSearchValue] = useState('');
@@ -47,7 +47,6 @@ const Nav = () => {
 	const loginHandler = () => {
 		if (isRegisterPopUp) dispatch(TOGGLE_REGISTER_POPUP());
 		dispatch(TOGGLE_LOGIN_POPUP());
-		document.body.style.overflow = 'hidden';
 	};
 
 	const signUpHandler = () => {
@@ -86,7 +85,7 @@ const Nav = () => {
 		navigate('/review');
 	};
 
-	const moveUserPageHandler = () => {
+	const moveUserPageHadler = () => {
 		navigate(`/users/${id}`);
 	};
 
@@ -121,40 +120,43 @@ const Nav = () => {
 				<NavContent>
 					<div>
 						<NavUl>
-							<NavLi>
-								<NavLogo onClick={onHomeClick} />
-							</NavLi>
-							<NavLi>
+							<NavLeftLi>
+								{transparent ? (
+									<NavWhiteLogo onClick={onHomeClick} />
+								) : (
+									<NavLogo onClick={onHomeClick} />
+								)}
+							</NavLeftLi>
+							<NavLeftLi>
 								<NavMovieButton
 									contents={transparent}
 									domain={domain}
 									onClick={onMovieClick}>
 									영화
 								</NavMovieButton>
-							</NavLi>
-							<NavLi>
+							</NavLeftLi>
+							<NavLeftLi>
 								<NavTVSeasonsButton
 									contents={transparent}
 									domain={domain}
 									onClick={onTvClick}>
 									TV
 								</NavTVSeasonsButton>
-							</NavLi>
-							<NavLi>
+							</NavLeftLi>
+							<NavLeftLi>
 								<NavBooksButton
 									contents={transparent}
 									domain={domain}
 									onClick={onBookClick}>
 									책
 								</NavBooksButton>
-							</NavLi>
+							</NavLeftLi>
 						</NavUl>
 					</div>
 					<div>
 						<NavUl>
-							<NavLi>
+							<NavRightLi>
 								<form onSubmit={SearchValueSubmitHandler}>
-									<BiSearch size={20} color="var(--color-light-gray)" />
 									<NavSearchInput
 										placeholder="콘텐츠,인물,컬렉션,유저를 검색해보세요."
 										onChange={onSearchValueHandler}
@@ -162,8 +164,8 @@ const Nav = () => {
 										contents={transparent}
 									/>
 								</form>
-							</NavLi>
-							<NavLi>
+							</NavRightLi>
+							<NavRightLi>
 								{!isLoggedIn && (
 									<NavButton onClick={loginHandler} contents={transparent}>
 										로그인
@@ -176,8 +178,8 @@ const Nav = () => {
 										평가하기
 									</NavButton>
 								)}
-							</NavLi>
-							<NavLi>
+							</NavRightLi>
+							<NavRightLi>
 								{!isLoggedIn && (
 									<RegisterButton
 										onClick={signUpHandler}
@@ -186,7 +188,7 @@ const Nav = () => {
 									</RegisterButton>
 								)}
 								{isLoggedIn && (
-									<UserButton onClick={moveUserPageHandler}>
+									<UserButton onClick={moveUserPageHadler}>
 										<img
 											src={
 												photoURL === null ? '/assets/icon-user.png' : photoURL
@@ -195,7 +197,7 @@ const Nav = () => {
 										/>
 									</UserButton>
 								)}
-							</NavLi>
+							</NavRightLi>
 						</NavUl>
 					</div>
 				</NavContent>
