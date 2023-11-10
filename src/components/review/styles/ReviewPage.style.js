@@ -14,7 +14,7 @@ export const HiddenBox = styled.div`
 	width: 100%;
 	height: 100px;
 	z-index: 1;
-	background: #eee;
+	background: #fff;
 	position: fixed;
 	top: 0;
 `;
@@ -33,14 +33,14 @@ export const RHeader = styled.div`
 	left: 50%;
 	transform: translateX(-50%);
 	border-radius: 5px;
-	border: 1px solid var(--color-bg-light-gray);
+	border: 1px solid #eee;
 	z-index: 100;
 `;
 
 export const RItem = styled.div`
 	display: flex;
 	justify-content: space-between;
-	border-bottom: 1px solid var(--color-bg-light-gray);
+	border-bottom: 1px solid #eee;
 	padding: 20px 0;
 	& > div {
 		display: flex;
@@ -69,9 +69,9 @@ export const IconMoreBTN = styled.div`
 `;
 
 export const RItemList = styled.div`
-	border: 1px solid var(--color-bg-light-gray);
+	border: 1px solid #eee;
 	padding: 20px;
-	z-index: -1;
+	margin-top: 210px;
 `;
 
 export const RNav = styled.div`
