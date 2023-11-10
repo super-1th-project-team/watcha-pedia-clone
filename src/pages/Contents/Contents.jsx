@@ -8,11 +8,12 @@ import tvAxios from '../../api/axios';
 import {
 	SET_GALLERY,
 	SET_MOVIE_DETAIL,
+	SET_REVIEWS,
 	SET_SIMILAR,
 	SET_VIDEOS,
 } from '../../slice/movieSlice';
 import { useScrollToTop } from '../../hooks/useScrollToTop';
-import { SET_TV_DETAIL, SET_TV_SIMILAR } from '../../slice/tvSeasonsSlice';
+import { SET_TV_DETAIL, SET_TV_REVIEWS, SET_TV_SIMILAR } from '../../slice/tvSeasonsSlice';
 import { ModalProvider } from '../../context/ModalContext';
 import Loading from './Loading/Loading';
 
@@ -101,6 +102,33 @@ const Contents = () => {
 		}
 	}; 
 
+	const fetchMovieReviews = async () => {
+		try {
+			const response = await movieAxios.get(`movie/${id}/reviews`,{
+				params: {
+					language: 'en-US, ko-KR',
+				}
+			});
+			
+			dispatch(SET_REVIEWS(response.data.results));
+		} catch (error) {
+			console.error('Review Movies Fetch Error:', error);
+		}
+	}; 
+
+	const fetchTVReviews = async () => {
+		try {
+			const response = await tvAxios.get(`tv/${id}/reviews`,{
+				params: {
+					language: 'en-US, ko-KR',
+				}});
+			
+			dispatch(SET_REVIEWS(response.data.results));
+		} catch (error) {
+			console.error('Review TV Shows Fetch Error:', error);
+		}
+	}; 
+
 	useEffect(() => {
 		Promise.all([
 			fetchMovieDetailData(),
@@ -110,7 +138,9 @@ const Contents = () => {
 			fetchSimilarMovieData(),
 			fetchSimilarTVData(),
 			fetchMovieVideos(),
-			fetcTVVideos()
+			fetcTVVideos(),
+			fetchMovieReviews(),
+			fetchTVReviews()
 		])
 			.then(() => setIsLoading(false))
 			.catch(() => setIsLoading(false));
