@@ -10,18 +10,18 @@ import { useSelector } from 'react-redux';
 
 const ContentsInfo = () => {
 	const videoDatas = useSelector((state) => state.movie.videos);
-	const reviews = useSelector(state => state.movie.reviews)
+	const reviews = useSelector((state) => state.movie.reviews);
 	const context = useContext(ModalContext);
 	return (
-			<>
-				{context.isModalOpen && <ContentsModals/>}
-					<ContentsInfoBox />
-					{reviews.length > 1? <ContentsComments /> : null}
-					<ContentsGallery />
-					{videoDatas.length > 1  ? <ContentsVideo /> : null}
-					{/* <ContentsCollections /> */}
-					<SimilarContents />
-			</>
+		<>
+			{context.isModalOpen && <ContentsModals />}
+			<ContentsInfoBox />
+			{reviews.length > 1 ? <ContentsComments /> : null}
+			<ContentsGallery />
+			{videoDatas.length > 1 ? <ContentsVideo /> : null}
+			{/* <ContentsCollections /> */}
+			<SimilarContents />
+		</>
 	);
 };
 
