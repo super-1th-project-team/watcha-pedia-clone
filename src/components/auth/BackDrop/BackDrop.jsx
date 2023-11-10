@@ -9,7 +9,7 @@ const BackDrop = ({ setIsPopup }) => {
 		dispatch(CANCEL_AUTH({ isLoggedIn: false, isRegistered: false }));
 		dispatch(CHECK_AUTH_POPUP(false));
 		setIsPopup(false);
-		document.body.style.overflow = 'unset';
+		document.body.style.overflow = 'visible';
 	};
 
 	document.body.style.overflow = 'hidden';

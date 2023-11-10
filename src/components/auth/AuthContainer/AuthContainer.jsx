@@ -6,6 +6,7 @@ import { Container, Image } from './AuthContainer.style';
 import BackDrop from '../BackDrop/BackDrop';
 import AuthErrorModal from '../AuthErrorModal/AuthErrorModal';
 import AuthCheck from '../AuthCheck/AuthCheck';
+import { useState } from 'react';
 
 const AuthContainer = () => {
 	const isLogInPopUp = useSelector((state) => state.user.isLogInPopUp);
@@ -13,11 +14,12 @@ const AuthContainer = () => {
 	const isLoginError = useSelector((state) => state.user.isLoginError);
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 	const isAuthCheckPopUp = useSelector((state) => state.user.isAuthCheckPopUp);
+	const [isPopup, setIsPopup] = useState(false);
 
 	return (
 		<>
 			{(isLogInPopUp || isRegisterPopUp || isAuthCheckPopUp) &&
-				createPortal(<BackDrop />, document.getElementById('backdrop-root'))}
+				createPortal(<BackDrop setIsPopup={setIsPopup}/>, document.getElementById('backdrop-root'))}
 			<Container isLoginError={isLoginError}>
 				<Image src="/assets/WATCHA_PEDIA_Logo_Main.png" alt="" />
 				{isLogInPopUp && <Login />}
