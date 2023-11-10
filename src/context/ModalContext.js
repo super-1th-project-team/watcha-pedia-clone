@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react';
 
 const ModalContext = createContext({
+	isImg: false,
 	isModalOpen: false,
 	openModal: () => {},
 	closeModal: () => {},
@@ -9,6 +10,7 @@ const ModalContext = createContext({
 });
 
 export const ModalProvider = ({ children }) => {
+	const [isImg, setIsImg] = useState(false);
 	const [isModalOpen, setModalOpen] = useState(false);
 	const [imgUrl, setImgUrl] = useState('');
 
@@ -20,13 +22,15 @@ export const ModalProvider = ({ children }) => {
 		setModalOpen(false);
 	};
 
-	const urlHandler = (img) => {
-		setImgUrl(img.url);
+	const urlHandler = (url) => {
+		setImgUrl(url);
 	};
 
 	return (
 		<ModalContext.Provider
 			value={{
+				isImg: isImg,
+				setIsImg: setIsImg,
 				isModalOpen: isModalOpen,
 				imgUrl: imgUrl,
 				openModal: openModalHandler,

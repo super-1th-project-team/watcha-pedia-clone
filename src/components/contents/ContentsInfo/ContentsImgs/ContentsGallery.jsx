@@ -15,6 +15,7 @@ const ContentsGallery = () => {
 		context.url(`https://image.tmdb.org/t/p/original/${img.file_path}`);
 		context.openModal();
 	};
+
 	return (
 		<ContentsSection>
 			<SectionTitleH3>갤러리</SectionTitleH3>

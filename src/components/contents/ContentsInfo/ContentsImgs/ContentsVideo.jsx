@@ -4,13 +4,16 @@ import ContentsSwiper from './Swiper/ContentsSwiper';
 import { SwiperSlide } from 'swiper/react';
 import { useSelector } from 'react-redux';
 import * as style from './Swiper/ContentsSwiper.style';
-import {IoPlayCircleOutline} from 'react-icons/io5'
+import { IoPlayCircleOutline } from 'react-icons/io5';
 
 const ContentsVideo = () => {
 	const videoDatas = useSelector((state) => state.movie.videos);
 	const videoLinkHandler = (video) => {
 		window.open(`https://www.youtube.com/watch?v=${video.key}`, '_blank');
 	};
+
+	console.log(videoDatas);
+
 	return (
 		<ContentsSection>
 			<SectionTitleH3>동영상</SectionTitleH3>
@@ -19,7 +22,7 @@ const ContentsVideo = () => {
 					videoDatas.map((video, index) => (
 						<SwiperSlide key={index} onClick={() => videoLinkHandler(video)}>
 							<style.SwiperImgDiv>
-                                <IoPlayCircleOutline className='play-icon'/>
+								<IoPlayCircleOutline className="play-icon" />
 								<img
 									src={
 										videoDatas === undefined
