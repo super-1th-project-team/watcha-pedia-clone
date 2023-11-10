@@ -3,6 +3,7 @@ import InfoBtns from './InfoBtns';
 import * as style from './ContentsInfoBox.style';
 import { useSelector } from 'react-redux';
 import ModalContext from '../../../../context/ModalContext';
+import StarRating from '../../../StarRating/StarRating';
 
 const InfoRightBox = () => {
 	const context = useContext(ModalContext);
@@ -32,8 +33,8 @@ const InfoRightBox = () => {
 		<style.InfoRightBox>
 			<style.GridSection>
 				<div>
-					<div>별 아이콘</div>
-					<style.GrayText>평가상태마다 코멘트</style.GrayText>
+					<StarRating />
+					<style.GrayText>평가하기</style.GrayText>
 				</div>
 				<style.ScoreDiv>
 					<div>
