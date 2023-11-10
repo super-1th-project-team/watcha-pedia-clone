@@ -72,6 +72,7 @@ export const RItemList = styled.div`
 	border: 1px solid #eee;
 	padding: 20px;
 	margin-top: 210px;
+	z-index: -10;
 `;
 
 export const RNav = styled.div`
