@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { AiOutlineClose } from 'react-icons/ai';
 
 export const UsersSettingPopupSection = styled.section`
-	position: absolute;
+	position: fixed;
 	left: 50%;
 	top: 70%;
 	transform: translate(-50%, -70%);

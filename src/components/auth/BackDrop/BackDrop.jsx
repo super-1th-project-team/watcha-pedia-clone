@@ -8,6 +8,7 @@ const BackDrop = () => {
 	const cancelAuthHandler = () => {
 		dispatch(CANCEL_AUTH({ isLoggedIn: false, isRegistered: false }));
 		dispatch(CHECK_AUTH_POPUP(false));
+		document.body.style.overflow = 'unset';
 	};
 
 	return <BackDropElem onClick={cancelAuthHandler} />;

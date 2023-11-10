@@ -47,6 +47,7 @@ const Nav = () => {
 	const loginHandler = () => {
 		if (isRegisterPopUp) dispatch(TOGGLE_REGISTER_POPUP());
 		dispatch(TOGGLE_LOGIN_POPUP());
+		document.body.style.overflow = 'hidden';
 	};
 
 	const signUpHandler = () => {
