@@ -18,6 +18,8 @@ import UsersComments from './components/users/UsersComments/UsersComments';
 import UsersDecks from './components/users/UsersDecks/UsersDecks';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import app from './firebase';
+import UsersBox from './components/users/UsersBox/UsersBox';
 
 const router = createBrowserRouter([
 	{
@@ -29,6 +31,7 @@ const router = createBrowserRouter([
 				path: 'users/:id',
 				element: <Users />,
 				children: [
+					{ index: true, element: <UsersBox /> },
 					{
 						path: 'ratings',
 						element: <Ratings />,

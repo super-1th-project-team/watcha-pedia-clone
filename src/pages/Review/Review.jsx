@@ -8,7 +8,7 @@ const Review = () => {
 	const query = new URLSearchParams(location.search);
 	const content_type = query.get('content_type');
 
-	if (content_type === 'movies') return <ReviewMovies />;
+	if (content_type === 'movie') return <ReviewMovies />;
 	else if (content_type === 'tv_seasons') return <ReviewTVSeasons />;
 	else if (content_type === 'books') return <ReviewBooks />;
 
