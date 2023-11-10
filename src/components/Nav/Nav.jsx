@@ -85,7 +85,7 @@ const Nav = () => {
 		navigate('/review');
 	};
 
-	const moveUserPageHadler = () => {
+	const moveUserPageHandler = () => {
 		navigate(`/users/${id}`);
 	};
 
@@ -185,7 +185,7 @@ const Nav = () => {
 									</RegisterButton>
 								)}
 								{isLoggedIn && (
-									<UserButton onClick={moveUserPageHadler}>
+									<UserButton onClick={moveUserPageHandler}>
 										<img
 											src={
 												photoURL === null ? '/assets/icon-user.png' : photoURL

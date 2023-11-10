@@ -53,6 +53,7 @@ const InfoRightBox = () => {
 					wantIsClicked={wantIsClicked}
 					wantBtnHandler={wantBtnHandler}
 					watchingIsClicked={watchingIsClicked}
+					setWatchingIsClicked={setWatchingIsClicked}
 					watchingBtnHandler={watchingBtnHandler}
 				/>
 			</style.GridSection>

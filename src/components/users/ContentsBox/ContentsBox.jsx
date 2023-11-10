@@ -14,6 +14,7 @@ import {
 	Wrap,
 } from './ContentsBox.style';
 import { useScrollToTop } from '../../../hooks/useScrollToTop';
+import { useSelector } from 'react-redux';
 
 const ContentsBox = () => {
 	const { id, contentType } = useParams();
@@ -28,6 +29,37 @@ const ContentsBox = () => {
 	};
 
 	useScrollToTop();
+
+	const userMovieInfoData = useSelector((state) => state.user.userData.movies);
+	const userTVInfoData = useSelector((state) => state.user.userData.tvShows);
+
+	const movieWishesCount = userMovieInfoData.reduce((count, movie) => {
+		if (movie.wishes) {
+			return count + 1;
+		}
+		return count;
+	}, 0);
+
+	const tvWishesCount = userTVInfoData.reduce((count, tv) => {
+		if (tv.wishes) {
+			return count + 1;
+		}
+		return count;
+	}, 0);
+
+	const movieWatchingCount = userMovieInfoData.reduce((count, movie) => {
+		if (movie.watching) {
+			return count + 1;
+		}
+		return count;
+	}, 0);
+
+	const tvWatchingCount = userTVInfoData.reduce((count, tv) => {
+		if (tv.watching) {
+			return count + 1;
+		}
+		return count;
+	}, 0);
 
 	return (
 		<ContentsBoxSection>
@@ -53,11 +85,19 @@ const ContentsBox = () => {
 				</RatingsWrap>
 				<WishesWrap>
 					<Text>보고싶어요</Text>
-					<span>0</span>
+					<span>
+						{contentType === 'movies' && movieWishesCount}
+						{contentType === 'tv_seasons' && tvWishesCount}
+						{contentType === 'books' && '0'}
+					</span>
 				</WishesWrap>
 				<WishesWrap>
 					<Text>보는 중</Text>
-					<span>0</span>
+					<span>
+						{contentType === 'movies' && movieWatchingCount}
+						{contentType === 'tv_seasons' && tvWatchingCount}
+						{contentType === 'books' && '0'}
+					</span>
 				</WishesWrap>
 			</Container>
 		</ContentsBoxSection>

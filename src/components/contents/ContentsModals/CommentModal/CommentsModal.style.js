@@ -9,7 +9,7 @@ export const CommentModalDiv = styled.div`
 	position: relative;
 `;
 
-export const CommentInput = styled.input`
+export const CommentTextArea = styled.textarea`
 	width: 100%;
 	min-height: 360px;
 	font-size: 17px;
