@@ -9,6 +9,7 @@ import * as style from './Swiper/ContentsSwiper.style';
 const ContentsGallery = () => {
 	const context = useContext(ModalContext);
 	const galleryImages = useSelector((state) => state.movie.galleryImages);
+
 	const imgModalHandler = (img) => {
 		context.setIsImg(true);
 		context.url(`https://image.tmdb.org/t/p/original/${img.file_path}`);
