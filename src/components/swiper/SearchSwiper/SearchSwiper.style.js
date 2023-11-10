@@ -61,7 +61,7 @@ export const StyledSwiperContainer = styled.div`
 	}
 
 	.swiper-slide > div:nth-child(2) {
-		width: 95%;
+		width: 100%;
 		aspect-ratio: 3 / 4;
 		overflow: hidden;
 	}
