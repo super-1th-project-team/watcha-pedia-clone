@@ -3,7 +3,7 @@ import { BsArrowLeftShort } from 'react-icons/bs';
 
 export const UsersCommentsSection = styled.section`
 	padding-top: 70px;
-	height: 100vh;
+	padding-bottom: 100px;
 	background-color: var(--color-bg-light-gray);
 `;
 

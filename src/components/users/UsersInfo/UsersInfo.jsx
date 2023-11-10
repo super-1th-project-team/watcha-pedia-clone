@@ -10,6 +10,7 @@ import {
 	EmailText,
 } from './UserInfo.style';
 import UsersSettingPopup from '../UsersSettingPopup/UsersSettingPopup';
+import BackDrop from '../../auth/BackDrop/BackDrop';
 
 const UsersInfo = () => {
 	const [isPopup, setIsPopup] = useState(false);
@@ -26,6 +27,7 @@ const UsersInfo = () => {
 	return (
 		<>
 			<UserInfoContainer>
+				{isPopup && <BackDrop setIsPopup={setIsPopup} />}
 				<IconWrap>
 					<StyledSettingsIcon onClick={isPopUpHandler} />
 				</IconWrap>

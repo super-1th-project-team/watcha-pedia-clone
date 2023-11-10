@@ -7,7 +7,7 @@ const StarRating = ({ itemId, onRatingChange, value, selectedItem, type }) => {
 	const [selectedRating, setSelectedRating] = useState(0);
 
 	const clickRatingHandler = (value) => {
-		onRatingChange(selectedItem.id);
+		onRatingChange(itemId && selectedItem.id);
 		setSelectedRating((prev) => (prev === value ? 0 : value));
 	};
 
@@ -21,6 +21,7 @@ const StarRating = ({ itemId, onRatingChange, value, selectedItem, type }) => {
 						value={value}
 						isHalf={index % 2 === 1}
 						isChecked={selectedRating === value}
+						onChange={onRatingChange}
 					/>
 				))}
 			</RatingField>

@@ -29,11 +29,13 @@ const InfoRightBox = () => {
 		context.openModal();
 	};
 
+	const onChangeHandler = () => {};
+
 	return (
 		<style.InfoRightBox>
 			<style.GridSection>
 				<div>
-					<StarRating />
+					<StarRating onRatingChange={onChangeHandler} />
 					<style.GrayText>평가하기</style.GrayText>
 				</div>
 				<style.ScoreDiv>
