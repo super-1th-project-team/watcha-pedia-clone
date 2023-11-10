@@ -2,7 +2,6 @@ import { useLocation } from 'react-router-dom';
 import ReviewMovies from '../../components/review/ReviewMovies/ReviewMovies';
 import ReviewTVSeasons from '../../components/review/ReviewTVSeasons/ReviewTVSeasons';
 import ReviewBooks from '../../components/review/ReviewBooks/ReviewBooks';
-import { styled } from 'styled-components';
 
 const Review = () => {
 	const location = useLocation();
@@ -17,8 +16,3 @@ const Review = () => {
 };
 
 export default Review;
-
-const RWrapper = styled.div`
-	background: var(--color-bg-light-gray);
-	width: 100%;
-`;
