@@ -122,7 +122,6 @@ const userSlice = createSlice({
 			}
 		},
 
-		// SET_COMMENT 리듀서
 		SET_COMMENT(state, action) {
 			const { id, isTVPage, comment } = action.payload;
 			const arrayKey = isTVPage ? 'tvShows' : 'movies';
