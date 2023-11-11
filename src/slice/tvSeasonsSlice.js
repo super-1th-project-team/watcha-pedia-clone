@@ -10,6 +10,7 @@ const initialState = {
 	tvKids: [],
 	tvSimilar: [],
 	tvDetail: {},
+	commentTVDetail: [],
 	isTVPage: false,
 };
 
@@ -47,6 +48,9 @@ const tvSeasonsSlice = createSlice({
 		SET_TV_SIMILAR(state, action) {
 			state.tvSimilar = action.payload;
 		},
+		SET_COMMENT_TV_DETAILS(state, action) {
+			state.commentTVDetail = action.payload;
+		},
 	},
 });
 
@@ -61,6 +65,7 @@ export const {
 	SET_TV_DETAIL,
 	CHECK_TV_PAGE,
 	SET_TV_SIMILAR,
+	SET_COMMENT_TV_DETAILS,
 } = tvSeasonsSlice.actions;
 
 export default tvSeasonsSlice.reducer;

@@ -26,6 +26,8 @@ const Home = () => {
 
 	domainCheck();
 
+	document.body.style.overflow = 'visible';
+
 	if (domain === 'movies') return <Movies />;
 	else if (domain === 'books') return <Books />;
 	else if (domain === 'tv_seasons') return <TVSeasons />;

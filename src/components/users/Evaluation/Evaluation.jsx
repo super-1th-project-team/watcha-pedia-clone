@@ -1,7 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Container, Count, Text } from './Evaluation.style';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { getDatabase, ref, set, onValue } from 'firebase/database';
+import { UPDATE_USER_DATA } from '../../../slice/userSlice';
 
 const Evaluation = () => {
 	const { id } = useParams();
@@ -15,6 +17,8 @@ const Evaluation = () => {
 
 	const userMovieInfoData = useSelector((state) => state.user.userData.movies);
 	const userTVInfoData = useSelector((state) => state.user.userData.tvShows);
+
+	const userId = useSelector((state) => state.user.id);
 
 	const movieCommentCount = userMovieInfoData.reduce((count, movie) => {
 		if (movie.comment && movie.comment.text.trim() !== '') {
@@ -32,6 +36,22 @@ const Evaluation = () => {
 
 	useEffect(() => {
 		setTotalCount(movieCommentCount + tvCommentCount);
+	}, []);
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (userId) {
+			const db = getDatabase();
+			const userRef = ref(db, `users/${userId}/userData`);
+
+			onValue(userRef, (snapshot) => {
+				const userData = snapshot.val();
+				if (userData) {
+					dispatch(UPDATE_USER_DATA(userData));
+				}
+			});
+		}
 	}, []);
 
 	return (
